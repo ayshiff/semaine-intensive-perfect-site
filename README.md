@@ -1,5 +1,12 @@
 # semaine-intensive-perfect-site
 
+## Run it locally
+- Run ```git clone https://github.com/ayshiff/semaine-intensive-perfect-site.git```   
+- ```cd semaine-intensive-perfect-site```
+- ``` npm install``` or ```yarn```
+- ```node_modules/.bin/sequelize db:migrate```-> it will run migrations
+- ```npm start``` or ```yarn start```
+
 ## Front
 
 - Actu twitter des compagnies aériennes partenaires

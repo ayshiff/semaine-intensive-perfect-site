@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <a href="/admin/add">Add a new article</a>
+    {% for p in article %}
+    <div style="margin: 20px;border-style: solid;border-width: 1px;width: 400px;">
+        <div class="card-body" style="margin: 10px;">
+            <h3 class="card-title">{{p.title}}</h3>
+            <h3 class="card-title">{{p.subtitle}}</h3>
+            <p>{{p.text}}</p>
+            <a class="btn btn-primary" href="admin/edit?id={{p.id}}">Edit</a>
+            <a class="btn btn-primary" href="admin/delete?id={{p.id}}">Supprimer</a>
+            <img src="./img/{{p.image}}" alt="img">
+        </div>
+    </div>
+    {% endfor %}
+</body>
+</html>
