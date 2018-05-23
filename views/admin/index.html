@@ -1,12 +1,17 @@
 {% extends "./header.html" %}
 {% block content %}
 
-    <a href="{{href}}" class="btn btn-dark"style="margin-left: 20px;"> Add a new article</a>
+    <a href="{{href}}" class="btn btn-dark"style="margin-left: 20px;"> Add a new {{obj}}</a>
     <div class="container" style="display: flex;">
     {% for p in article %}
     <div class="card" style="width: 18rem;margin: 20px;">
+        {% if(p.image) %}
         <img class="card-img-top" src="/uploads/{{p.image}}.jpg" alt="Card image">
+        {% endif %}
         <div class="card-body">
+            {% if(p.name) %}
+            <h5 class="card-title">{{p.name}}</h5>
+            {% endif %}
           <h5 class="card-title">{{p.title}}</h5>
           <h5 class="card-sub-title">{{p.subtitle}}</h5>
           <p>{{p.createdAt}}</p>

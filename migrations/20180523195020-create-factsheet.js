@@ -29,9 +29,6 @@ module.exports = {
       country: {
         type: Sequelize.STRING
       },
-      top100: {
-        type: Sequelize.BOOLEAN
-      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE

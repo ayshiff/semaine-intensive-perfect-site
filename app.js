@@ -87,26 +87,7 @@ app.get('/auth', (req,res) => {
 // Route admin -> GET
 
 
-// Route add admin -> POST
-app.post('/admin/add', upload, (req, res) => {
-  db.Article
-    .create({
-      title: req.body.title,
-      subtitle: req.body.subtitle,
-      image: req.file.fieldname,
-      text: req.body.text,
-      signature: req.body.signature,
-      logo: req.file.logo,
-    })
-    .then(task => {
-      res.redirect('/admin/index');
-    })
-    .catch(err => {
-      console.log(err);
-    })
-});
 
-// Route add admin -> GET
 
 
 // Route update admin -> POST
@@ -148,15 +129,8 @@ app.get('/admin/edit/:id', (req, res) => {
 
 });
 
-// Route delete admin
-app.post('/admin/delete/:id', (req, res) => {
-  db.Article.destroy({
-    where: {
-      id: req.params.id
-    }
-  });
-  res.redirect('/admin/index');
-});
+
+
 app.get('/admin/delete/:id', (req, res) => {
   res.render('admin/delete', {
     id: req.params.id
@@ -180,34 +154,38 @@ app.get('/admin/index', (req, res) => {
   db.Article.findAll().then(article => {
     res.render('admin/index', {
       article,
-      href:'/admin/add'
+      href:'/admin/add',
+      obj: "article"
     })
   })
 });
 
 app.get('/admin/imagesbox', (req,res) => {
-  db.ImagesBox.findAll().then(element => {
+  db.ImagesBox.findAll().then(article => {
     res.render('admin/index', {
-      element,
-      href:'/admin/add/imagesbox'
+      article,
+      href:'/admin/add/imagesbox',
+      obj: "image box"
     })
   })
 })
 
 app.get('/admin/airlinescompanies', (req,res) => {
-  db.AirlineCompany.findAll().then(element => {
+  db.AirlineCompany.findAll().then(article => {
     res.render('admin/index', {
-      element,
-      href:'/admin/add/airlinescompanies'
+      article,
+      href:'/admin/add/airlinescompanies',
+      obj: "airline company"
     })
   })
 })
 
 app.get('/admin/partners', (req,res) => {
-  db.Partner.findAll().then(element => {
+  db.Partner.findAll().then(article => {
     res.render('admin/index', {
-      element,
-      href:'/admin/add/partners'
+      article,
+      href:'/admin/add/partners',
+      obj: "partner"
     })
   })
 })
@@ -215,12 +193,15 @@ app.get('/admin/partners', (req,res) => {
 //////////////////////////////////////////////////////////////////
 
 app.get('/admin/add', (req, res) => {
+  sequelize.Project = sequelize.import('./models/partner');
+  console.log(sequelize.Project)
   db.Article.findAll().then(element => {
     let valueNotSlice = Object.keys(element[0].dataValues)
-    let value = valueNotSlice.slice(0, -2);
+    let value = valueNotSlice.slice(1, -2);
     console.log(value)
     res.render('admin/add', {
-      value
+      value,
+      href: "/admin/add"
     })
   })
 });
@@ -228,21 +209,25 @@ app.get('/admin/add', (req, res) => {
 app.get('/admin/add/imagesbox', (req, res) => {
   db.ImagesBox.findAll().then(element => {
     let valueNotSlice = Object.keys(element[0].dataValues)
-    let value = valueNotSlice.slice(0, -2);
+    let value = valueNotSlice.slice(1, -2);
     console.log(value)
     res.render('admin/add', {
-      value
+      value,
+      href: "/admin/add/imagesbox"
     })
   })
 });
 
 app.get('/admin/add/airlinescompanies', (req, res) => {
+  console.log(db.AirlineCompany)
   db.AirlineCompany.findAll().then(element => {
     let valueNotSlice = Object.keys(element[0].dataValues)
-    let value = valueNotSlice.slice(0, -2);
+    let value = valueNotSlice.slice(1, -2);
+    
     console.log(value)
     res.render('admin/add', {
-      value
+      value,
+      href: "/admin/add/airlinescompanies"
     })
   })
 });
@@ -250,14 +235,18 @@ app.get('/admin/add/airlinescompanies', (req, res) => {
 app.get('/admin/add/partners', (req, res) => {
   db.Partner.findAll().then(element => {
     let valueNotSlice = Object.keys(element[0].dataValues)
-    let value = valueNotSlice.slice(0, -2);
+    let value = valueNotSlice.slice(1, -2);
     console.log(value)
     res.render('admin/add', {
-      value
+      value,
+      href: "/admin/add/partners"
     })
   })
 });
 
+////////////////////////////////////////////////////////////////////
+
+// Route add admin -> POST
 app.post('/admin/add', upload, (req, res) => {
   db.Article
     .create({
@@ -276,8 +265,9 @@ app.post('/admin/add', upload, (req, res) => {
     })
 });
 
-app.post('/admin/imagesbox/add', upload, (req, res) => {
-  db.Article
+
+app.post('/admin/add/imagesbox', upload, (req, res) => {
+  db.ImagesBox
     .create({
       title: req.body.title,
       theme: req.body.subtitle,
@@ -290,6 +280,75 @@ app.post('/admin/imagesbox/add', upload, (req, res) => {
       console.log(err);
     })
 });
+
+app.post('/admin/add/airlinescompanies', upload, (req, res) => {
+  db.AirlineCompany
+    .create({
+      name: req.body.name
+    })
+    .then(task => {
+      res.redirect('/admin/airlinescompanies');
+    })
+    .catch(err => {
+      console.log(err);
+    })
+});
+
+app.post('/admin/add/partners', upload, (req, res) => {
+  db.Partner
+    .create({
+      title: req.body.title,
+      signature: req.body.signature,
+      image: req.file.fieldname,
+    })
+    .then(task => {
+      res.redirect('/admin/partners');
+    })
+    .catch(err => {
+      console.log(err);
+    })
+});
+
+////////////////////////////////////////////////////////////////////
+
+// Route delete admin
+app.post('/admin/delete/:id', (req, res) => {
+  db.Article.destroy({
+    where: {
+      id: req.params.id
+    }
+  });
+  res.redirect('/admin/index');
+});
+
+app.post('/admin/delete/partners/:id', (req, res) => {
+  db.Partner.destroy({
+    where: {
+      id: req.params.id
+    }
+  });
+  res.redirect('/admin/partners');
+});
+
+app.post('/admin/delete/airlinescompanies/:id', (req, res) => {
+  db.Partner.destroy({
+    where: {
+      id: req.params.id
+    }
+  });
+  res.redirect('/admin/airlinescompanies');
+});
+
+app.post('/admin/delete/imagesbox/:id', (req, res) => {
+  db.Partner.destroy({
+    where: {
+      id: req.params.id
+    }
+  });
+  res.redirect('/admin/imagesbox');
+});
+
+/////////////////////////////////////////////////////////////////////////////
 
 
 

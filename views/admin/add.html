@@ -1,11 +1,13 @@
 {% extends "./header.html" %}
 {% block content %}
 
-    <form style="margin: 40px;display: flex;flex-direction: column;" action="/admin/add" method="post" enctype="multipart/form-data">
+    <form style="margin: 40px;display: flex;flex-direction: column;" action="{{href}}" method="post" enctype="multipart/form-data">
 
         {% for p in value %}
+        {% if (p !== "image") %}
         <label for="{{p}}">{{p}} :</label>
         <input type="text" name="{{p}}" id="{{p}}">
+        {% endif %}
         {% if (p === "image") %}
         <label for="{{p}}">{{p}} :</label>
         <input type="file" name="{{p}}" id="{{p}}">

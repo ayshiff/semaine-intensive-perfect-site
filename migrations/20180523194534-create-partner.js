@@ -14,7 +14,7 @@ module.exports = {
       signature: {
         type: Sequelize.STRING
       },
-      logo: {
+      image: {
         type: Sequelize.STRING
       },
       createdAt: {
