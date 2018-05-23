@@ -22,6 +22,7 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
+app.use(express.static('uploads'));
 //app.use(express.static(path.join(__dirname, 'public')));
 
 // Cookie parser - Body parser
@@ -60,7 +61,7 @@ var storage =   multer.diskStorage({
     callback(null, './uploads');
   },
   filename: function (req, file, callback) {
-    callback(null, file.fieldname+'jpg');
+    callback(null, file.fieldname+'.jpg');
   }
 });
 var upload = multer({ storage : storage }).single('image');
@@ -82,30 +83,21 @@ app.get('/admin/index', (req, res) => {
 })
 
 // Route add admin -> POST
-app.post('/admin/add', (req, res) => {
+app.post('/admin/add',upload, (req, res) => {
   db.Article
     .create({
         title: req.body.title,
         subtitle: req.body.subtitle,
-        image: "",
+        image: req.file.fieldname,
         text: req.body.text,
         signature: req.body.signature,
-        signature: req.body.signature,
-        logo: "",
+        logo: req.file.logo,
     })
     .then(task => {
-      upload(req,res,function(err) {
-        //console.log(req.body);
-        
-        if(err) {
-          console.log(req.files);
-            return res.end("Error uploading file.");
-        }
-        res.redirect('/admin/index'); 
-    });
+      res.redirect('/admin/index');
     })
     .catch(err => {
-        console.log(err)
+        console.log(err);
     })
 })
 
@@ -116,12 +108,12 @@ app.get('/admin/add', (req,res) => {
 
 // Route update admin -> POST
 app.post('/admin/edit/:id', (req,res) => {
+  
   db.Article.update(
     { title: req.body.title,
       subtitle: req.body.subtitle,
       image: req.body.image,
       text: req.body.text,
-      signature: req.body.signature,
       signature: req.body.signature,
       logo: req.body.logo },
     { where: { id: req.params.id } }
@@ -129,7 +121,19 @@ app.post('/admin/edit/:id', (req,res) => {
 })
 // Route update admin -> GET
 app.get('/admin/edit/:id', (req,res) => {
-  res.render('admin/edit', {id: req.params.id});
+  db.Article.findOne({where: {id: req.params.id}})
+  .then(article => {
+    res.render('admin/edit', {
+      title: article.title,
+      subtitle: article.subtitle,
+      image: article.image,
+      text: article.text,
+      signature: article.signature,
+      signature: article.signature,
+      logo: article.logo
+    });
+  })
+
 })
 
 // Route delete admin
