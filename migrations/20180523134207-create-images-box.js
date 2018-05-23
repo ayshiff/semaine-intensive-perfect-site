@@ -1,7 +1,7 @@
 'use strict';
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('Factsheets', {
+    return queryInterface.createTable('ImagesBoxes', {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -11,26 +11,11 @@ module.exports = {
       title: {
         type: Sequelize.STRING
       },
-      adress: {
-        type: Sequelize.STRING
-      },
-      note: {
-        type: Sequelize.INTEGER
-      },
-      price: {
-        type: Sequelize.INTEGER
-      },
-      description: {
+      theme: {
         type: Sequelize.STRING
       },
       image: {
         type: Sequelize.STRING
-      },
-      country: {
-        type: Sequelize.STRING
-      },
-      top100: {
-        type: Sequelize.BOOLEAN
       },
       createdAt: {
         allowNull: false,
@@ -43,6 +28,6 @@ module.exports = {
     });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('Factsheets');
+    return queryInterface.dropTable('ImagesBoxes');
   }
 };

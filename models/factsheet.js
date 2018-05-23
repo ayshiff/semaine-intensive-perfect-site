@@ -7,7 +7,8 @@ module.exports = (sequelize, DataTypes) => {
     price: DataTypes.INTEGER,
     description: DataTypes.STRING,
     image: DataTypes.STRING,
-    country: DataTypes.STRING
+    country: DataTypes.STRING,
+    top100: DataTypes.BOOLEAN
   }, {});
   Factsheet.associate = function(models) {
     // associations can be defined here
