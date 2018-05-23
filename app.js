@@ -9,7 +9,7 @@ let multer = require('multer');
 let port = process.env.PORT || 8000;
 
 let index = require('./routes/index');
-let admin = require('./routes/admin');
+//let admin = require('./routes/admin');
 const db = require(`${__dirname}/models/index.js`);
 
 let app = express();
@@ -111,7 +111,9 @@ app.get('/admin/index', (req, res) => {
     res.render('admin/index', {
       article,
       href:'/admin/add',
-      obj: "article"
+      obj: "article",
+      edit: "/admin/edit/",
+      delete: "/admin/delete/"
     })
   })
 });
@@ -121,7 +123,9 @@ app.get('/admin/imagesbox', (req,res) => {
     res.render('admin/index', {
       article,
       href:'/admin/add/imagesbox',
-      obj: "image box"
+      obj: "image box",
+      edit: "",
+      delete: ""
     })
   })
 })
@@ -131,7 +135,9 @@ app.get('/admin/airlinescompanies', (req,res) => {
     res.render('admin/index', {
       article,
       href:'/admin/add/airlinescompanies',
-      obj: "airline company"
+      obj: "airline company",
+      edit: "",
+      delete: ""
     })
   })
 })
@@ -141,7 +147,9 @@ app.get('/admin/partners', (req,res) => {
     res.render('admin/index', {
       article,
       href:'/admin/add/partners',
-      obj: "partner"
+      obj: "partner",
+      edit: "/admin/edit/partners/",
+      delete: "/admin/delete/partners/"
     })
   })
 })
@@ -348,39 +356,34 @@ app.post('/admin/edit/:id', upload, (req, res) => {
 
 app.get('/admin/edit/partners/:id', (req, res) => {
 
-  db.Article.findOne({
+  db.Partner.findOne({
     where: {
       id: req.params.id
     }
   })
   .then(article => {
-    console.log(article.id)
+    
     res.render('admin/edit', {
-      title: article.title,
-      subtitle: article.subtitle,
-      image: article.image,
-      text: article.text,
-      signature: article.signature,
-      logo: article.logo,
-      id: article.id
+      tab :[article.title,
+      article.image,
+      article.signature,
+      article.id],
+      tabKey: ["title","image","signature"],
+      update: "/admin/edit/partners/"
     });
   })
-  
   });
 
 // Route update admin -> POST
 app.post('/admin/edit/partners/:id', upload, (req, res) => {
  
-  db.Article.update(
+  db.Partner.update(
     { title: req.body.title,
-      subtitle: req.body.subtitle,
       image: req.file.fieldname,
-      text: req.body.text,
-      signature: req.body.signature,
-      logo: req.file.logo, },
+      signature: req.body.signature},
     { where: { id: req.params.id } }
   );
-  res.redirect('/admin/index');
+  res.redirect('/admin/partners');
 // }
 
 });

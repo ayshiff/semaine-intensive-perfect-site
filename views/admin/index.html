@@ -16,8 +16,8 @@
           <h5 class="card-sub-title">{{p.subtitle}}</h5>
           <p>{{p.createdAt}}</p>
           <p class="card-text">{{p.text}}</p>
-          <a class="btn btn-secondary" href="/admin/edit/{{p.id}}">Edit</a>
-          <a class="btn btn-secondary" href="/admin/delete/{{p.id}}">Supprimer</a>
+          <a class="btn btn-secondary" href="{{edit}}{{p.id}}">Edit</a>
+          <a class="btn btn-secondary" href="{{delete}}{{p.id}}">Supprimer</a>
         </div>
       </div>
     {% endfor %}

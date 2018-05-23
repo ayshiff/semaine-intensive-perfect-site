@@ -1,18 +1,18 @@
 {% extends "./header.html" %}
 {% block content %}
 
-    <form style="margin: 40px;display: flex;flex-direction: column;" action="/admin/edit/{{id}}" method="post" enctype="multipart/form-data">
+    <form style="margin: 40px;display: flex;flex-direction: column;" action="{{update}}{{id}}" method="post" enctype="multipart/form-data">
 
-        {% for p in value %}
-        {% if (p !== "image") and (p !== "logo") %}
-        <label for="{{p}}">{{p}} :</label>
-        <input type="text" name="{{p}}" id="{{p}}">
+        {% for i in range(0, 3) -%}
+        {% if (tabKey[i] !== "image") and (tabKey[i] !== "logo") %}
+        <label for="{{tabKey[i]}}">{{tabKey[i]}} :</label>
+        <input type="text" name="{{tabKey[i]}}" id="{{tabKey[i]}}" value="{{tab[i]}}">
         {% endif %}
-        {% if (p === "image") or (p === "logo") %}
-        <label for="{{p}}">{{p}} :</label>
-        <input type="file" name="{{p}}" id="{{p}}">
+        {% if (tabKey[i] === "image") or (tabKey[i] === "logo") %}
+        <label for="{{tabKey[i]}}">{{tabKey[i]}} :</label>
+        <input type="file" name="{{tabKey[i]}}" id="{{tabKey[i]}}" value="{{tab[i]}}">
         {% endif %}
-        {% endfor %}
+        {%- endfor %}
     
         <input style="margin-top: 20px;width: 150px;" class="btn btn-secondary" type="submit" value="Edit article">
     </form>

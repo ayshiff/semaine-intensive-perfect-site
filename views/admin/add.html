@@ -4,11 +4,11 @@
     <form style="margin: 40px;display: flex;flex-direction: column;" action="{{href}}" method="post" enctype="multipart/form-data">
 
         {% for p in value %}
-        {% if (p !== "image") %}
+        {% if (p !== "image") and (p !== "logo") %}
         <label for="{{p}}">{{p}} :</label>
         <input type="text" name="{{p}}" id="{{p}}">
         {% endif %}
-        {% if (p === "image") %}
+        {% if (p === "image") or (p === "logo") %}
         <label for="{{p}}">{{p}} :</label>
         <input type="file" name="{{p}}" id="{{p}}">
         {% endif %}
