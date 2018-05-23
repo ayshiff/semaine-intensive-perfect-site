@@ -1,20 +1,20 @@
-var express = require('express');
-var path = require('path');
-var favicon = require('serve-favicon');
-var logger = require('morgan');
-var cookieParser = require('cookie-parser');
-var bodyParser = require('body-parser');
-var multer = require('multer');
+let express = require('express');
+let path = require('path');
+let favicon = require('serve-favicon');
+let logger = require('morgan');
+let cookieParser = require('cookie-parser');
+let bodyParser = require('body-parser');
+let multer = require('multer');
 
 let port = process.env.PORT || 8000;
 
-var index = require('./routes/index');
-var admin = require('./routes/admin');
-const db = require(`${__dirname}/models/index.js`)
+let index = require('./routes/index');
+let admin = require('./routes/admin');
+const db = require(`${__dirname}/models/index.js`);
 
-var app = express();
+let app = express();
 
-var nunjucks = require('nunjucks')
+let nunjucks = require('nunjucks');
 
 app.use(express.static(path.join(__dirname, 'views')));
 
@@ -28,12 +28,12 @@ app.use(express.static('uploads'));
 //app.use(express.static(path.join(__dirname, 'public')));
 
 // Cookie parser - Body parser
-app.use(cookieParser())
-app.use(bodyParser())
+app.use(cookieParser());
+app.use(bodyParser());
 app.set('views', __dirname + '/views/');
 
 // Config Helmet
-var helmet = require('helmet');
+let helmet = require('helmet');
 app.use(helmet());
 
 app.set('view engine', 'html');
@@ -45,7 +45,7 @@ nunjucks.configure('views', {
 app.use('/uploads', express.static(__dirname + '/uploads'));
 ////////////////////////////////////////////////////////////////////////
 // MySQL
-var sequelize = require('./config/database');
+let sequelize = require('./config/database');
 
 // Test connection to MySQL
 sequelize
@@ -62,7 +62,7 @@ sequelize
 //Storage Multer
 ///////////////////////////////////////////////////////////////////////////
 
-var storage = multer.diskStorage({
+let storage = multer.diskStorage({
   destination: function (req, file, callback) {
     callback(null, './uploads');
   },
@@ -70,7 +70,7 @@ var storage = multer.diskStorage({
     callback(null, file.fieldname + '.jpg');
   }
 });
-var upload = multer({
+let upload = multer({
   storage: storage
 }).single('image');
 
@@ -81,15 +81,11 @@ var upload = multer({
 app.use('/', index);
 //app.use('/admin', admin);
 
-
+app.get('/auth', (req,res) => {
+  res.render('auth');
+});
 // Route admin -> GET
-app.get('/admin/index', (req, res) => {
-  db.Article.findAll().then(article => {
-    res.render('admin/index', {
-      article
-    })
-  })
-})
+
 
 // Route add admin -> POST
 app.post('/admin/add', upload, (req, res) => {
@@ -108,12 +104,10 @@ app.post('/admin/add', upload, (req, res) => {
     .catch(err => {
       console.log(err);
     })
-})
+});
 
 // Route add admin -> GET
-app.get('/admin/add', (req, res) => {
-  res.render('admin/add');
-})
+
 
 // Route update admin -> POST
 app.post('/admin/edit/:id', upload, (req, res) => {
@@ -126,11 +120,11 @@ app.post('/admin/edit/:id', upload, (req, res) => {
           signature: req.body.signature,
           logo: req.file.logo, },
         { where: { id: req.params.id } }
-      )
+      );
       res.redirect('/admin/index');
  // }
   
-})
+});
 // Route update admin -> GET
 app.get('/admin/edit/:id', (req, res) => {
   
@@ -147,13 +141,12 @@ app.get('/admin/edit/:id', (req, res) => {
         image: article.image,
         text: article.text,
         signature: article.signature,
-        signature: article.signature,
         logo: article.logo,
         id: article.id
       });
     })
 
-})
+});
 
 // Route delete admin
 app.post('/admin/delete/:id', (req, res) => {
@@ -161,28 +154,148 @@ app.post('/admin/delete/:id', (req, res) => {
     where: {
       id: req.params.id
     }
-  })
+  });
   res.redirect('/admin/index');
-})
+});
 app.get('/admin/delete/:id', (req, res) => {
   res.render('admin/delete', {
     id: req.params.id
   })
+});
+
+// Functions
+
+function findall(req, res ,name) {
+  db.name.findAll().then(element => {
+    res.render('admin/index', {
+      element
+    })
+  })
+}
+
+////////////////////////////////////////////////////////////////////////////
+
+
+app.get('/admin/index', (req, res) => {
+  db.Article.findAll().then(article => {
+    res.render('admin/index', {
+      article,
+      href:'/admin/add'
+    })
+  })
+});
+
+app.get('/admin/imagesbox', (req,res) => {
+  db.ImagesBox.findAll().then(element => {
+    res.render('admin/index', {
+      element,
+      href:'/admin/add/imagesbox'
+    })
+  })
 })
 
+app.get('/admin/airlinescompanies', (req,res) => {
+  db.AirlineCompany.findAll().then(element => {
+    res.render('admin/index', {
+      element,
+      href:'/admin/add/airlinescompanies'
+    })
+  })
+})
 
-// catch 404 and forward to error handler
-/*
-app.use(function(req, res, next) {
-  var err = new Error('Not Found');
-  err.status = 404;
-  next(err);
+app.get('/admin/partners', (req,res) => {
+  db.Partner.findAll().then(element => {
+    res.render('admin/index', {
+      element,
+      href:'/admin/add/partners'
+    })
+  })
+})
+
+//////////////////////////////////////////////////////////////////
+
+app.get('/admin/add', (req, res) => {
+  db.Article.findAll().then(element => {
+    let valueNotSlice = Object.keys(element[0].dataValues)
+    let value = valueNotSlice.slice(0, -2);
+    console.log(value)
+    res.render('admin/add', {
+      value
+    })
+  })
 });
-*/
-/////////////////////////////////////////////////////////////////////////////
+
+app.get('/admin/add/imagesbox', (req, res) => {
+  db.ImagesBox.findAll().then(element => {
+    let valueNotSlice = Object.keys(element[0].dataValues)
+    let value = valueNotSlice.slice(0, -2);
+    console.log(value)
+    res.render('admin/add', {
+      value
+    })
+  })
+});
+
+app.get('/admin/add/airlinescompanies', (req, res) => {
+  db.AirlineCompany.findAll().then(element => {
+    let valueNotSlice = Object.keys(element[0].dataValues)
+    let value = valueNotSlice.slice(0, -2);
+    console.log(value)
+    res.render('admin/add', {
+      value
+    })
+  })
+});
+
+app.get('/admin/add/partners', (req, res) => {
+  db.Partner.findAll().then(element => {
+    let valueNotSlice = Object.keys(element[0].dataValues)
+    let value = valueNotSlice.slice(0, -2);
+    console.log(value)
+    res.render('admin/add', {
+      value
+    })
+  })
+});
+
+app.post('/admin/add', upload, (req, res) => {
+  db.Article
+    .create({
+      title: req.body.title,
+      subtitle: req.body.subtitle,
+      image: req.file.fieldname,
+      text: req.body.text,
+      signature: req.body.signature,
+      logo: req.file.logo,
+    })
+    .then(task => {
+      res.redirect('/admin/index');
+    })
+    .catch(err => {
+      console.log(err);
+    })
+});
+
+app.post('/admin/imagesbox/add', upload, (req, res) => {
+  db.Article
+    .create({
+      title: req.body.title,
+      theme: req.body.subtitle,
+      image: req.file.fieldname,
+    })
+    .then(task => {
+      res.redirect('/admin/imagesbox');
+    })
+    .catch(err => {
+      console.log(err);
+    })
+});
+
+
+
 
 //app.listen(port)
 
 // console.log('Server listening on '+ port)
 
-module.exports = app
+module.exports = app;

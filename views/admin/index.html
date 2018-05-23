@@ -1,7 +1,7 @@
 {% extends "./header.html" %}
 {% block content %}
 
-    <a href="/admin/add" class="btn btn-dark"style="margin-left: 20px;"> Add a new article</a>
+    <a href="{{href}}" class="btn btn-dark"style="margin-left: 20px;"> Add a new article</a>
     <div class="container" style="display: flex;">
     {% for p in article %}
     <div class="card" style="width: 18rem;margin: 20px;">

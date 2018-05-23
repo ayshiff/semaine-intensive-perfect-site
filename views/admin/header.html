@@ -20,17 +20,17 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarCollapse">
               <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                  <a class="nav-link" href="#">Articles <span class="sr-only">(current)</span></a>
+                <li class="nav-item {% if (href === '/admin/add')%}active{% endif %}">
+                  <a class="nav-link" href="/admin/index">Articles </a>
                 </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#">Airlines Companies</a>
+                <li class="nav-item {% if (href === '/admin/add/airlinescompanies')%} active {% endif %}">
+                  <a class="nav-link" href="/admin/airlinescompanies">Airlines Companies </a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Images Box</a>
+                <li class="nav-item {% if (href === '/admin/add/imagesbox')%} active {% endif %}">
+                    <a class="nav-link" href="/admin/imagesbox">Images Box </a>
                   </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="#">Partners</a>
+                  <li class="nav-item {% if (href === '/admin/add/partners')%} active {% endif %}">
+                    <a class="nav-link" href="/admin/partners">Partners </a>
                   </li>
               </ul>
             </div>
