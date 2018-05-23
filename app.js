@@ -84,50 +84,6 @@ app.use('/', index);
 app.get('/auth', (req,res) => {
   res.render('auth');
 });
-// Route admin -> GET
-
-
-
-
-
-// Route update admin -> POST
-app.post('/admin/edit/:id', upload, (req, res) => {
- 
-      db.Article.update(
-        { title: req.body.title,
-          subtitle: req.body.subtitle,
-          image: req.file.fieldname,
-          text: req.body.text,
-          signature: req.body.signature,
-          logo: req.file.logo, },
-        { where: { id: req.params.id } }
-      );
-      res.redirect('/admin/index');
- // }
-  
-});
-// Route update admin -> GET
-app.get('/admin/edit/:id', (req, res) => {
-  
-  db.Article.findOne({
-      where: {
-        id: req.params.id
-      }
-    })
-    .then(article => {
-      console.log(article.id)
-      res.render('admin/edit', {
-        title: article.title,
-        subtitle: article.subtitle,
-        image: article.image,
-        text: article.text,
-        signature: article.signature,
-        logo: article.logo,
-        id: article.id
-      });
-    })
-
-});
 
 
 
@@ -350,6 +306,84 @@ app.post('/admin/delete/imagesbox/:id', (req, res) => {
 
 /////////////////////////////////////////////////////////////////////////////
 
+// Route update admin -> GET
+app.get('/admin/edit/:id', (req, res) => {
+
+  db.Article.findOne({
+    where: {
+      id: req.params.id
+    }
+  })
+  .then(article => {
+    console.log(article.id)
+    res.render('admin/edit', {
+      title: article.title,
+      subtitle: article.subtitle,
+      image: article.image,
+      text: article.text,
+      signature: article.signature,
+      logo: article.logo,
+      id: article.id
+    });
+  })
+  
+  });
+
+// Route update admin -> POST
+app.post('/admin/edit/:id', upload, (req, res) => {
+ 
+  db.Article.update(
+    { title: req.body.title,
+      subtitle: req.body.subtitle,
+      image: req.file.fieldname,
+      text: req.body.text,
+      signature: req.body.signature,
+      logo: req.file.logo, },
+    { where: { id: req.params.id } }
+  );
+  res.redirect('/admin/index');
+// }
+
+});
+
+app.get('/admin/edit/partners/:id', (req, res) => {
+
+  db.Article.findOne({
+    where: {
+      id: req.params.id
+    }
+  })
+  .then(article => {
+    console.log(article.id)
+    res.render('admin/edit', {
+      title: article.title,
+      subtitle: article.subtitle,
+      image: article.image,
+      text: article.text,
+      signature: article.signature,
+      logo: article.logo,
+      id: article.id
+    });
+  })
+  
+  });
+
+// Route update admin -> POST
+app.post('/admin/edit/partners/:id', upload, (req, res) => {
+ 
+  db.Article.update(
+    { title: req.body.title,
+      subtitle: req.body.subtitle,
+      image: req.file.fieldname,
+      text: req.body.text,
+      signature: req.body.signature,
+      logo: req.file.logo, },
+    { where: { id: req.params.id } }
+  );
+  res.redirect('/admin/index');
+// }
+
+});
 
 
 
