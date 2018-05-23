@@ -28,12 +28,14 @@ app.use(cookieParser());
 app.use(cookieParser())
 app.use(bodyParser())
 app.set('views', __dirname+'/views/');
+
+app.set('view engine', 'html');
 // For nunjucks
 nunjucks.configure('views', {
   express: app,
   autoescape: true
 });
-
+app.use('/uploads', express.static(__dirname + '/uploads'));
 ////////////////////////////////////////////////////////////////////////
 // MySQL
 var sequelize = require('./config/database');
@@ -52,18 +54,17 @@ sequelize
 
 //Storage Multer
 ///////////////////////////////////////////////////////////////////////////
-var Storage = multer.diskStorage({
-  destination: function(req, file, callback) {
-      callback(null, "./img");
+
+var storage =   multer.diskStorage({
+  destination: function (req, file, callback) {
+    callback(null, './uploads');
   },
-  filename: function(req, file, callback) {
-      callback(null, file.fieldname + "_" + Date.now() + "_" + file.originalname);
+  filename: function (req, file, callback) {
+    callback(null, file.fieldname+'jpg');
   }
 });
+var upload = multer({ storage : storage }).single('image');
 
-var upload = multer({
-  storage: Storage
-}).array("imgUploader", 100);
 ///////////////////////////////////////////////////////////////////////////
 
 
@@ -76,7 +77,7 @@ app.use('/', index);
 // Route admin -> GET
 app.get('/admin/index', (req, res) => {
   db.Article.findAll().then(article => {
-    res.render('admin/index.html', {article})
+    res.render('admin/index', {article})
 })
 })
 
@@ -86,30 +87,31 @@ app.post('/admin/add', (req, res) => {
     .create({
         title: req.body.title,
         subtitle: req.body.subtitle,
-        image: req.body.image,
+        image: "",
         text: req.body.text,
         signature: req.body.signature,
         signature: req.body.signature,
-        logo: req.body.logo,
+        logo: "",
     })
     .then(task => {
-        setTimeout(()=> {
-           res.redirect('/admin/index'); 
-           upload(req, res, function(err) {
-            if (err) {
-                return res.end("Something went wrong!");
-            }
-            return res.end("File uploaded sucessfully!.");
-        });
-        },500)
+      upload(req,res,function(err) {
+        //console.log(req.body);
+        
+        if(err) {
+          console.log(req.files);
+            return res.end("Error uploading file.");
+        }
+        res.redirect('/admin/index'); 
+    });
     })
     .catch(err => {
         console.log(err)
     })
 })
+
 // Route add admin -> GET
 app.get('/admin/add', (req,res) => {
-  res.render('admin/add.html');
+  res.render('admin/add');
 })
 
 // Route update admin -> POST
@@ -127,7 +129,7 @@ app.post('/admin/edit/:id', (req,res) => {
 })
 // Route update admin -> GET
 app.get('/admin/edit/:id', (req,res) => {
-  res.render('admin/edit.html', {id: req.params.id});
+  res.render('admin/edit', {id: req.params.id});
 })
 
 // Route delete admin
@@ -136,35 +138,28 @@ app.post('/admin/delete/:id', (req, res) => {
     where: {
         id: req.params.id
     }
-})
+  })
+  res.redirect('/admin/index');
 })
 app.get('/admin/delete/:id', (req, res) => {
-  res.render('admin/delete.html', {id: req.params.id})
+  res.render('admin/delete', {id: req.params.id})
 })
 
 
 // catch 404 and forward to error handler
+/*
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
   err.status = 404;
   next(err);
 });
-
+*/
 /////////////////////////////////////////////////////////////////////////////
 
-// error handler
-app.use(function(err, req, res, next) {
-  // set locals, only providing error in development
-  res.locals.message = err.message;
-  res.locals.error = req.app.get('env') === 'development' ? err : {};
+//app.listen(port)
 
-  // render the error page
-  res.status(err.status || 500);
-  res.render('error');
-});
+// console.log('Server listening on '+ port)
 
-app.listen(port)
-
-console.log('Server listening on '+ port)
+module.exports = app
 
 

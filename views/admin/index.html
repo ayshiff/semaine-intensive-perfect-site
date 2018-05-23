@@ -14,8 +14,8 @@
             <h3 class="card-title">{{p.title}}</h3>
             <h3 class="card-title">{{p.subtitle}}</h3>
             <p>{{p.text}}</p>
-            <a class="btn btn-primary" href="admin/edit?id={{p.id}}">Edit</a>
-            <a class="btn btn-primary" href="admin/delete?id={{p.id}}">Supprimer</a>
+            <a class="btn btn-primary" href="/admin/edit/{{p.id}}">Edit</a>
+            <a class="btn btn-primary" href="/admin/delete/{{p.id}}">Supprimer</a>
             <img src="./img/{{p.image}}" alt="img">
         </div>
     </div>
