@@ -7,23 +7,22 @@
     <title>Document</title>
 </head>
 <body>
-    <form style="margin: 20px;" action="/admin/edit?id={{id}}" method="post" enctype="multipart/form-data">
+    <form style="margin: 20px;" action="/admin/edit/{{id}}" method="post" enctype="multipart/form-data">
 
-        <input type="hidden" name="id">
         <label for="title">Title :</label>
         <input type="text" name="title" id="h1" value="{{title}}">
         <label for="sub-title">Sub-title :</label>
         <input type="text" name="sub-title" id="title" value="{{subtitle}}">
         <label for="image">Image :</label>
-        <input type="file" name="image" id="sub-title" value="">
+        <input type="file" name="image" id="sub-title">
         <label for="text">Text :</label>
         <input type="text" name="text" id="text" value="{{text}}">
         <label for="signature">Signature :</label>
         <input type="text" name="signature" id="signature" value="{{signature}}">
         <label for="logo">Logo :</label>
-        <input type="file" name="logo" id="logo" value="">
+        <input type="file" name="logo" id="logo">
     
-        <input class="btn btn-primary" type="submit" value="Add page">
+        <input class="btn btn-primary" type="submit" value="Edit article">
     </form>
 </body>
 </html>

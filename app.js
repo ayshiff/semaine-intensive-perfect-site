@@ -6,7 +6,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var multer = require('multer');
 
-let port     = process.env.PORT || 8000;
+let port = process.env.PORT || 8000;
 
 var index = require('./routes/index');
 var admin = require('./routes/admin');
@@ -20,7 +20,9 @@ app.use(express.static(path.join(__dirname, 'views')));
 
 app.use(logger('dev'));
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({
+  extended: true
+}));
 app.use(cookieParser());
 app.use(express.static('uploads'));
 //app.use(express.static(path.join(__dirname, 'public')));
@@ -28,7 +30,11 @@ app.use(express.static('uploads'));
 // Cookie parser - Body parser
 app.use(cookieParser())
 app.use(bodyParser())
-app.set('views', __dirname+'/views/');
+app.set('views', __dirname + '/views/');
+
+// Config Helmet
+var helmet = require('helmet');
+app.use(helmet());
 
 app.set('view engine', 'html');
 // For nunjucks
@@ -56,18 +62,19 @@ sequelize
 //Storage Multer
 ///////////////////////////////////////////////////////////////////////////
 
-var storage =   multer.diskStorage({
+var storage = multer.diskStorage({
   destination: function (req, file, callback) {
     callback(null, './uploads');
   },
   filename: function (req, file, callback) {
-    callback(null, file.fieldname+'.jpg');
+    callback(null, file.fieldname + '.jpg');
   }
 });
-var upload = multer({ storage : storage }).single('image');
+var upload = multer({
+  storage: storage
+}).single('image');
 
 ///////////////////////////////////////////////////////////////////////////
-
 
 // Routing
 ///////////////////////////////////////////////////////////////////////////
@@ -78,61 +85,73 @@ app.use('/', index);
 // Route admin -> GET
 app.get('/admin/index', (req, res) => {
   db.Article.findAll().then(article => {
-    res.render('admin/index', {article})
-})
+    res.render('admin/index', {
+      article
+    })
+  })
 })
 
 // Route add admin -> POST
-app.post('/admin/add',upload, (req, res) => {
+app.post('/admin/add', upload, (req, res) => {
   db.Article
     .create({
-        title: req.body.title,
-        subtitle: req.body.subtitle,
-        image: req.file.fieldname,
-        text: req.body.text,
-        signature: req.body.signature,
-        logo: req.file.logo,
+      title: req.body.title,
+      subtitle: req.body.subtitle,
+      image: req.file.fieldname,
+      text: req.body.text,
+      signature: req.body.signature,
+      logo: req.file.logo,
     })
     .then(task => {
       res.redirect('/admin/index');
     })
     .catch(err => {
-        console.log(err);
+      console.log(err);
     })
 })
 
 // Route add admin -> GET
-app.get('/admin/add', (req,res) => {
+app.get('/admin/add', (req, res) => {
   res.render('admin/add');
 })
 
 // Route update admin -> POST
-app.post('/admin/edit/:id', (req,res) => {
+app.post('/admin/edit/:id', upload, (req, res) => {
+ 
+      db.Article.update(
+        { title: req.body.title,
+          subtitle: req.body.subtitle,
+          image: req.file.fieldname,
+          text: req.body.text,
+          signature: req.body.signature,
+          logo: req.file.logo, },
+        { where: { id: req.params.id } }
+      )
+      res.redirect('/admin/index');
+ // }
   
-  db.Article.update(
-    { title: req.body.title,
-      subtitle: req.body.subtitle,
-      image: req.body.image,
-      text: req.body.text,
-      signature: req.body.signature,
-      logo: req.body.logo },
-    { where: { id: req.params.id } }
-  )
 })
 // Route update admin -> GET
-app.get('/admin/edit/:id', (req,res) => {
-  db.Article.findOne({where: {id: req.params.id}})
-  .then(article => {
-    res.render('admin/edit', {
-      title: article.title,
-      subtitle: article.subtitle,
-      image: article.image,
-      text: article.text,
-      signature: article.signature,
-      signature: article.signature,
-      logo: article.logo
-    });
-  })
+app.get('/admin/edit/:id', (req, res) => {
+  
+  db.Article.findOne({
+      where: {
+        id: req.params.id
+      }
+    })
+    .then(article => {
+      console.log(article.id)
+      res.render('admin/edit', {
+        title: article.title,
+        subtitle: article.subtitle,
+        image: article.image,
+        text: article.text,
+        signature: article.signature,
+        signature: article.signature,
+        logo: article.logo,
+        id: article.id
+      });
+    })
 
 })
 
@@ -140,13 +159,15 @@ app.get('/admin/edit/:id', (req,res) => {
 app.post('/admin/delete/:id', (req, res) => {
   db.Article.destroy({
     where: {
-        id: req.params.id
+      id: req.params.id
     }
   })
   res.redirect('/admin/index');
 })
 app.get('/admin/delete/:id', (req, res) => {
-  res.render('admin/delete', {id: req.params.id})
+  res.render('admin/delete', {
+    id: req.params.id
+  })
 })
 
 
@@ -165,5 +186,3 @@ app.use(function(req, res, next) {
 // console.log('Server listening on '+ port)
 
 module.exports = app
-
-
