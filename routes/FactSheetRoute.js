@@ -51,7 +51,7 @@ let storage = multer.diskStorage({
         note: req.body.note,
         price: req.body.price,
         description: req.body.description,
-        image: req.file.fieldname
+        image: req.file.filename
       })
       .then(task => {
         res.redirect('/admin/factsheets');
@@ -104,7 +104,9 @@ let storage = multer.diskStorage({
         adress: req.body.adress,
         note: req.body.note,
         price: req.body.price,
-        description: req.body.description },
+        description: req.body.description,
+          image: req.file.filename
+      },
       { where: { id: req.params.id } }
     );
     res.redirect('/admin/factsheets');

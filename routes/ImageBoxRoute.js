@@ -49,7 +49,7 @@ router.get('/', (req,res) => {
       .create({
         title: req.body.title,
         theme: req.body.subtitle,
-        image: req.file.fieldname,
+        image: req.file.filename,
       })
       .then(task => {
         res.redirect('/admin/imagesbox');
@@ -99,7 +99,7 @@ router.get('/', (req,res) => {
       db.ImagesBox.update(
         { name: req.body.name,
           title: req.body.title,
-          // image: req.file.fieldname
+          image: req.file.filename
         },
         { where: { id: req.params.id } }
       );

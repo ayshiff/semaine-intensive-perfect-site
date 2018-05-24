@@ -85,9 +85,11 @@ let storage = multer.diskStorage({
   destination: function (req, file, callback) {
     callback(null, './uploads');
   },
-  filename: function (req, file, callback) {
-    callback(null, file.fieldname + '.jpg');
-  }
+    filename: function(req, file, next){
+        console.log(file);
+        const ext = file.mimetype.split('/')[1];
+        next(null, file.fieldname + '-' + Date.now() + '.'+ext);
+    }
 });
 let upload = multer({
   storage: storage
@@ -200,7 +202,7 @@ app.post('/admin/add', upload, (req, res) => {
     .create({
       title: req.body.title,
       subtitle: req.body.subtitle,
-      image: req.file.fieldname,
+      image: req.file.filename,
       text: req.body.text,
       signature: req.body.signature,
       logo: req.file.logo,
@@ -257,7 +259,7 @@ app.post('/admin/edit/:id', upload, (req, res) => {
     { title: req.body.title,
       subtitle: req.body.subtitle,
       //logo: req.file.fieldname,
-      //image: req.file.fieldname,
+      image: req.file.filename,
       text: req.body.text,
       signature: req.body.signature},
     { where: { id: req.params.id } }

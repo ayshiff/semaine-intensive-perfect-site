@@ -50,7 +50,7 @@ router.post('/add', upload, (req, res) => {
       .create({
         title: req.body.title,
         signature: req.body.signature,
-        image: req.file.fieldname,
+        image: req.file.filename,
       })
       .then(task => {
         res.redirect('/admin/partners');
@@ -102,7 +102,7 @@ router.get('/edit/:id', (req, res) => {
    
     db.Partner.update(
       { title: req.body.title,
-        // image: req.file.fieldname,
+        image: req.file.filename,
         signature: req.body.signature},
       { where: { id: req.params.id } }
     );
@@ -143,7 +143,7 @@ router.get('/edit/:id', (req, res) => {
       db.Partner.update(
         { signature: req.body.signature,
           title: req.body.title,
-          image: req.file.fieldname
+          image: req.file.filename
         },
         { where: { id: req.params.id } }
       );

@@ -6,7 +6,7 @@
     {% for p in article %}
     <div class="card" style="width: 18rem;margin: 20px;">
         {% if(p.image) %}
-        <img class="card-img-top" src="/uploads/{{p.image}}.jpg" alt="Card image">
+        <img class="card-img-top" src="/uploads/{{p.image}}" alt="Card image">
         {% endif %}
         <div class="card-body">
             {% if(p.name) %}

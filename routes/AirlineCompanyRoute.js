@@ -45,6 +45,7 @@ let storage = multer.diskStorage({
     })
   });
 
+
   router.post('/add', upload, (req, res) => {
     db.AirlineCompany
       .create({
