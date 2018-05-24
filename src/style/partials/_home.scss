@@ -1,0 +1,315 @@
+.home {
+  width: 100%;
+  margin-top: 50px;
+  &__carousel {
+    position: relative;
+    width: 100%;
+    &__imgContainer {
+      width: 100%;
+      height: 550px;
+      border: solid 1px #000;
+      overflow: hidden;
+    }
+    &__img {
+      width: 100%;
+    }
+    &__progressBar {
+      position: absolute;
+      top: 30;
+      left: 50;
+      width: 110px;
+      height: 5px;
+      z-index: 1;
+      &__fill {
+        position: relative;
+        background-color: #FFF;
+        width: 100%;
+        height: 100%;
+        z-index: 10;
+        &__filled {
+          position: absolute;
+          background-color: $blue;
+          top: 0;
+          left: 0;
+          width: 0%;
+          height: 100%;
+          z-index: 20;
+          animation: progressBar 7s linear infinite;
+        }
+        &__filledAnim {
+          animation: progressBar 10s linear infinite;
+        }
+      }
+    }
+    &__text {
+      position: absolute;
+      top: 50%;
+      left: 10%;
+      transform: translateY(-50%);
+      &__title {
+        font-family: 'Harriet Display';
+        font-weight: 600;
+        font-size: 45px;
+        color: #FFF;
+        width: 70%;
+        line-height: 55px;
+      }
+      &__link {
+        display: inline-block;
+        background-color: $blue;
+        color: #FFF;
+        padding: 12px 20px;
+        font-size: 18px;
+        font-weight: 600;
+        text-transform: uppercase;
+        text-decoration: none;
+        margin-top: 20px;
+      }
+    }
+  }
+  &__divider {
+    background-color: #000;
+    width: 1px;
+    height: 120px;
+    margin: 60px auto;
+  }
+}
+
+.une {
+  &__title {
+    font-family: 'Harriet Display';
+    font-weight: 600;
+    font-size: 45px;
+    margin: 100px 0;
+  }
+  &__firstArticle {
+    align-items: center;
+    &__imgContainer {
+      width: 100%;
+    }
+    &__img {
+      width: 100%;
+    }
+    &__txtContainer {
+      width: 100%;
+    }
+    &__title {
+      font-family: 'Harriet Display';
+      font-weight: 600;
+      font-size: 35px;
+      margin-bottom: 20px;
+    }
+    &__date {
+      font-weight: 300;
+      text-transform: uppercase;
+      font-size: 12px;
+      margin-bottom: 40px;
+    }
+    &__excerpt {
+      font-size: 14px;
+      width: 80%;
+      text-align: justify;
+      line-height: 20px;
+    }
+    &__CTA {
+      display: inline-block;
+      background-color: $blue;
+      color: #FFF;
+      padding: 12px 20px;
+      font-size: 18px;
+      font-weight: 500;
+      text-transform: uppercase;
+      text-decoration: none;
+      margin-top: 30px;
+    }
+  }
+  &__secondArticle {
+    text-align: center;
+    margin: 150px auto;
+    &__imgContainer {
+      width: 100%;
+    }
+    &__img {
+      width: 100%;
+      height: 60%;
+      object-fit: cover;
+      margin-bottom: 40px;
+    }
+    &__txtContainer {
+      width: 100%;
+    }
+    &__title {
+      font-family: 'Harriet Display';
+      font-weight: 600;
+      font-size: 35px;
+      margin-bottom: 20px;
+    }
+    &__date {
+      font-weight: 300;
+      text-transform: uppercase;
+      font-size: 12px;
+      margin-bottom: 40px;
+    }
+    &__excerpt {
+      margin: 0 auto;
+      font-size: 14px;
+      width: 70%;
+      line-height: 20px;
+    }
+    &__CTA {
+      display: inline-block;
+      background-color: $blue;
+      color: #FFF;
+      padding: 12px 20px;
+      font-size: 18px;
+      font-weight: 500;
+      text-transform: uppercase;
+      text-decoration: none;
+      margin-top: 30px;
+    }
+  }
+  &__calameo {
+    &__item {
+      position: relative;
+      &__imgContainer {
+        text-align: center;
+        margin: 0 auto;
+        position: relative;
+        width: 100%;
+        height: 40%;
+        background-color: #000;
+      }
+      &__img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0.4;
+        object-fit: cover;
+      }
+      &__txtContainer {
+        position: absolute;
+        top: 50%;
+        left: 8%;
+        z-index: 10;
+        color: #FFF;
+        text-align: left;
+      }
+      &__title {
+        font-family: 'Harriet Display';
+        font-weight: 500;
+        font-size: 30px;
+        line-height: 36px;
+      }
+      &__CTA {
+        margin-top: 25px;
+        display: inline-block;
+        text-decoration: none;
+        text-transform: uppercase;
+        font-weight: 300;
+        font-size: 18px;
+        color: #FFF;
+        &:hover {
+          text-decoration: underline;
+          text-underline-position: under;
+        }
+      }
+    }
+  }
+}
+
+.gallery {
+  &__title {
+    font-family: 'Harriet Display';
+    font-weight: 600;
+    font-size: 45px;
+    margin-top: 150px;
+  }
+  &__firstRow {
+    margin-top: 50px;
+    &__imgContainer {
+      width: 100%;
+      height: 35%;
+    }
+    &__img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+  &__secondRow {
+    margin-top: 30px;
+    &__imgContainer {
+      width: 100%;
+      height: 35%;
+    }
+    &__img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  text-align: center;
+  z-index: 10;
+  &__card {
+    background: #FFF;
+    border-radius: 6px;
+    padding: 50px;
+    margin: auto;
+    display: block;
+    width: 80%;
+    height: 70%;
+    display: flex;
+    align-items: center;
+    &__imgContainer {
+      width: 80%;
+    }
+    &__img {
+      width: 100%;
+      height: 100%;
+      border-radius: 3px;
+      object-fit: cover;
+    }
+    &__txtContainer {
+      font-size: 18px;
+      text-align: left;
+      margin-left: 20px;
+      line-height: 1.5;
+    }
+    &__title {
+      font-weight: 700;
+    }
+    &__button {
+      padding: 10px 15px;
+      background: #000;
+      border-radius: 3px;
+      font-size: 18px;
+      display: inline-block;
+      color: #FFF;
+      text-decoration: none;
+      position: absolute;
+      top: 2%;
+      right: 10%;
+    }
+  }
+}
+
+@keyframes progressBar {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 100%;
+  }
+}

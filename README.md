@@ -7,6 +7,11 @@
 - ```node_modules/.bin/sequelize db:migrate```-> it will run migrations
 - ```npm start``` or ```yarn start```
 
+## Routing list
+
+
+# Cahier des charges
+
 ## Front
 
 - Actu twitter des compagnies aériennes partenaires

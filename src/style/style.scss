@@ -8,13 +8,14 @@
 @import "partials/actualites";
 @import "partials/magazine";
 @import "partials/contact";
+@import "partials/home";
 
 body {
   font-family: 'Montserrat', sans-serif;
   font-size: 16px;
 }
 
-.Container {
+.mainContainer {
   max-width: 1300px;
   padding: 0 5em;
   margin: 0 auto;

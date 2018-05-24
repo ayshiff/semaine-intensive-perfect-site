@@ -9,7 +9,7 @@
     <title>Une Année de Voyages.</title>
 </head>
 <body>
-<div class="Container">
+<div class="mainContainer">
     <header class="header">
         <div class="col-lg-12">
             <h1 class="header__title">UNE ANNÉE DE VOYAGES.</h1>
@@ -17,19 +17,19 @@
         <div class="header__nav">
             <ul class="header__nav__list">
                 <li class="header__nav__list__item">
-                    <a href="/index" class="header__nav__list__item__link{% if(current === 'index') %} --active {% endif %}">Accueil</a>
+                    <a href="/index" class="header__nav__list__item__link {% if(current === 'index') %}active{% endif %}">Accueil</a>
                 </li>
                 <li class="header__nav__list__item">
-                    <a href="/categories" class="header__nav__list__item__link{% if(current === 'categories') %} --active {% endif %}">Catégories</a>
+                    <a href="/categories" class="header__nav__list__item__link {% if(current === 'categories') %}active{% endif %}">Catégories</a>
                 </li>
                 <li class="header__nav__list__item">
-                    <a href="/actualites" class="header__nav__list__item__link{% if(current === 'actualites') %} --active {% endif %}">Actualités</a>
+                    <a href="/actualites" class="header__nav__list__item__link {% if(current === 'actualites') %}active{% endif %}">Actualités</a>
                 </li>
                 <li class="header__nav__list__item">
-                    <a href="/magazine" class="header__nav__list__item__link{% if(current === 'magazine') %} --active {% endif %}">Le Magazine</a>
+                    <a href="/magazine" class="header__nav__list__item__link {% if(current === 'magazine') %}active{% endif %}">Le Magazine</a>
                 </li>
                 <li class="header__nav__list__item">
-                    <a href="/contact" class="header__nav__list__item__link{% if(current === 'contact') %} --active {% endif %}">Contact</a>
+                    <a href="/contact" class="header__nav__list__item__link {% if(current === 'contact') %}active{% endif %}">Contact</a>
                 </li>
             </ul>
         </div>

@@ -72,22 +72,23 @@
         </div>
       </div>
       <div class="list__results col-lg-8">
-        {% for p in article %}
+
+        {% for i in range(0, article.length) -%}
         <div class="list__results__item">
           <div class="list__results__item__imgContainer">
-            <img src="../../uploads/{{p.image}}.jpg" alt="{{p.image}}" class="list__results__item__img">
+            <img src="../../uploads/{{article[i].image}}.jpg" alt="{{p.image}}" class="list__results__item__img">
           </div>
           <div class="list__results__item__infos">
             <div class="list__results__item__infos__top">
-              <h3 class="list__results__item__infos__title">{{p.title}}</h3>
-              <h4 class="list__results__item__infos__mark">{{p.note}}/5</h4>
+              <h3 class="list__results__item__infos__title">{{article[i].title}}</h3>
+              <h4 class="list__results__item__infos__mark">{{article[i].note}}/5</h4>
             </div>
-            <p class="list__results__item__infos__price"><span class="list__results__item__infos__price__blue">{{strNote}}</span></p>
-            <p class="list__results__item__infos__address">{{p.adress}}</p>
-            <p class="list__results__item__infos__description">{{p.description}}</p>
+            <p class="list__results__item__infos__price"><span class="list__results__item__infos__price__blue">{{strNote[i]}}</span></p>
+            <p class="list__results__item__infos__address">{{article[i].adress}}</p>
+            <p class="list__results__item__infos__description">{{article[i].description}}</p>
           </div>
         </div>
-        {% endfor %}
+        {%- endfor %}
       </div>
     </section>
   </div>

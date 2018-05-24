@@ -99,7 +99,12 @@ table {
         .header__nav__list__item__link:hover {
           border-bottom: 1px solid #00CCCC; }
         .header__nav__list__item__link .--active {
-          border-bottom: 1px solid #00CCCC; }
+          border-bottom: 1px solid #00CCCC;
+          text-decoration: none; }
+
+.active {
+  border-bottom: 1px solid #00CCCC;
+  text-decoration: none; }
 
 .top100 {
   margin-top: 60px; }
@@ -786,11 +791,267 @@ table {
       color: #FFF;
       text-decoration: none; }
 
+.home {
+  width: 100%;
+  margin-top: 50px; }
+  .home__carousel {
+    position: relative;
+    width: 100%; }
+    .home__carousel__imgContainer {
+      width: 100%;
+      height: 550px;
+      border: solid 1px #000;
+      overflow: hidden; }
+    .home__carousel__img {
+      width: 100%; }
+    .home__carousel__progressBar {
+      position: absolute;
+      top: 30;
+      left: 50;
+      width: 110px;
+      height: 5px;
+      z-index: 1; }
+      .home__carousel__progressBar__fill {
+        position: relative;
+        background-color: #FFF;
+        width: 100%;
+        height: 100%;
+        z-index: 10; }
+        .home__carousel__progressBar__fill__filled {
+          position: absolute;
+          background-color: #00CCCC;
+          top: 0;
+          left: 0;
+          width: 0%;
+          height: 100%;
+          z-index: 20;
+          animation: progressBar 7s linear infinite; }
+        .home__carousel__progressBar__fill__filledAnim {
+          animation: progressBar 10s linear infinite; }
+    .home__carousel__text {
+      position: absolute;
+      top: 50%;
+      left: 10%;
+      transform: translateY(-50%); }
+      .home__carousel__text__title {
+        font-family: 'Harriet Display';
+        font-weight: 600;
+        font-size: 45px;
+        color: #FFF;
+        width: 70%;
+        line-height: 55px; }
+      .home__carousel__text__link {
+        display: inline-block;
+        background-color: #00CCCC;
+        color: #FFF;
+        padding: 12px 20px;
+        font-size: 18px;
+        font-weight: 600;
+        text-transform: uppercase;
+        text-decoration: none;
+        margin-top: 20px; }
+  .home__divider {
+    background-color: #000;
+    width: 1px;
+    height: 120px;
+    margin: 60px auto; }
+
+.une__title {
+  font-family: 'Harriet Display';
+  font-weight: 600;
+  font-size: 45px;
+  margin: 100px 0; }
+.une__firstArticle {
+  align-items: center; }
+  .une__firstArticle__imgContainer {
+    width: 100%; }
+  .une__firstArticle__img {
+    width: 100%; }
+  .une__firstArticle__txtContainer {
+    width: 100%; }
+  .une__firstArticle__title {
+    font-family: 'Harriet Display';
+    font-weight: 600;
+    font-size: 35px;
+    margin-bottom: 20px; }
+  .une__firstArticle__date {
+    font-weight: 300;
+    text-transform: uppercase;
+    font-size: 12px;
+    margin-bottom: 40px; }
+  .une__firstArticle__excerpt {
+    font-size: 14px;
+    width: 80%;
+    text-align: justify;
+    line-height: 20px; }
+  .une__firstArticle__CTA {
+    display: inline-block;
+    background-color: #00CCCC;
+    color: #FFF;
+    padding: 12px 20px;
+    font-size: 18px;
+    font-weight: 500;
+    text-transform: uppercase;
+    text-decoration: none;
+    margin-top: 30px; }
+.une__secondArticle {
+  text-align: center;
+  margin: 150px auto; }
+  .une__secondArticle__imgContainer {
+    width: 100%; }
+  .une__secondArticle__img {
+    width: 100%;
+    height: 60%;
+    object-fit: cover;
+    margin-bottom: 40px; }
+  .une__secondArticle__txtContainer {
+    width: 100%; }
+  .une__secondArticle__title {
+    font-family: 'Harriet Display';
+    font-weight: 600;
+    font-size: 35px;
+    margin-bottom: 20px; }
+  .une__secondArticle__date {
+    font-weight: 300;
+    text-transform: uppercase;
+    font-size: 12px;
+    margin-bottom: 40px; }
+  .une__secondArticle__excerpt {
+    margin: 0 auto;
+    font-size: 14px;
+    width: 70%;
+    line-height: 20px; }
+  .une__secondArticle__CTA {
+    display: inline-block;
+    background-color: #00CCCC;
+    color: #FFF;
+    padding: 12px 20px;
+    font-size: 18px;
+    font-weight: 500;
+    text-transform: uppercase;
+    text-decoration: none;
+    margin-top: 30px; }
+.une__calameo__item {
+  position: relative; }
+  .une__calameo__item__imgContainer {
+    text-align: center;
+    margin: 0 auto;
+    position: relative;
+    width: 100%;
+    height: 40%;
+    background-color: #000; }
+  .une__calameo__item__img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.4;
+    object-fit: cover; }
+  .une__calameo__item__txtContainer {
+    position: absolute;
+    top: 50%;
+    left: 8%;
+    z-index: 10;
+    color: #FFF;
+    text-align: left; }
+  .une__calameo__item__title {
+    font-family: 'Harriet Display';
+    font-weight: 500;
+    font-size: 30px;
+    line-height: 36px; }
+  .une__calameo__item__CTA {
+    margin-top: 25px;
+    display: inline-block;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: 300;
+    font-size: 18px;
+    color: #FFF; }
+    .une__calameo__item__CTA:hover {
+      text-decoration: underline;
+      text-underline-position: under; }
+
+.gallery__title {
+  font-family: 'Harriet Display';
+  font-weight: 600;
+  font-size: 45px;
+  margin-top: 150px; }
+.gallery__firstRow {
+  margin-top: 50px; }
+  .gallery__firstRow__imgContainer {
+    width: 100%;
+    height: 35%; }
+  .gallery__firstRow__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; }
+.gallery__secondRow {
+  margin-top: 30px; }
+  .gallery__secondRow__imgContainer {
+    width: 100%;
+    height: 35%; }
+  .gallery__secondRow__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; }
+
+.modal {
+  display: none;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  text-align: center;
+  z-index: 10; }
+  .modal__card {
+    background: #FFF;
+    border-radius: 6px;
+    padding: 50px;
+    margin: auto;
+    display: block;
+    width: 80%;
+    height: 70%;
+    display: flex;
+    align-items: center; }
+    .modal__card__imgContainer {
+      width: 80%; }
+    .modal__card__img {
+      width: 100%;
+      height: 100%;
+      border-radius: 3px;
+      object-fit: cover; }
+    .modal__card__txtContainer {
+      font-size: 18px;
+      text-align: left;
+      margin-left: 20px;
+      line-height: 1.5; }
+    .modal__card__title {
+      font-weight: 700; }
+    .modal__card__button {
+      padding: 10px 15px;
+      background: #000;
+      border-radius: 3px;
+      font-size: 18px;
+      display: inline-block;
+      color: #FFF;
+      text-decoration: none;
+      position: absolute;
+      top: 2%;
+      right: 10%; }
+
+@keyframes progressBar {
+  0% {
+    width: 0%; }
+  100% {
+    width: 100%; } }
 body {
   font-family: 'Montserrat', sans-serif;
   font-size: 16px; }
 
-.Container {
+.mainContainer {
   max-width: 1300px;
   padding: 0 5em;
   margin: 0 auto; }

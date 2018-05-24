@@ -29,9 +29,16 @@
           }
           .--active {
             border-bottom: 1px solid $blue;
+            text-decoration: none;
           }
         }
       }
     }
   }
 }
+
+.active {
+  border-bottom: 1px solid $blue;
+  text-decoration: none;
+}
+

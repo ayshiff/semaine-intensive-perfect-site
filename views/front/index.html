@@ -1,6 +1,127 @@
 {% extends "./header.html"%}
 {% block content %}
+<section class="home">
+  <div class="row">
+    <div class="home__carousel col-lg-12 col-md-12">
+      <div class="home__carousel__imgContainer">
+        <img class="home__carousel__img" src="../../src/assets/img/9.jpg">
+      </div>
+      <div class="home__carousel__progressBar">
+        <div class="home__carousel__progressBar__fill">
+          <div class="home__carousel__progressBar__fill__filled"></div>
+        </div>
+      </div>
+      <div class="home__carousel__text">
+        <h2 class="home__carousel__text__title">Les destinations incontournables de 2018.</h2>
+        <a href="#" class="home__carousel__text__link">Notre classement</a>
+      </div>
+    </div>
   </div>
+  <div class="home__divider"></div>
+</section>
+</div>
+<section class="une">
+  <div class="Container">
+    <h2 class="une__title">À la une<span class="dot">.</span></h2>
+  </div>
+  <div class="une__firstArticle row">
+    <div class="une__firstArticle__imgContainer col-lg-6">
+      <img src="../../src/assets/img/6.jpg" alt="" class="une__firstArticle__img">
+    </div>
+    <div class="une__firstArticle__txtContainer col-lg-6">
+      <h3 class="une__firstArticle__title">Le tourisme gastronomique :<br/>une tendance qui dure.</h3>
+      <p class="une__firstArticle__date">Publié le 12.05.2018</p>
+      <p class="une__firstArticle__excerpt">Lorem ipsum dolor sit amet, consectetur
+        adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
+        aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
+        nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit
+        in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur
+        sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
+        mollit anim id est laborum.</p>
+      <a href="#" class="une__firstArticle__CTA">Lire l'article</a>
+    </div>
+  </div>
+  <div class="Container">
+    <div class="une__secondArticle row">
+      <div class="une__secondArticle__txtContainer col-lg-12">
+        <h3 class="une__secondArticle__title">Découvrir le patrimoine Français :<br>les lieux à ne pas manquer.</h3>
+        <p class="une__secondArticle__date">Publié le 12.05.2018</p>
+      </div>
+      <div class="une__secondArticle__imgContainer col-lg-12">
+        <img src="../../src/assets/img/2.jpg" alt="" class="une__secondArticle__img">
+        <p class="une__secondArticle__excerpt">Lorem ipsum dolor sit amet, consectetur
+          adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
+          aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
+          nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit
+          in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur
+          sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
+          mollit anim id est laborum.</p>
+        <a href="#" class="une__secondArticle__CTA">Lire l'article</a>
+      </div>
+    </div>
+    <div class="une__calameo row">
+      <div class="une__calameo__item col-lg-6">
+        <div class="une__calameo__item__imgContainer">
+          <img src="../../src/assets/img/8.jpg" alt="" class="une__calameo__item__img">
+          <div class="une__calameo__item__txtContainer">
+            <h4 class="une__calameo__item__title">Les capitales du</br> Street-Art.</h4>
+            <a href="" class="une__calameo__item__CTA">Lire l'extrait (PDF)</a>
+          </div>
+        </div>
+      </div>
+      <div class="une__calameo__item col-lg-6">
+        <div class="une__calameo__item__imgContainer">
+          <img src="../../src/assets/img/4.jpg" alt="" class="une__calameo__item__img">
+          <div class="une__calameo__item__txtContainer">
+            <h4 class="une__calameo__item__title">Le voyage sportif :</br> notre dossier.</h4>
+            <a href="" class="une__calameo__item__CTA">Lire l'extrait (PDF)</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="Container">
+  <section class="gallery">
+    <h3 class="gallery__title">Galerie<span class="dot">.</span></h3>
+    <!-- Image modal - to display : 'display: none;' to 'display: flex;' -->
+    <div class="modal">
+      <div class="modal__card">
+        <div class="modal__card__imgContainer">
+          <img src="../../src/assets/img/1.jpg" alt="" class="modal__card__img">
+        </div>
+        <div class="modal__card__txtContainer">
+          <p class="modal__card__title">Titre de la photo</p>
+          <p class="modal__card__subTitle">Description de la photo</p>
+        </div>
+        <a href="" class="modal__card__button">X</a>
+      </div>
+    </div>
+    <div class="gallery__firstRow row">
+      <div class="gallery__firstRow__imgContainer col-lg-5">
+        <img src="../../uploads/{{article[0].dataValues.image}}.jpg" alt="" class="gallery__firstRow__img">
+      </div>
+      <div class="gallery__firstRow__imgContainer col-lg-3">
+        <img src="../../uploads/{{article[1].dataValues.image}}.jpg" alt="" class="gallery__firstRow__img">
+      </div>
+      <div class="gallery__firstRow__imgContainer col-lg-4">
+        <img src="../../uploads/{{article[2].dataValues.image}}.jpg" alt="" class="gallery__firstRow__img">
+      </div>
+    </div>
+    <div class="gallery__secondRow row">
+      <div class="gallery__secondRow__imgContainer col-lg-2">
+        <img src="../../uploads/{{article[3].dataValues.image}}.jpg" alt="" class="gallery__secondRow__img">
+      </div>
+      <div class="gallery__secondRow__imgContainer col-lg-7">
+        <img src="../../uploads/{{article[4].dataValues.image}}.jpg" alt="" class="gallery__secondRow__img">
+      </div>
+      <div class="gallery__secondRow__imgContainer col-lg-3">
+        <img src="../../uploads/{{article[5].dataValues.image}}.jpg" alt="" class="gallery__secondRow__img">
+      </div>
+    </div>
+  </section>
+</div>
+<script src="../../src/js/carousel.js"></script>
 </body>
 </html>
 {% endblock %}
