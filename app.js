@@ -106,6 +106,11 @@ app.get('/auth', (req, res) => {
 
 // Routes front
 
+
+app.get('/top100', (req, res) => {
+    res.render('front/top100');
+});
+
 app.get('/index', (req, res) => {
   db.ImagesBox.findAll().then(article => {
     console.log(article[0].dataValues.image);
