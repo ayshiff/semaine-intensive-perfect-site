@@ -329,14 +329,14 @@ table {
   margin: 0 auto;
   margin-top: 40px; }
   .articles__row {
-    display: flex; }
+    flex-wrap: wrap; }
     .articles__row__card {
       display: flex;
       justify-content: center;
-      flex-wrap: wrap;
       height: 500px;
       width: 350px;
-      margin-right: 30px; }
+      margin-right: 20px;
+      margin-bottom: 40px; }
       .articles__row__card__link {
         padding-bottom: 30px;
         color: #000;

@@ -20,16 +20,6 @@ let AirlineCompanyRoute = require('./routes/AirlineCompanyRoute');
 let FactSheetRoute = require('./routes/FactSheetRoute');
 
 let app = express();
-/*
-app.use(sassMiddleware({
-
-  src: __dirname+"/src/style/style.scss",
-  dest: __dirname+"/src/style/style.css",
-  debug: true,
-  indentedSyntax : false,
-  outputStyle: 'expanded',
-  prefix:  '/'  // Where prefix is at <link rel="stylesheets" href="prefix/style.css"/>
-}));*/
 
 app.use('/src', express.static(path.join(__dirname, 'src')));
 
@@ -39,9 +29,11 @@ app.use(express.static(path.join(__dirname, 'views')));
 
 app.use(logger('dev'));
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({
-  extended: true
-}));
+app.use(
+  bodyParser.urlencoded({
+    extended: true
+  })
+);
 app.use(cookieParser());
 app.use(express.static('uploads'));
 //app.use(express.static(path.join(__dirname, 'public')));
@@ -77,19 +69,18 @@ sequelize
   });
 ///////////////////////////////////////////////////////////////////////////
 
-
 //Storage Multer
 ///////////////////////////////////////////////////////////////////////////
 
 let storage = multer.diskStorage({
-  destination: function (req, file, callback) {
+  destination: function(req, file, callback) {
     callback(null, './uploads');
   },
-    filename: function(req, file, next){
-        console.log(file);
-        const ext = file.mimetype.split('/')[1];
-        next(null, file.fieldname + '-' + Date.now() + '.'+ext);
-    }
+  filename: function(req, file, next) {
+    console.log(file);
+    const ext = file.mimetype.split('/')[1];
+    next(null, file.fieldname + '-' + Date.now() + '.' + ext);
+  }
 });
 let upload = multer({
   storage: storage
@@ -107,8 +98,7 @@ app.use('/admin/imagesbox', ImageBoxRoute);
 app.use('/admin/airlinescompanies', AirlineCompanyRoute);
 app.use('/admin/factsheets', FactSheetRoute);
 
-
-app.get('/auth', (req,res) => {
+app.get('/auth', (req, res) => {
   res.render('auth');
 });
 
@@ -116,103 +106,102 @@ app.get('/auth', (req,res) => {
 
 // Routes front
 
-app.get('/index', (req,res) => {
-    db.ImagesBox.findAll().then(article => {
-        console.log(article[0].dataValues.image)
-        res.render('front/index', {
-            article,
-            current: "index"
-        })
+app.get('/index', (req, res) => {
+  db.ImagesBox.findAll().then(article => {
+    console.log(article[0].dataValues.image);
+    res.render('front/index', {
+      article,
+      current: 'index'
     });
+  });
 });
 
-app.get('/contact', (req,res) => {
-    res.render('front/contact', {
-      current: "contact"
-    });
+app.get('/contact', (req, res) => {
+  res.render('front/contact', {
+    current: 'contact'
+  });
 });
 
-app.get('/magazine', (req,res) => {
-    res.render('front/magazine', {
-      current: "magazine"
-    });
+app.get('/magazine', (req, res) => {
+  res.render('front/magazine', {
+    current: 'magazine'
+  });
 });
 
-app.get('/categories', (req,res) => {
-    db.Factsheet.findAll().then(article => {
-      let strNote = ["","","","","","",""];
-      for(let a = 0; a<article.length;a++) {
-          for(let i = 1;i<article[a].dataValues.note+1;i++) {
-              strNote[a] += "€"
-          }
+app.get('/categories', (req, res) => {
+  db.Factsheet.findAll().then(article => {
+    let strNote = ['', '', '', '', '', '', ''];
+    for (let a = 0; a < article.length; a++) {
+      for (let i = 1; i < article[a].dataValues.note + 1; i++) {
+        strNote[a] += '€';
       }
+    }
 
-        res.render('front/categories', {
-            article,
-            strNote,
-            current: "categories"
-        })
+    res.render('front/categories', {
+      article,
+      strNote,
+      current: 'categories'
     });
+  });
 });
 
-app.get('/actualites', (req,res) => {
-    db.Article.findAll().then(article => {
-        res.render('front/actualites', {
-            article,
-            current: "actualites"
-        })
+app.get('/actualites', (req, res) => {
+  db.Article.findAll().then(article => {
+    res.render('front/actualites', {
+      article,
+      current: 'actualites'
     });
+  });
 });
 
-app.get('/top100', (req,res) => {
-    res.render('front/top100', {
-      current: "categories"
-    });
+app.get('/top100', (req, res) => {
+  res.render('front/top100', {
+    current: 'categories'
+  });
 });
 
 app.get('/admin/index', (req, res) => {
   db.Article.findAll().then(article => {
     res.render('admin/index', {
       article,
-      href:'/admin/add',
-      obj: "article",
-      edit: "/admin/edit/",
-      delete: "/admin/delete/"
-    })
-  })
+      href: '/admin/add',
+      obj: 'article',
+      edit: '/admin/edit/',
+      delete: '/admin/delete/'
+    });
+  });
 });
 
 app.get('/admin/add', (req, res) => {
   sequelize.Project = sequelize.import('./models/partner');
-  console.log(sequelize.Project)
+  console.log(sequelize.Project);
   db.Article.findAll().then(element => {
-    let valueNotSlice = Object.keys(element[0].dataValues)
+    let valueNotSlice = Object.keys(element[0].dataValues);
     let value = valueNotSlice.slice(1, -2);
-    if(!value) value = ["title","subtitle","image","text","signature"]
-    console.log(value)
+    if (!value) value = ['title', 'subtitle', 'image', 'text', 'signature'];
+    console.log(value);
     res.render('admin/add', {
       value,
-      href: "/admin/add"
-    })
-  })
+      href: '/admin/add'
+    });
+  });
 });
 
 // Route add admin -> POST
 app.post('/admin/add', upload, (req, res) => {
-  db.Article
-    .create({
-      title: req.body.title,
-      subtitle: req.body.subtitle,
-      image: req.file.filename,
-      text: req.body.text,
-      signature: req.body.signature,
-    })
+  db.Article.create({
+    title: req.body.title,
+    subtitle: req.body.subtitle,
+    image: req.file.filename,
+    text: req.body.text,
+    signature: req.body.signature
+  })
     .then(task => {
       res.redirect('/admin/index');
     })
     .catch(err => {
       console.log(err);
-    })
+    });
 });
 
 // Route delete admin
@@ -227,40 +216,40 @@ app.post('/admin/delete/:id', (req, res) => {
 
 // Route update admin -> GET
 app.get('/admin/edit/:id', (req, res) => {
-
   db.Article.findOne({
     where: {
       id: req.params.id
     }
-  })
-  .then(article => {
-    console.log(article.id)
+  }).then(article => {
+    console.log(article.id);
     res.render('admin/edit', {
-      tab :[article.title,
+      tab: [
+        article.title,
         article.subtitle,
         article.image,
         article.text,
         article.signature,
-        article.id] ,
-          tabKey: ["title","subtitle","image","text","signature"],
-          lenght: 6,
-          update: "/admin/edit/",
-        id: article.id
+        article.id
+      ],
+      tabKey: ['title', 'subtitle', 'image', 'text', 'signature'],
+      lenght: 6,
+      update: '/admin/edit/',
+      id: article.id
     });
-  })
-  
   });
+});
 
 // Route update admin -> POST
 app.post('/admin/edit/:id', upload, (req, res) => {
- 
   db.Article.update(
-    { title: req.body.title,
+    {
+      title: req.body.title,
       subtitle: req.body.subtitle,
       //logo: req.file.fieldname,
-      image: req.file.filename,
+      // image: req.file.filename,
       text: req.body.text,
-      signature: req.body.signature},
+      signature: req.body.signature
+    },
     { where: { id: req.params.id } }
   );
   res.redirect('/admin/index');
@@ -269,8 +258,8 @@ app.post('/admin/edit/:id', upload, (req, res) => {
 app.get('/admin/delete/:id', (req, res) => {
   res.render('admin/delete', {
     id: req.params.id,
-    delete: "/admin/delete/"
-  })
+    delete: '/admin/delete/'
+  });
 });
 
 module.exports = app;
