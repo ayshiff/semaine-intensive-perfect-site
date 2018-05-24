@@ -15,6 +15,7 @@ const db = require(`${__dirname}/models/index.js`);
 let PartnerRoute = require('./routes/PartnerRoute');
 let ImageBoxRoute = require('./routes/ImageBoxRoute');
 let AirlineCompanyRoute = require('./routes/AirlineCompanyRoute');
+let FactSheetRoute = require('./routes/FactSheetRoute');
 
 let app = express();
 
@@ -85,6 +86,8 @@ app.use('/', index);
 app.use('/admin/partners', PartnerRoute);
 app.use('/admin/imagesbox', ImageBoxRoute);
 app.use('/admin/airlinescompanies', AirlineCompanyRoute);
+app.use('/admin/factsheets', FactSheetRoute);
+
 
 app.get('/auth', (req,res) => {
   res.render('auth');
@@ -159,13 +162,17 @@ app.get('/admin/edit/:id', (req, res) => {
   .then(article => {
     console.log(article.id)
     res.render('admin/edit', {
-      title: article.title,
-      subtitle: article.subtitle,
-      image: article.image,
-      text: article.text,
-      signature: article.signature,
-      logo: article.logo,
-      id: article.id
+      tab :[article.title,
+        article.subtitle,
+        article.image,
+        article.text,
+        article.signature,
+        article.id,
+        article.logo] ,
+          tabKey: ["title","subtitle","image","text","signature","logo"],
+          lenght: 6,
+          update: "/admin/edit/",
+        id: article.id
     });
   })
   
@@ -177,10 +184,10 @@ app.post('/admin/edit/:id', upload, (req, res) => {
   db.Article.update(
     { title: req.body.title,
       subtitle: req.body.subtitle,
-      image: req.file.fieldname,
+      //logo: req.file.fieldname,
+      //image: req.file.fieldname,
       text: req.body.text,
-      signature: req.body.signature,
-      logo: req.file.logo, },
+      signature: req.body.signature},
     { where: { id: req.params.id } }
   );
   res.redirect('/admin/index');
@@ -188,7 +195,8 @@ app.post('/admin/edit/:id', upload, (req, res) => {
 
 app.get('/admin/delete/:id', (req, res) => {
   res.render('admin/delete', {
-    id: req.params.id
+    id: req.params.id,
+    delete: "/admin/delete/"
   })
 });
 

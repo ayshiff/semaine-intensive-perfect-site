@@ -26,8 +26,8 @@ router.get('/', (req,res) => {
         article,
         href:'/admin/imagesbox/add',
         obj: "image box",
-        edit: "",
-        delete: "/admin/delete/"
+        edit: "admin/imagesbox/edit/",
+        delete: "/admin/imagesbox/delete/"
       })
     })
   })
@@ -59,6 +59,13 @@ router.get('/', (req,res) => {
       })
   });
 
+  router.get('/delete/:id', (req, res) => {
+    res.render('admin/delete', {
+      id: req.params.id,
+      delete: "/admin/imagesbox/delete/"
+    })
+  });
+
   router.post('/delete/:id', (req, res) => {
     db.ImagesBox.destroy({
       where: {
@@ -67,6 +74,37 @@ router.get('/', (req,res) => {
     });
     res.redirect('/admin/imagesbox');
   });
+
+  router.get('/edit/:id', (req, res) => {
+
+    db.ImagesBox.findOne({
+      where: {
+        id: req.params.id
+      }
+    })
+    .then(article => {
+      res.render('admin/edit', {
+        tab :[article.title,article.name,article.image],
+          tabKey: ["title","name","image"],
+          lenght: 3,
+          update: "/admin/imagesbox/edit/",
+          id: article.id
+      });
+    })
+    
+    });
+
+    router.post('/edit/:id', upload, (req, res) => {
+   
+      db.ImagesBox.update(
+        { name: req.body.name,
+          title: req.body.title,
+          // image: req.file.fieldname
+        },
+        { where: { id: req.params.id } }
+      );
+      res.redirect('/admin/imagesbox');
+    });
 
 
 module.exports = router;

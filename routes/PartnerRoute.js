@@ -60,6 +60,13 @@ router.post('/add', upload, (req, res) => {
       })
   });
 
+  router.get('/delete/:id', (req, res) => {
+    res.render('admin/delete', {
+      id: req.params.id,
+      delete: "/admin/partners/delete/"
+    })
+  });
+
 router.post('/delete/:id', (req, res) => {
     db.Partner.destroy({
       where: {
@@ -84,7 +91,8 @@ router.get('/edit/:id', (req, res) => {
         article.signature,
         article.id],
         tabKey: ["title","image","signature"],
-        update: "/admin/partners/edit/"
+        update: "/admin/partners/edit/",
+        id: article.id
       });
     })
     });
@@ -94,7 +102,7 @@ router.get('/edit/:id', (req, res) => {
    
     db.Partner.update(
       { title: req.body.title,
-        image: req.file.fieldname,
+        // image: req.file.fieldname,
         signature: req.body.signature},
       { where: { id: req.params.id } }
     );
@@ -111,6 +119,36 @@ router.get('/edit/:id', (req, res) => {
     });
     res.redirect('/admin/index');
   });
+
+  router.get('/edit/:id', (req, res) => {
+
+    db.Partner.findOne({
+      where: {
+        id: req.params.id
+      }
+    })
+    .then(article => {
+      res.render('admin/edit', {
+        tab :[article.title,article.signature,article.image],
+          tabKey: ["title","signature","image"],
+          lenght: 3,
+          update: "/admin/partners/edit/"
+      });
+    })
+    
+    });
+
+    router.post('/edit/:id', upload, (req, res) => {
+   
+      db.Partner.update(
+        { signature: req.body.signature,
+          title: req.body.title,
+          image: req.file.fieldname
+        },
+        { where: { id: req.params.id } }
+      );
+      res.redirect('/admin/partners');
+    });
 
 
 
