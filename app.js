@@ -9,8 +9,12 @@ let multer = require('multer');
 let port = process.env.PORT || 8000;
 
 let index = require('./routes/index');
-//let admin = require('./routes/admin');
 const db = require(`${__dirname}/models/index.js`);
+
+// Routes
+let PartnerRoute = require('./routes/PartnerRoute');
+let ImageBoxRoute = require('./routes/ImageBoxRoute');
+let AirlineCompanyRoute = require('./routes/AirlineCompanyRoute');
 
 let app = express();
 
@@ -39,8 +43,7 @@ app.use(helmet());
 app.set('view engine', 'html');
 // For nunjucks
 nunjucks.configure('views', {
-  express: app,
-  autoescape: true
+  express: app
 });
 app.use('/uploads', express.static(__dirname + '/uploads'));
 ////////////////////////////////////////////////////////////////////////
@@ -79,29 +82,13 @@ let upload = multer({
 // Routing
 ///////////////////////////////////////////////////////////////////////////
 app.use('/', index);
-//app.use('/admin', admin);
+app.use('/admin/partners', PartnerRoute);
+app.use('/admin/imagesbox', ImageBoxRoute);
+app.use('/admin/airlinescompanies', AirlineCompanyRoute);
 
 app.get('/auth', (req,res) => {
   res.render('auth');
 });
-
-
-
-app.get('/admin/delete/:id', (req, res) => {
-  res.render('admin/delete', {
-    id: req.params.id
-  })
-});
-
-// Functions
-
-function findall(req, res ,name) {
-  db.name.findAll().then(element => {
-    res.render('admin/index', {
-      element
-    })
-  })
-}
 
 ////////////////////////////////////////////////////////////////////////////
 
@@ -118,44 +105,6 @@ app.get('/admin/index', (req, res) => {
   })
 });
 
-app.get('/admin/imagesbox', (req,res) => {
-  db.ImagesBox.findAll().then(article => {
-    res.render('admin/index', {
-      article,
-      href:'/admin/add/imagesbox',
-      obj: "image box",
-      edit: "",
-      delete: ""
-    })
-  })
-})
-
-app.get('/admin/airlinescompanies', (req,res) => {
-  db.AirlineCompany.findAll().then(article => {
-    res.render('admin/index', {
-      article,
-      href:'/admin/add/airlinescompanies',
-      obj: "airline company",
-      edit: "",
-      delete: ""
-    })
-  })
-})
-
-app.get('/admin/partners', (req,res) => {
-  db.Partner.findAll().then(article => {
-    res.render('admin/index', {
-      article,
-      href:'/admin/add/partners',
-      obj: "partner",
-      edit: "/admin/edit/partners/",
-      delete: "/admin/delete/partners/"
-    })
-  })
-})
-
-//////////////////////////////////////////////////////////////////
-
 app.get('/admin/add', (req, res) => {
   sequelize.Project = sequelize.import('./models/partner');
   console.log(sequelize.Project)
@@ -169,46 +118,6 @@ app.get('/admin/add', (req, res) => {
     })
   })
 });
-
-app.get('/admin/add/imagesbox', (req, res) => {
-  db.ImagesBox.findAll().then(element => {
-    let valueNotSlice = Object.keys(element[0].dataValues)
-    let value = valueNotSlice.slice(1, -2);
-    console.log(value)
-    res.render('admin/add', {
-      value,
-      href: "/admin/add/imagesbox"
-    })
-  })
-});
-
-app.get('/admin/add/airlinescompanies', (req, res) => {
-  console.log(db.AirlineCompany)
-  db.AirlineCompany.findAll().then(element => {
-    let valueNotSlice = Object.keys(element[0].dataValues)
-    let value = valueNotSlice.slice(1, -2);
-    
-    console.log(value)
-    res.render('admin/add', {
-      value,
-      href: "/admin/add/airlinescompanies"
-    })
-  })
-});
-
-app.get('/admin/add/partners', (req, res) => {
-  db.Partner.findAll().then(element => {
-    let valueNotSlice = Object.keys(element[0].dataValues)
-    let value = valueNotSlice.slice(1, -2);
-    console.log(value)
-    res.render('admin/add', {
-      value,
-      href: "/admin/add/partners"
-    })
-  })
-});
-
-////////////////////////////////////////////////////////////////////
 
 // Route add admin -> POST
 app.post('/admin/add', upload, (req, res) => {
@@ -229,52 +138,6 @@ app.post('/admin/add', upload, (req, res) => {
     })
 });
 
-
-app.post('/admin/add/imagesbox', upload, (req, res) => {
-  db.ImagesBox
-    .create({
-      title: req.body.title,
-      theme: req.body.subtitle,
-      image: req.file.fieldname,
-    })
-    .then(task => {
-      res.redirect('/admin/imagesbox');
-    })
-    .catch(err => {
-      console.log(err);
-    })
-});
-
-app.post('/admin/add/airlinescompanies', upload, (req, res) => {
-  db.AirlineCompany
-    .create({
-      name: req.body.name
-    })
-    .then(task => {
-      res.redirect('/admin/airlinescompanies');
-    })
-    .catch(err => {
-      console.log(err);
-    })
-});
-
-app.post('/admin/add/partners', upload, (req, res) => {
-  db.Partner
-    .create({
-      title: req.body.title,
-      signature: req.body.signature,
-      image: req.file.fieldname,
-    })
-    .then(task => {
-      res.redirect('/admin/partners');
-    })
-    .catch(err => {
-      console.log(err);
-    })
-});
-
-////////////////////////////////////////////////////////////////////
-
 // Route delete admin
 app.post('/admin/delete/:id', (req, res) => {
   db.Article.destroy({
@@ -284,35 +147,6 @@ app.post('/admin/delete/:id', (req, res) => {
   });
   res.redirect('/admin/index');
 });
-
-app.post('/admin/delete/partners/:id', (req, res) => {
-  db.Partner.destroy({
-    where: {
-      id: req.params.id
-    }
-  });
-  res.redirect('/admin/partners');
-});
-
-app.post('/admin/delete/airlinescompanies/:id', (req, res) => {
-  db.Partner.destroy({
-    where: {
-      id: req.params.id
-    }
-  });
-  res.redirect('/admin/airlinescompanies');
-});
-
-app.post('/admin/delete/imagesbox/:id', (req, res) => {
-  db.Partner.destroy({
-    where: {
-      id: req.params.id
-    }
-  });
-  res.redirect('/admin/imagesbox');
-});
-
-/////////////////////////////////////////////////////////////////////////////
 
 // Route update admin -> GET
 app.get('/admin/edit/:id', (req, res) => {
@@ -350,48 +184,12 @@ app.post('/admin/edit/:id', upload, (req, res) => {
     { where: { id: req.params.id } }
   );
   res.redirect('/admin/index');
-// }
-
 });
 
-app.get('/admin/edit/partners/:id', (req, res) => {
-
-  db.Partner.findOne({
-    where: {
-      id: req.params.id
-    }
+app.get('/admin/delete/:id', (req, res) => {
+  res.render('admin/delete', {
+    id: req.params.id
   })
-  .then(article => {
-    
-    res.render('admin/edit', {
-      tab :[article.title,
-      article.image,
-      article.signature,
-      article.id],
-      tabKey: ["title","image","signature"],
-      update: "/admin/edit/partners/"
-    });
-  })
-  });
-
-// Route update admin -> POST
-app.post('/admin/edit/partners/:id', upload, (req, res) => {
- 
-  db.Partner.update(
-    { title: req.body.title,
-      image: req.file.fieldname,
-      signature: req.body.signature},
-    { where: { id: req.params.id } }
-  );
-  res.redirect('/admin/partners');
-// }
-
 });
-
-
-
-//app.listen(port)
-
-// console.log('Server listening on '+ port)
 
 module.exports = app;
