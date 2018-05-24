@@ -35,7 +35,7 @@ let storage = multer.diskStorage({
     db.Factsheet.findAll().then(element => {
       let valueNotSlice = Object.keys(element[0].dataValues)
       let value = valueNotSlice.slice(1, -2);
-      
+        if(!value) value = ["title","adress","note","price","description","image"]
       res.render('admin/add', {
         value,
         href: "/admin/factsheets/add"

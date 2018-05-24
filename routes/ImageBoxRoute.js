@@ -36,6 +36,7 @@ router.get('/', (req,res) => {
     db.ImagesBox.findAll().then(element => {
       let valueNotSlice = Object.keys(element[0].dataValues)
       let value = valueNotSlice.slice(1, -2);
+        if(!value) value = ["title","theme","image"]
       console.log(value)
       res.render('admin/add', {
         value,

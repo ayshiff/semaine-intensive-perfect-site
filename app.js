@@ -188,6 +188,7 @@ app.get('/admin/add', (req, res) => {
   db.Article.findAll().then(element => {
     let valueNotSlice = Object.keys(element[0].dataValues)
     let value = valueNotSlice.slice(1, -2);
+    if(!value) value = ["title","subtitle","image","text","signature"]
     console.log(value)
     res.render('admin/add', {
       value,
@@ -205,7 +206,6 @@ app.post('/admin/add', upload, (req, res) => {
       image: req.file.filename,
       text: req.body.text,
       signature: req.body.signature,
-      logo: req.file.logo,
     })
     .then(task => {
       res.redirect('/admin/index');
@@ -241,9 +241,8 @@ app.get('/admin/edit/:id', (req, res) => {
         article.image,
         article.text,
         article.signature,
-        article.id,
-        article.logo] ,
-          tabKey: ["title","subtitle","image","text","signature","logo"],
+        article.id] ,
+          tabKey: ["title","subtitle","image","text","signature"],
           lenght: 6,
           update: "/admin/edit/",
         id: article.id

@@ -36,7 +36,7 @@ let storage = multer.diskStorage({
     db.AirlineCompany.findAll().then(element => {
       let valueNotSlice = Object.keys(element[0].dataValues)
       let value = valueNotSlice.slice(1, -2);
-      
+        if(!value) value = ["name"];
       console.log(value)
       res.render('admin/add', {
         value,

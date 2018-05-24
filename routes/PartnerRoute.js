@@ -37,7 +37,7 @@ router.get('/add', (req, res) => {
     db.Partner.findAll().then(element => {
       let valueNotSlice = Object.keys(element[0].dataValues)
       let value = valueNotSlice.slice(1, -2);
-      console.log(value)
+        if(!value) value = ["title","signature","image"];
       res.render('admin/add', {
         value,
         href: "/admin/partners/add"
