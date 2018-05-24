@@ -1,17 +1,13 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Delete</title>
-</head>
-<body>
-<h1 class="title">Suppresion d'un élément.</h1>
-<form class="alert" action="admin/delete?id={{id}}" method="post">
+{% extends "./header.html" %}
+{% block content %}
+<a style="margin: 20px;" class="btn btn-secondary" href="/admin/index">Retour</a>
+
+<h1 style="margin: 20px;" class="title">Suppresion d'un élément.</h1>
+<form class="alert" action="/admin/delete/{{id}}" method="post">
     <label for=""> Êtes-vous sûr de vouloir supprimer cet élément ? </label>
 
-    <input class="btn btn-primary" type="submit" value="Supprimer">
+    <input class="btn btn-secondary" type="submit" value="Supprimer">
 </form>
-<a class="btn btn-primary" href="/admin/index">Retour</a>
-</body>
+
+
+{% endblock %}

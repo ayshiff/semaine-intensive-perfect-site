@@ -1,12 +1,12 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
-  var Partner = sequelize.define('Partner', {
+  var ImagesBox = sequelize.define('ImagesBox', {
     title: DataTypes.STRING,
-    signature: DataTypes.STRING,
+    theme: DataTypes.STRING,
     image: DataTypes.STRING
   }, {});
-  Partner.associate = function(models) {
+  ImagesBox.associate = function(models) {
     // associations can be defined here
   };
-  return Partner;
+  return ImagesBox;
 };

@@ -1,29 +1,20 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
-    <form style="margin: 20px;" action="admin/edit?id={{id}}" method="post" enctype="multipart/form-data">
+{% extends "./header.html" %}
+{% block content %}
 
-        <input type="hidden" name="id">
-        <label for="title">Title :</label>
-        <input type="text" name="title" id="h1">
-        <label for="sub-title">Sub-title :</label>
-        <input type="text" name="sub-title" id="title">
-        <label for="image">Image :</label>
-        <input type="file" name="image" id="sub-title">
-        <label for="text">Text :</label>
-        <input type="text" name="text" id="text">
-        <label for="signature">Signature :</label>
-        <input type="text" name="signature" id="signature">
-        <label for="logo">Logo :</label>
-        <input type="file" name="logo" id="logo">
+    <form style="margin: 40px;display: flex;flex-direction: column;" action="{{update}}{{id}}" method="post" enctype="multipart/form-data">
+
+        {% for i in range(0, 3) -%}
+        {% if (tabKey[i] !== "image") and (tabKey[i] !== "logo") %}
+        <label for="{{tabKey[i]}}">{{tabKey[i]}} :</label>
+        <input type="text" name="{{tabKey[i]}}" id="{{tabKey[i]}}" value="{{tab[i]}}">
+        {% endif %}
+        {% if (tabKey[i] === "image") or (tabKey[i] === "logo") %}
+        <label for="{{tabKey[i]}}">{{tabKey[i]}} :</label>
+        <input type="file" name="{{tabKey[i]}}" id="{{tabKey[i]}}" value="{{tab[i]}}">
+        {% endif %}
+        {%- endfor %}
     
-        <input class="btn btn-primary" type="submit" value="Add page">
+        <input style="margin-top: 20px;width: 150px;" class="btn btn-secondary" type="submit" value="Edit article">
     </form>
-</body>
-</html>
+
+{% endblock %}

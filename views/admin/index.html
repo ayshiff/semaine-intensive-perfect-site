@@ -1,24 +1,26 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
-    <a href="/admin/add">Add a new article</a>
+{% extends "./header.html" %}
+{% block content %}
+
+    <a href="{{href}}" class="btn btn-dark"style="margin-left: 20px;"> Add a new {{obj}}</a>
+    <div class="container" style="display: flex;">
     {% for p in article %}
-    <div style="margin: 20px;border-style: solid;border-width: 1px;width: 400px;">
-        <div class="card-body" style="margin: 10px;">
-            <h3 class="card-title">{{p.title}}</h3>
-            <h3 class="card-title">{{p.subtitle}}</h3>
-            <p>{{p.text}}</p>
-            <a class="btn btn-primary" href="admin/edit?id={{p.id}}">Edit</a>
-            <a class="btn btn-primary" href="admin/delete?id={{p.id}}">Supprimer</a>
-            <img src="./img/{{p.image}}" alt="img">
+    <div class="card" style="width: 18rem;margin: 20px;">
+        {% if(p.image) %}
+        <img class="card-img-top" src="/uploads/{{p.image}}.jpg" alt="Card image">
+        {% endif %}
+        <div class="card-body">
+            {% if(p.name) %}
+            <h5 class="card-title">{{p.name}}</h5>
+            {% endif %}
+          <h5 class="card-title">{{p.title}}</h5>
+          <h5 class="card-sub-title">{{p.subtitle}}</h5>
+          <p>{{p.createdAt}}</p>
+          <p class="card-text">{{p.text}}</p>
+          <a class="btn btn-secondary" href="{{edit}}{{p.id}}">Edit</a>
+          <a class="btn btn-secondary" href="{{delete}}{{p.id}}">Supprimer</a>
         </div>
-    </div>
+      </div>
     {% endfor %}
-</body>
-</html>
+</div>
+{% endblock %}
+
