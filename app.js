@@ -23,13 +23,14 @@ let app = express();
 /*
 app.use(sassMiddleware({
 
-  src: __dirname+"/src/style",
-  dest: __dirname + "/public",
+  src: __dirname+"/src/style/style.scss",
+  dest: __dirname+"/src/style/style.css",
   debug: true,
   indentedSyntax : false,
   outputStyle: 'expanded',
-  prefix:  '/style'  // Where prefix is at <link rel="stylesheets" href="prefix/style.css"/>
+  prefix:  '/'  // Where prefix is at <link rel="stylesheets" href="prefix/style.css"/>
 }));*/
+
 app.use('/src', express.static(path.join(__dirname, 'src')));
 
 let nunjucks = require('nunjucks');
@@ -114,9 +115,13 @@ app.get('/auth', (req,res) => {
 // Routes front
 
 app.get('/index', (req,res) => {
-  res.render('front/index', {
-    current: "index"
-  });
+    db.ImagesBox.findAll().then(article => {
+        console.log(article[0].dataValues.image)
+        res.render('front/index', {
+            article,
+            current: "index"
+        })
+    });
 });
 
 app.get('/contact', (req,res) => {
@@ -133,10 +138,13 @@ app.get('/magazine', (req,res) => {
 
 app.get('/categories', (req,res) => {
     db.Factsheet.findAll().then(article => {
-      let strNote = ""
-        for(let i = 1;i<article.note;i++) {
-        strNote + "€"
-        }
+      let strNote = ["","","","","","",""];
+      for(let a = 0; a<article.length;a++) {
+          for(let i = 1;i<article[a].dataValues.note+1;i++) {
+              strNote[a] += "€"
+          }
+      }
+
         res.render('front/categories', {
             article,
             strNote,
