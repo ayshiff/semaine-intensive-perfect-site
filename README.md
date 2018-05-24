@@ -17,6 +17,7 @@
 |Airline Companie   | /admin/airlinescompanies  | AirlineCompanyRoute  |
 |Factsheet   | /admin/factsheets  | FactSheetRoute  |
 |Article   | /admin/index  | Main route  |
+|Authentification   | /auth  | Authentification for admin  |
 
 
 Each model has the following endpoints :
