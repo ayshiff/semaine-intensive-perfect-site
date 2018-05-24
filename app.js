@@ -15,6 +15,7 @@ const db = require(`${__dirname}/models/index.js`);
 let PartnerRoute = require('./routes/PartnerRoute');
 let ImageBoxRoute = require('./routes/ImageBoxRoute');
 let AirlineCompanyRoute = require('./routes/AirlineCompanyRoute');
+let FactSheetRoute = require('./routes/FactSheetRoute');
 
 let app = express();
 
@@ -85,6 +86,8 @@ app.use('/', index);
 app.use('/admin/partners', PartnerRoute);
 app.use('/admin/imagesbox', ImageBoxRoute);
 app.use('/admin/airlinescompanies', AirlineCompanyRoute);
+app.use('/admin/factsheets', FactSheetRoute);
+
 
 app.get('/auth', (req,res) => {
   res.render('auth');
