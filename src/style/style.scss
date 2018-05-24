@@ -3,12 +3,13 @@
 @import "global/fonts";
 @import "forsize/responsive";
 @import "partials/header";
+@import "partials/home";
 @import "partials/categories";
 @import "partials/top";
 @import "partials/actualites";
 @import "partials/magazine";
 @import "partials/contact";
-@import "partials/home";
+@import "partials/footer";
 
 body {
   font-family: 'Montserrat', sans-serif;
@@ -17,6 +18,20 @@ body {
 
 .mainContainer {
   max-width: 1300px;
-  padding: 0 5em;
+  padding: 0 3em;
   margin: 0 auto;
+  @include responsive(desktop) {
+    padding: 0 2em;
+    margin: 0 auto;
+  }
+  @include responsive(tablet) {
+    padding: 0 1em;
+  }
+  @include responsive(mobile) {
+    padding: 0 1em;
+  }
 }
+
+@include responsive(desktop) {}
+@include responsive(tablet) {}
+@include responsive(mobile) {}

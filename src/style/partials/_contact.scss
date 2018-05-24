@@ -3,6 +3,9 @@
   &__leftSection {
     font-size: 14px;
     line-height: 22px;
+    @include responsive(tablet){
+      text-align: center;
+    }
     &__top {
       &__title {
         font-family: 'Harriet Display';
@@ -22,6 +25,9 @@
       height: 2px;
       background-color: $blue;
       margin: 15px 0;
+      @include responsive(tablet){
+        margin: 15px auto;
+      }
     }
     &__bottom {
       &__item {
@@ -35,6 +41,10 @@
       display: flex;
       justify-content: space-between;
       width: 30%;
+      @include responsive(tablet){
+        width: 40%;
+        margin: 0 auto;
+      }
       &__itemContainer {
         width: 30px;
         height: 30px;
@@ -46,13 +56,15 @@
     }
   }
   &__formSection {
+    @include responsive(tablet) {
+      margin: 2em auto;
+    }
     &__form {
       &__select {
         width: 98%;
         font-family: 'Montserrat';
         font-size: 16px;
         font-weight: 300;
-        //border: none;
         background-color: #FFF;
         margin-bottom: 15px;
         padding: 10px;
@@ -61,6 +73,7 @@
           outline: none;
         }
         &__item {
+
         }
       }
       &__input {

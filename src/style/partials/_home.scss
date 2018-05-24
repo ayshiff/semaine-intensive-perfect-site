@@ -4,14 +4,17 @@
   &__carousel {
     position: relative;
     width: 100%;
+    height: 60%;
     &__imgContainer {
       width: 100%;
-      height: 550px;
+      height: 100%;
       border: solid 1px #000;
       overflow: hidden;
     }
     &__img {
       width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
     &__progressBar {
       position: absolute;
@@ -53,6 +56,14 @@
         color: #FFF;
         width: 70%;
         line-height: 55px;
+        @include responsive(desktop) {}
+        @include responsive(tablet) {
+          font-size: 5.3vw;
+        }
+        @include responsive(mobile) {
+          font-size: 30px;
+          width: 90%;
+        }
       }
       &__link {
         display: inline-block;
@@ -64,6 +75,10 @@
         text-transform: uppercase;
         text-decoration: none;
         margin-top: 20px;
+        @include responsive(mobile) {
+          font-size: 16px;
+          text-align: center;
+        }
       }
     }
   }
@@ -86,12 +101,14 @@
     align-items: center;
     &__imgContainer {
       width: 100%;
+      height: 80%;
     }
     &__img {
       width: 100%;
+      height: 100%;
+      object-fit: contain;
     }
     &__txtContainer {
-      width: 100%;
     }
     &__title {
       font-family: 'Harriet Display';
@@ -107,9 +124,9 @@
     }
     &__excerpt {
       font-size: 14px;
-      width: 80%;
-      text-align: justify;
       line-height: 20px;
+      width: 80%;
+      margin: 0 auto;
     }
     &__CTA {
       display: inline-block;

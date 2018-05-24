@@ -75,20 +75,45 @@ table {
 .header {
   font-family: "Harriet Display";
   font-weight: 500;
-  margin: 0 auto;
   text-align: center; }
   .header__title {
     font-size: 40px;
     margin-top: 30px;
     text-align: center; }
+    @media (max-width: 1024px) {
+      .header__title {
+        font-size: 30px; } }
+  .header__subscribeButton {
+    text-transform: uppercase;
+    font-size: 14px;
+    color: #fff;
+    text-decoration: none;
+    background: #00CCCC;
+    padding: 10px 15px;
+    font-family: 'Montserrat', sans-serif; }
+    @media (max-width: 1024px) {
+      .header__subscribeButton {
+        padding: 5px 10px; } }
+    @media (max-width: 960px) {
+      .header__subscribeButton {
+        display: none; } }
+  .header .--absolute {
+    position: absolute;
+    right: 5%;
+    top: 30px; }
+    @media (max-width: 960px) {
+      .header .--absolute {
+        right: 0px; } }
   .header__nav {
     margin-top: 40px;
     font-size: 16px; }
+    @media (max-width: 600px) {
+      .header__nav {
+        display: none; } }
     .header__nav__list {
       display: flex;
       justify-content: space-around;
-      width: 80%;
-      margin: 0 auto; }
+      width: 100%; }
       .header__nav__list__item__link {
         text-decoration: none;
         color: #000;
@@ -96,714 +121,109 @@ table {
         margin: 0 40px;
         padding-bottom: 10px;
         transition: ease 0.05s border-bottom; }
+        @media (max-width: 960px) {
+          .header__nav__list__item__link {
+            margin: 0 15px; } }
         .header__nav__list__item__link:hover {
           border-bottom: 1px solid #00CCCC; }
         .header__nav__list__item__link .--active {
-          border-bottom: 1px solid #00CCCC;
-          text-decoration: none; }
+          border-bottom: 1px solid #00CCCC; }
+  .header__mobile {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 20px 30px 20px 20px;
+    cursor: pointer; }
+    .header__mobile__menu {
+      transition: 1s;
+      z-index: 2000; }
+      .header__mobile__menu__line:nth-of-type(2) {
+        width: 20px;
+        margin-left: 10px; }
+      .header__mobile__menu__line {
+        width: 30px;
+        height: 2px;
+        background: #00CCCC;
+        margin-bottom: 10px;
+        transition: 1s; }
+    .header__mobile__logo {
+      text-transform: uppercase;
+      text-align: justify;
+      z-index: -1000; }
+  .header__mobile__modal {
+    opacity: 0;
+    position: fixed;
+    z-index: -200;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    right: 0;
+    overflow-x: hidden;
+    background: black; }
+    .header__mobile__modal__content {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%); }
+    .header__mobile__modal__list > a {
+      color: #fff;
+      text-decoration: none; }
+    .header__mobile__modal__list__item {
+      margin: 60px 0;
+      opacity: 1;
+      font-size: 20px; }
+    .header__mobile__modal__list__item:hover {
+      color: #00CCCC; }
+
+@media (max-width: 600px) {
+  .--desktop {
+    display: none; } }
+
+.mobile {
+  display: none; }
+  @media (max-width: 600px) {
+    .mobile {
+      display: block; } }
+
+.change [data-line="top"] {
+  transform: rotate(45deg) translate(7px, 0);
+  transform: 1.5s;
+  position: fixed; }
+
+.change [data-line="middle"] {
+  opacity: 0; }
+
+.change [data-line="bottom"] {
+  transform: rotate(-45deg) translate(9px, 0);
+  transform: 1.5s;
+  position: fixed; }
+
+.change {
+  opacity: 1; }
+
+.index {
+  z-index: 1000; }
 
 .active {
   border-bottom: 1px solid #00CCCC;
   text-decoration: none; }
-
-.top100 {
-  margin-top: 60px; }
-  .top100__title {
-    font-family: 'Harriet Display';
-    font-weight: 600;
-    font-size: 40px; }
-  .top100__btns {
-    display: flex;
-    margin-top: 40px; }
-    .top100__btns__links {
-      text-decoration: none;
-      color: #000; }
-    .top100__btns__item {
-      display: flex;
-      align-items: center;
-      border: solid 1px rgba(155, 155, 155, 0.19);
-      box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.13);
-      width: 300px;
-      height: 55px;
-      border-radius: 2px;
-      transition: ease 0.2s all; }
-      .top100__btns__item:hover {
-        box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.2); }
-      .top100__btns__item__pictureContainer {
-        width: 25%;
-        height: 100%; }
-      .top100__btns__item__picture {
-        width: 100%;
-        height: 100%;
-        border-top-left-radius: 2px;
-        border-bottom-left-radius: 2px;
-        object-fit: cover; }
-      .top100__btns__item__title {
-        font-size: 20px;
-        font-weight: 800;
-        margin-left: 20px; }
-
-.list {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 60px; }
-  .list__filters {
-    width: 100%; }
-    .list__filters__cat__title {
-      font-size: 16px;
-      font-weight: 700;
-      margin-bottom: 20px; }
-    .list__filters__cat__options {
-      font-weight: 500;
-      font-size: 14px;
-      margin-bottom: 40px; }
-      .list__filters__cat__options__checkbox {
-        margin-bottom: 10px; }
-  .list__results {
-    width: 100%; }
-    .list__results__item {
-      display: flex;
-      align-items: center;
-      margin-bottom: 30px; }
-      .list__results__item__imgContainer {
-        width: 50%; }
-      .list__results__item__img {
-        width: 100%;
-        object-fit: contain; }
-      .list__results__item__infos {
-        margin-left: 20px; }
-        .list__results__item__infos__top {
-          display: flex;
-          justify-content: space-between; }
-        .list__results__item__infos__title {
-          font-weight: 700;
-          font-size: 18px; }
-        .list__results__item__infos__mark {
-          font-family: 'Harriet Display';
-          font-weight: 600;
-          font-size: 20px; }
-        .list__results__item__infos__price {
-          margin-top: 8px;
-          font-weight: 600;
-          font-size: 14px; }
-          .list__results__item__infos__price__blue {
-            color: #00CCCC; }
-        .list__results__item__infos__address {
-          font-size: 14px;
-          font-weight: 300;
-          margin: 10px 0; }
-        .list__results__item__infos__description {
-          font-size: 14px;
-          font-weight: 400;
-          width: 90%; }
-
-.ranking {
-  width: 80%;
-  margin: 80px auto; }
-  .ranking__return {
-    display: block;
-    font-size: 14px;
-    font-weight: 800;
-    text-decoration: none;
-    color: #000;
-    text-transform: uppercase;
-    margin-top: 40px;
-    transition: ease 0.15s color; }
-    .ranking__return:hover {
-      color: #00CCCC; }
-  .ranking__list__item {
-    display: flex;
-    position: relative;
-    margin-bottom: 50px;
-    align-items: center; }
-    .ranking__list__item__rank {
-      font-family: 'Harriet Display';
-      font-size: 170px;
-      font-weight: 700;
-      color: #9B9B9B;
-      opacity: 0.3;
-      position: absolute;
-      z-index: -1;
-      left: -70;
-      top: -80; }
-    .ranking__list__item__imgContainer {
-      width: 50%; }
-    .ranking__list__item__img {
-      width: 100%;
-      object-fit: contain;
-      border-radius: 2px; }
-    .ranking__list__item__infos {
-      margin-left: 20px; }
-      .ranking__list__item__infos__top {
-        display: flex;
-        justify-content: space-between; }
-      .ranking__list__item__infos__title {
-        font-weight: 700;
-        font-size: 18px; }
-      .ranking__list__item__infos__mark {
-        font-family: 'Harriet Display';
-        font-weight: 600;
-        font-size: 20px; }
-      .ranking__list__item__infos__price {
-        margin-top: 8px;
-        font-weight: 600;
-        font-size: 14px; }
-        .ranking__list__item__infos__price__blue {
-          color: #00CCCC; }
-      .ranking__list__item__infos__link {
-        display: inline-block;
-        margin-top: 25px;
-        background-color: #00CCCC;
-        padding: 10px 15px;
-        color: #FFFFFF;
-        text-decoration: none;
-        font-size: 16px;
-        font-weight: 600;
-        text-transform: uppercase; }
-      .ranking__list__item__infos__address {
-        font-size: 14px;
-        font-weight: 300;
-        margin: 10px 0; }
-      .ranking__list__item__infos__description {
-        font-size: 14px;
-        font-weight: 400;
-        width: 90%; }
-
-.list {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 60px; }
-  .list__filters {
-    width: 100%; }
-    .list__filters__cat__title {
-      font-size: 16px;
-      font-weight: 700;
-      margin-bottom: 20px; }
-    .list__filters__cat__options {
-      font-weight: 500;
-      font-size: 14px;
-      margin-bottom: 40px; }
-      .list__filters__cat__options__checkbox {
-        margin-bottom: 10px; }
-  .list__results {
-    width: 100%; }
-    .list__results__item {
-      display: flex;
-      align-items: center;
-      margin-bottom: 30px; }
-      .list__results__item__imgContainer {
-        width: 50%; }
-      .list__results__item__img {
-        width: 250px;
-        object-fit: contain; }
-      .list__results__item__infos {
-        margin-left: 20px; }
-        .list__results__item__infos__top {
-          display: flex;
-          justify-content: space-between; }
-        .list__results__item__infos__title {
-          font-weight: 700;
-          font-size: 18px; }
-        .list__results__item__infos__mark {
-          font-family: 'Harriet Display';
-          font-weight: 600;
-          font-size: 20px; }
-        .list__results__item__infos__price {
-          margin-top: 8px;
-          font-weight: 600;
-          font-size: 14px; }
-          .list__results__item__infos__price__blue {
-            color: #00CCCC; }
-        .list__results__item__infos__address {
-          font-size: 14px;
-          font-weight: 300;
-          margin: 10px 0; }
-        .list__results__item__infos__description {
-          font-size: 14px;
-          font-weight: 400;
-          width: 90%; }
-
-.articles {
-  display: flex;
-  justify-content: space-around;
-  margin: 0 auto;
-  margin-top: 40px; }
-  .articles__row {
-    flex-wrap: wrap; }
-    .articles__row__card {
-      display: flex;
-      justify-content: center;
-      height: 500px;
-      width: 350px;
-      margin-right: 20px;
-      margin-bottom: 40px; }
-      .articles__row__card__link {
-        padding-bottom: 30px;
-        color: #000;
-        border: solid 1px rgba(155, 155, 155, 0.6);
-        box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
-        border-radius: 3px;
-        text-decoration: none;
-        transition: ease 0.2s all; }
-        .articles__row__card__link:hover {
-          box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.4); }
-      .articles__row__card__header {
-        display: block;
-        height: 50%;
-        overflow: hidden;
-        background-repeat: no-repeat;
-        background-size: cover;
-        background-position: center;
-        background-color: rgba(255, 255, 255, 0.15);
-        background-blend-mode: overlay; }
-      .articles__row__card__content {
-        padding: 1em; }
-        .articles__row__card__content__title {
-          font-family: 'Harriet Display';
-          width: 90%;
-          font-size: 20px;
-          font-weight: 500;
-          line-height: 28px;
-          margin-bottom: 10px; }
-        .articles__row__card__content__infos {
-          font-size: 12px;
-          color: #9B9B9B;
-          font-weight: 300; }
-          .articles__row__card__content__infos__span {
-            font-weight: 400; }
-        .articles__row__card__content__social {
-          margin-top: 15px; }
-        .articles__row__card__content__divider {
-          width: 110px;
-          height: 1px;
-          background-color: #D8D8D8;
-          margin: 15px 0 25px 0; }
-        .articles__row__card__content__excerpt {
-          font-size: 14px;
-          line-height: 18px; }
-
-.cover {
-  width: 100%;
-  margin: 40px auto;
-  align-items: center; }
-  @media (max-width: 600px) {
-    .cover {
-      margin-top: 70px; } }
-  .cover__container {
-    display: flex; }
-    @media (max-width: 600px) {
-      .cover__container {
-        flex-direction: column;
-        justify-content: center;
-        align-items: center; } }
-  .cover__img {
-    width: 80%;
-    height: 80%;
-    box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.15); }
-  @media (max-width: 1024px) {
-    .cover__text {
-      margin: 120px 0 0 50px; } }
-  @media (max-width: 960px) {
-    .cover__text {
-      margin: 80px 0 0 70px; } }
-  @media (max-width: 600px) {
-    .cover__text {
-      margin: 30px 0 0 0; } }
-  .cover__text__title {
-    font-size: 40px;
-    line-height: 50px;
-    font-family: 'Harriet Display';
-    font-weight: 700;
-    text-align: left; }
-    @media (max-width: 1200px) {
-      .cover__text__title {
-        font-size: 30px; } }
-    @media (max-width: 960px) {
-      .cover__text__title {
-        font-size: 24px; } }
-    @media (max-width: 600px) {
-      .cover__text__title {
-        font-size: 18px;
-        line-height: 50px; } }
-  .cover__text__CTA {
-    display: inline-block;
-    font-size: 18px;
-    color: #fff;
-    text-decoration: none;
-    background: #00CCCC;
-    padding: 10px 15px;
-    font-family: 'Montserrat', sans-serif;
-    text-transform: uppercase;
-    margin-top: 50px; }
-    @media (max-width: 600px) {
-      .cover__text__CTA {
-        font-size: 12px;
-        margin-top: 30px; } }
-
-.mook {
-  margin-top: 200px;
-  text-align: center; }
-  @media (max-width: 600px) {
-    .mook {
-      margin-top: 150px; } }
-  .mook__title {
-    font-family: 'Harriet Display';
-    font-weight: 600;
-    font-size: 45px;
-    line-height: 45px;
-    width: 50%;
-    margin: 0 auto; }
-    @media (max-width: 1200px) {
-      .mook__title {
-        font-size: 30px; } }
-    @media (max-width: 600px) {
-      .mook__title {
-        font-size: 18px; } }
-  .mook__subTitle {
-    font-family: 'Harriet Display';
-    font-weight: 200;
-    font-size: 16px;
-    color: #4A4A4A;
-    margin: 30px auto;
-    width: 60%;
-    text-align: center;
-    line-height: 22px; }
-    @media (max-width: 600px) {
-      .mook__subTitle {
-        font-size: 10px; } }
-  .mook__textContainer {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    justify-items: center;
-    grid-gap: 70px;
-    margin: 60px; }
-    @media (max-width: 960px) {
-      .mook__textContainer {
-        grid-template-columns: repeat(2, 1fr); } }
-    @media (max-width: 600px) {
-      .mook__textContainer {
-        grid-template-columns: repeat(1, 1fr); } }
-  .mook__textItem {
-    font-size: 16px;
-    margin-top: 10px;
-    line-height: 22px;
-    text-align: left; }
-    @media (max-width: 600px) {
-      .mook__textItem {
-        font-size: 12px; } }
-  .mook__overLine {
-    width: 80px;
-    height: 5px;
-    background: #00CCCC;
-    margin-bottom: 18px; }
-
-.sheets {
-  margin-top: 100px;
-  line-height: 22px;
-  font-size: 16px; }
-  @media (max-width: 600px) {
-    .sheets {
-      margin-top: 70px;
-      font-size: 12px; } }
-  .sheets__title {
-    font-family: 'Harriet Display';
-    font-weight: 600;
-    font-size: 45px;
-    line-height: 45px;
-    margin-bottom: 40px; }
-    @media (max-width: 960px) {
-      .sheets__title {
-        font-size: 30px; } }
-    @media (max-width: 600px) {
-      .sheets__title {
-        font-size: 18px; } }
-  .sheets__text {
-    margin: 20px auto;
-    width: 100%; }
-
-.app {
-  margin: 200px auto; }
-  @media (max-width: 600px) {
-    .app {
-      margin-top: 100px; } }
-  .app__title {
-    font-family: 'Harriet Display';
-    font-weight: 600;
-    font-size: 45px;
-    line-height: 45px; }
-    @media (max-width: 600px) {
-      .app__title {
-        font-size: 18px; } }
-  .app__container {
-    align-items: center; }
-  .app__store__appStore {
-    width: 50%; }
-    .app__store__appStore__img {
-      width: 100%;
-      margin-bottom: 50px; }
-  .app__store__googlePlay {
-    width: 50%; }
-    .app__store__googlePlay__img {
-      width: 100%; }
-  .app__mockUp {
-    width: 50%; }
-    .app__mockUp__img {
-      width: 100%; }
-
-.numbers {
-  margin-top: 100px;
-  background: url("../assets/img/night-sky.jpeg") no-repeat center center;
-  background-size: cover;
-  width: 100%;
-  color: #fff; }
-  .numbers__container {
-    padding: 100px 0; }
-    @media (max-width: 600px) {
-      .numbers__container {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        grid-gap: 40px;
-        padding: 40px 0; } }
-  .numbers__content {
-    text-align: center; }
-    .numbers__content__stats {
-      font-weight: 900;
-      font-size: 30px; }
-      @media (max-width: 600px) {
-        .numbers__content__stats {
-          font-size: 15px; } }
-    .numbers__content__text {
-      text-transform: uppercase;
-      font-weight: 700;
-      font-size: 20px;
-      line-height: 26px;
-      margin-top: 30px; }
-      @media (max-width: 1024px) {
-        .numbers__content__text {
-          font-size: 15px; } }
-      @media (max-width: 960px) {
-        .numbers__content__text {
-          font-size: 12px; } }
-      @media (max-width: 600px) {
-        .numbers__content__text {
-          font-size: 10px;
-          margin-top: 10px; } }
-
-.team {
-  margin: 200px 0; }
-  @media (max-width: 600px) {
-    .team {
-      margin: 100px 0; } }
-  .team__title {
-    font-family: 'Harriet Display';
-    font-weight: 600;
-    font-size: 45px;
-    line-height: 45px;
-    text-align: center; }
-    @media (max-width: 1200px) {
-      .team__title {
-        font-size: 30px; } }
-    @media (max-width: 600px) {
-      .team__title {
-        font-size: 18px; } }
-  .team__container {
-    display: flex;
-    justify-content: space-around;
-    margin-top: 100px; }
-    @media (max-width: 960px) {
-      .team__container {
-        margin: 100px 20px; } }
-    @media (max-width: 600px) {
-      .team__container {
-        margin-top: 70px;
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        justify-items: center;
-        grid-gap: 40px; } }
-  .team__cards {
-    border: 1px solid #979797;
-    width: 260px;
-    height: 360px;
-    border-radius: 2px; }
-    @media (max-width: 600px) {
-      .team__cards {
-        width: 150px;
-        height: 220px; } }
-    .team__cards__pictureContainer {
-      width: 100%;
-      height: 70%;
-      clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%); }
-    .team__cards__picture {
-      width: 100%;
-      height: 100%;
-      object-fit: cover; }
-    .team__cards__name {
-      font-family: 'Harriet Display';
-      font-weight: 600;
-      font-size: 20px;
-      margin-top: 20px; }
-      @media (max-width: 600px) {
-        .team__cards__name {
-          font-size: 12px; } }
-    .team__cards__role {
-      font-size: 14px;
-      line-height: 20px;
-      width: 60%;
-      margin: 10px auto;
-      color: #4A4A4A; }
-      @media (max-width: 600px) {
-        .team__cards__role {
-          font-size: 10px; } }
-
-.dot {
-  font-family: 'Harriet Display';
-  color: #00CCCC;
-  font-weight: 700;
-  font-size: 55px; }
-
-.strong {
-  font-weight: bold; }
-
-.contact {
-  margin-top: 70px; }
-  .contact__leftSection {
-    font-size: 14px;
-    line-height: 22px; }
-    .contact__leftSection__top__title {
-      font-family: 'Harriet Display';
-      font-weight: 500;
-      font-size: 30px;
-      margin-bottom: 30px; }
-    .contact__leftSection__top__titleSpan {
-      font-family: 'Harriet Display';
-      font-weight: 600;
-      font-size: 45px;
-      color: #00CCCC; }
-    .contact__leftSection__divider {
-      width: 60px;
-      height: 2px;
-      background-color: #00CCCC;
-      margin: 15px 0; }
-    .contact__leftSection__bottom__item {
-      margin-bottom: 15px; }
-      .contact__leftSection__bottom__item__name {
-        font-weight: 500; }
-    .contact__leftSection__social {
-      display: flex;
-      justify-content: space-between;
-      width: 30%; }
-      .contact__leftSection__social__itemContainer {
-        width: 30px;
-        height: 30px; }
-      .contact__leftSection__social__itemImg {
-        width: 100%;
-        border-radius: 2px; }
-  .contact__formSection__form__select {
-    width: 98%;
-    font-family: 'Montserrat';
-    font-size: 16px;
-    font-weight: 300;
-    background-color: #FFF;
-    margin-bottom: 15px;
-    padding: 10px;
-    height: 30px; }
-    .contact__formSection__form__select:focus {
-      outline: none; }
-  .contact__formSection__form__input {
-    display: block;
-    margin-bottom: 20px;
-    padding-left: 8px;
-    padding-bottom: 8px;
-    border: none;
-    border-bottom: solid 1px #000;
-    width: 96%;
-    font-family: 'Montserrat';
-    font-size: 16px;
-    font-weight: 300;
-    transition: ease 0.26s all; }
-    .contact__formSection__form__input:focus {
-      outline: none;
-      border-bottom: solid 1px #00CCCC; }
-  .contact__formSection__form__textArea {
-    display: block;
-    width: 95%;
-    height: 150px;
-    padding: 10px;
-    font-family: 'Montserrat';
-    font-size: 16px;
-    font-weight: 300;
-    resize: none;
-    border: solid 1px #000;
-    transition: ease 0.26s all; }
-    .contact__formSection__form__textArea:focus {
-      outline: none;
-      border: solid 1px #00CCCC; }
-  .contact__formSection__form__submit {
-    display: block;
-    font-family: 'Montserrat';
-    font-size: 16px;
-    font-weight: 500;
-    padding: 8px 20px;
-    margin-top: 25px;
-    color: #FFF;
-    text-transform: uppercase;
-    background-color: #00CCCC;
-    opacity: 0.7;
-    border: none;
-    transition: ease 0.26s all;
-    cursor: pointer; }
-    .contact__formSection__form__submit:focus {
-      outline: none; }
-    .contact__formSection__form__submit:hover {
-      opacity: 1; }
-
-.confirmation {
-  position: fixed;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.7);
-  text-align: center;
-  display: none;
-  z-index: 10; }
-  .confirmation__card {
-    background: #FFF;
-    border-radius: 6px;
-    padding: 50px;
-    padding-bottom: 40px;
-    margin: auto;
-    display: block;
-    width: 600px; }
-    .confirmation__card__message {
-      font-size: 20px;
-      text-align: center;
-      margin-bottom: 30px;
-      line-height: 1.5; }
-    .confirmation__card__button {
-      padding: 15px 20px;
-      background: #00CCCC;
-      border-radius: 3px;
-      text-align: center;
-      font-size: 18px;
-      display: inline-block;
-      text-transform: uppercase;
-      color: #FFF;
-      text-decoration: none; }
 
 .home {
   width: 100%;
   margin-top: 50px; }
   .home__carousel {
     position: relative;
-    width: 100%; }
+    width: 100%;
+    height: 60%; }
     .home__carousel__imgContainer {
       width: 100%;
-      height: 550px;
+      height: 100%;
       border: solid 1px #000;
       overflow: hidden; }
     .home__carousel__img {
-      width: 100%; }
+      width: 100%;
+      height: 100%;
+      object-fit: cover; }
     .home__carousel__progressBar {
       position: absolute;
       top: 30;
@@ -840,6 +260,13 @@ table {
         color: #FFF;
         width: 70%;
         line-height: 55px; }
+        @media (max-width: 960px) {
+          .home__carousel__text__title {
+            font-size: 5.3vw; } }
+        @media (max-width: 600px) {
+          .home__carousel__text__title {
+            font-size: 30px;
+            width: 90%; } }
       .home__carousel__text__link {
         display: inline-block;
         background-color: #00CCCC;
@@ -850,6 +277,10 @@ table {
         text-transform: uppercase;
         text-decoration: none;
         margin-top: 20px; }
+        @media (max-width: 600px) {
+          .home__carousel__text__link {
+            font-size: 16px;
+            text-align: center; } }
   .home__divider {
     background-color: #000;
     width: 1px;
@@ -864,11 +295,12 @@ table {
 .une__firstArticle {
   align-items: center; }
   .une__firstArticle__imgContainer {
-    width: 100%; }
+    width: 100%;
+    height: 80%; }
   .une__firstArticle__img {
-    width: 100%; }
-  .une__firstArticle__txtContainer {
-    width: 100%; }
+    width: 100%;
+    height: 100%;
+    object-fit: contain; }
   .une__firstArticle__title {
     font-family: 'Harriet Display';
     font-weight: 600;
@@ -881,9 +313,9 @@ table {
     margin-bottom: 40px; }
   .une__firstArticle__excerpt {
     font-size: 14px;
+    line-height: 20px;
     width: 80%;
-    text-align: justify;
-    line-height: 20px; }
+    margin: 0 auto; }
   .une__firstArticle__CTA {
     display: inline-block;
     background-color: #00CCCC;
@@ -1047,13 +479,690 @@ table {
     width: 0%; }
   100% {
     width: 100%; } }
+.top100 {
+  margin-top: 60px; }
+  .top100__title {
+    font-family: 'Harriet Display';
+    font-weight: 600;
+    font-size: 40px; }
+    @media (max-width: 960px) {
+      .top100__title {
+        font-size: 35px; } }
+    @media (max-width: 600px) {
+      .top100__title {
+        font-size: 28px; } }
+  .top100__btns {
+    display: flex;
+    margin-top: 40px; }
+    @media (max-width: 1024px) {
+      .top100__btns {
+        justify-content: space-between; } }
+    @media (max-width: 960px) {
+      .top100__btns {
+        justify-content: space-between;
+        margin-left: 2%;
+        margin-right: 2%; } }
+    .top100__btns__links {
+      text-decoration: none;
+      color: #000; }
+    .top100__btns__item {
+      display: flex;
+      align-items: center;
+      border: solid 1px rgba(155, 155, 155, 0.19);
+      box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.13);
+      width: 300px;
+      height: 55px;
+      border-radius: 2px;
+      transition: ease 0.2s all; }
+      @media (max-width: 960px) {
+        .top100__btns__item {
+          width: 200px; } }
+      @media (max-width: 600px) {
+        .top100__btns__item {
+          width: 500px;
+          margin: 0.3em auto; } }
+      .top100__btns__item:hover {
+        box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.2); }
+      .top100__btns__item__pictureContainer {
+        width: 25%;
+        height: 100%; }
+      .top100__btns__item__picture {
+        width: 100%;
+        height: 100%;
+        border-top-left-radius: 2px;
+        border-bottom-left-radius: 2px;
+        object-fit: cover; }
+      .top100__btns__item__title {
+        font-size: 20px;
+        font-weight: 800;
+        margin-left: 20px; }
+
+.list {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 60px; }
+  .list__filters {
+    width: 100%; }
+    @media (max-width: 960px) {
+      .list__filters {
+        display: flex;
+        justify-content: space-between;
+        margin-left: 5%;
+        margin-right: 5%; } }
+    .list__filters__cat__title {
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: 20px; }
+    .list__filters__cat__options {
+      font-weight: 500;
+      font-size: 14px;
+      margin-bottom: 40px; }
+      .list__filters__cat__options__checkbox {
+        margin-bottom: 10px; }
+  .list__results {
+    width: 100%; }
+    @media (max-width: 600px) {
+      .list__results {
+        margin-left: 5%;
+        margin-right: 5%; } }
+    @media (max-width: 960px) {
+      .list__results {
+        margin-left: 5%;
+        margin-right: 5%; } }
+    @media (max-width: 1024px) {
+      .list__results {
+        margin-left: 3%;
+        margin-right: 3%; } }
+    .list__results__item {
+      display: flex;
+      align-items: center;
+      margin-bottom: 30px; }
+      .list__results__item__imgContainer {
+        width: 50%; }
+      .list__results__item__img {
+        width: 100%;
+        object-fit: contain; }
+      .list__results__item__infos {
+        margin-left: 20px; }
+        .list__results__item__infos__top {
+          display: flex;
+          justify-content: space-between; }
+        .list__results__item__infos__title {
+          font-weight: 700;
+          font-size: 18px; }
+          @media (max-width: 600px) {
+            .list__results__item__infos__title {
+              font-size: 12px; } }
+        .list__results__item__infos__mark {
+          font-family: 'Harriet Display';
+          font-weight: 600;
+          font-size: 20px; }
+        .list__results__item__infos__price {
+          margin-top: 8px;
+          font-weight: 600;
+          font-size: 14px; }
+          .list__results__item__infos__price__blue {
+            color: #00CCCC; }
+        .list__results__item__infos__address {
+          font-size: 14px;
+          font-weight: 300;
+          margin: 10px 0; }
+          @media (max-width: 600px) {
+            .list__results__item__infos__address {
+              font-size: 10px; } }
+        .list__results__item__infos__description {
+          font-size: 14px;
+          font-weight: 400;
+          width: 90%; }
+
+.ranking {
+  width: 80%;
+  margin: 80px auto; }
+  .ranking__return {
+    display: block;
+    font-size: 14px;
+    font-weight: 800;
+    text-decoration: none;
+    color: #000;
+    text-transform: uppercase;
+    margin-top: 40px;
+    transition: ease 0.15s color; }
+    .ranking__return:hover {
+      color: #00CCCC; }
+  .ranking__list__item {
+    display: flex;
+    position: relative;
+    margin-bottom: 50px;
+    align-items: center; }
+    .ranking__list__item__rank {
+      font-family: 'Harriet Display';
+      font-size: 170px;
+      font-weight: 700;
+      color: #9B9B9B;
+      opacity: 0.3;
+      position: absolute;
+      z-index: -1;
+      left: -70;
+      top: -80; }
+    .ranking__list__item__imgContainer {
+      width: 50%; }
+    .ranking__list__item__img {
+      width: 100%;
+      object-fit: contain;
+      border-radius: 2px; }
+    .ranking__list__item__infos {
+      margin-left: 20px; }
+      .ranking__list__item__infos__top {
+        display: flex;
+        justify-content: space-between; }
+      .ranking__list__item__infos__title {
+        font-weight: 700;
+        font-size: 18px; }
+      .ranking__list__item__infos__mark {
+        font-family: 'Harriet Display';
+        font-weight: 600;
+        font-size: 20px; }
+      .ranking__list__item__infos__price {
+        margin-top: 8px;
+        font-weight: 600;
+        font-size: 14px; }
+        .ranking__list__item__infos__price__blue {
+          color: #00CCCC; }
+      .ranking__list__item__infos__link {
+        display: inline-block;
+        margin-top: 25px;
+        background-color: #00CCCC;
+        padding: 10px 15px;
+        color: #FFFFFF;
+        text-decoration: none;
+        font-size: 16px;
+        font-weight: 600;
+        text-transform: uppercase; }
+      .ranking__list__item__infos__address {
+        font-size: 14px;
+        font-weight: 300;
+        margin: 10px 0; }
+      .ranking__list__item__infos__description {
+        font-size: 14px;
+        font-weight: 400;
+        width: 90%; }
+
+.list {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 60px; }
+  .list__filters {
+    width: 100%; }
+    .list__filters__cat__title {
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: 20px; }
+    .list__filters__cat__options {
+      font-weight: 500;
+      font-size: 14px;
+      margin-bottom: 40px; }
+      .list__filters__cat__options__checkbox {
+        margin-bottom: 10px; }
+  .list__results {
+    width: 100%; }
+    .list__results__item {
+      display: flex;
+      align-items: center;
+      margin-bottom: 30px; }
+      .list__results__item__imgContainer {
+        width: 50%; }
+      .list__results__item__img {
+        width: 100%;
+        object-fit: contain; }
+      .list__results__item__infos {
+        margin-left: 20px; }
+        .list__results__item__infos__top {
+          display: flex;
+          justify-content: space-between; }
+        .list__results__item__infos__title {
+          font-weight: 700;
+          font-size: 18px; }
+        .list__results__item__infos__mark {
+          font-family: 'Harriet Display';
+          font-weight: 600;
+          font-size: 20px; }
+        .list__results__item__infos__price {
+          margin-top: 8px;
+          font-weight: 600;
+          font-size: 14px; }
+          .list__results__item__infos__price__blue {
+            color: #00CCCC; }
+        .list__results__item__infos__address {
+          font-size: 14px;
+          font-weight: 300;
+          margin: 10px 0; }
+        .list__results__item__infos__description {
+          font-size: 14px;
+          font-weight: 400;
+          width: 90%; }
+
+.articles {
+  display: flex;
+  justify-content: space-around;
+  margin: 0 auto;
+  margin-top: 40px; }
+  .articles__row {
+    flex-wrap: wrap; }
+    .articles__row__card {
+      display: flex;
+      justify-content: center;
+      height: 500px;
+      width: 350px;
+      margin-right: 20px;
+      margin-bottom: 40px; }
+      .articles__row__card__link {
+        padding-bottom: 30px;
+        color: #000;
+        border: solid 1px rgba(155, 155, 155, 0.6);
+        box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
+        border-radius: 3px;
+        text-decoration: none;
+        transition: ease 0.2s all; }
+        .articles__row__card__link:hover {
+          box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.4); }
+      .articles__row__card__header {
+        display: block;
+        height: 50%;
+        overflow: hidden;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        background-color: rgba(255, 255, 255, 0.15);
+        background-blend-mode: overlay; }
+      .articles__row__card__content {
+        padding: 1em; }
+        .articles__row__card__content__title {
+          font-family: 'Harriet Display';
+          width: 90%;
+          font-size: 20px;
+          font-weight: 500;
+          line-height: 28px;
+          margin-bottom: 10px; }
+        .articles__row__card__content__infos {
+          font-size: 12px;
+          color: #9B9B9B;
+          font-weight: 300; }
+          .articles__row__card__content__infos__span {
+            font-weight: 400; }
+        .articles__row__card__content__social {
+          margin-top: 15px; }
+        .articles__row__card__content__divider {
+          width: 110px;
+          height: 1px;
+          background-color: #D8D8D8;
+          margin: 15px 0 25px 0; }
+        .articles__row__card__content__excerpt {
+          font-size: 14px;
+          line-height: 18px; }
+
+.cover {
+  width: 100%;
+  margin: 40px auto;
+  align-items: center; }
+  .cover__container {
+    display: flex; }
+  .cover__img {
+    width: 80%;
+    height: 80%;
+    box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.15); }
+  .cover__text__title {
+    font-size: 40px;
+    line-height: 50px;
+    font-family: 'Harriet Display';
+    font-weight: 700;
+    text-align: left; }
+  .cover__text__CTA {
+    display: inline-block;
+    font-size: 18px;
+    color: #fff;
+    text-decoration: none;
+    background: #00CCCC;
+    padding: 10px 15px;
+    font-family: 'Montserrat', sans-serif;
+    text-transform: uppercase;
+    margin-top: 50px; }
+
+.mook {
+  margin-top: 200px;
+  text-align: center; }
+  .mook__title {
+    font-family: 'Harriet Display';
+    font-weight: 600;
+    font-size: 45px;
+    line-height: 45px;
+    width: 50%;
+    margin: 0 auto; }
+  .mook__subTitle {
+    font-family: 'Harriet Display';
+    font-weight: 200;
+    font-size: 16px;
+    color: #4A4A4A;
+    margin: 30px auto;
+    width: 60%;
+    text-align: center;
+    line-height: 22px; }
+  .mook__textContainer {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    justify-items: center;
+    grid-gap: 70px;
+    margin: 60px; }
+  .mook__textItem {
+    font-size: 16px;
+    margin-top: 10px;
+    line-height: 22px;
+    text-align: left; }
+  .mook__overLine {
+    width: 80px;
+    height: 5px;
+    background: #00CCCC;
+    margin-bottom: 18px; }
+
+.sheets {
+  margin-top: 100px;
+  line-height: 22px;
+  font-size: 16px; }
+  .sheets__title {
+    font-family: 'Harriet Display';
+    font-weight: 600;
+    font-size: 45px;
+    line-height: 45px;
+    margin-bottom: 40px; }
+  .sheets__text {
+    margin: 20px auto;
+    width: 100%; }
+
+.app {
+  margin: 200px auto; }
+  .app__title {
+    font-family: 'Harriet Display';
+    font-weight: 600;
+    font-size: 45px;
+    line-height: 45px; }
+  .app__container {
+    align-items: center; }
+  .app__store__appStore {
+    width: 50%; }
+    .app__store__appStore__img {
+      width: 100%;
+      margin-bottom: 50px; }
+  .app__store__googlePlay {
+    width: 50%; }
+    .app__store__googlePlay__img {
+      width: 100%; }
+  .app__mockUp {
+    width: 50%; }
+    .app__mockUp__img {
+      width: 100%; }
+
+.numbers {
+  margin-top: 100px;
+  background: url("../assets/img/night-sky.jpeg") no-repeat center center;
+  background-size: cover;
+  width: 100%;
+  color: #fff; }
+  .numbers__container {
+    padding: 100px 0; }
+  .numbers__content {
+    text-align: center; }
+    .numbers__content__stats {
+      font-weight: 900;
+      font-size: 30px; }
+    .numbers__content__text {
+      text-transform: uppercase;
+      font-weight: 700;
+      font-size: 20px;
+      line-height: 26px;
+      margin-top: 30px; }
+
+.team {
+  margin: 200px 0; }
+  .team__title {
+    font-family: 'Harriet Display';
+    font-weight: 600;
+    font-size: 45px;
+    line-height: 45px;
+    text-align: center; }
+  .team__container {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 100px; }
+  .team__cards {
+    border: 1px solid #979797;
+    width: 260px;
+    height: 360px;
+    border-radius: 2px; }
+    .team__cards__pictureContainer {
+      width: 100%;
+      height: 70%;
+      clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%); }
+    .team__cards__picture {
+      width: 100%;
+      height: 100%;
+      object-fit: cover; }
+    .team__cards__name {
+      font-family: 'Harriet Display';
+      font-weight: 600;
+      font-size: 20px;
+      margin-top: 20px; }
+    .team__cards__role {
+      font-size: 14px;
+      line-height: 20px;
+      width: 60%;
+      margin: 10px auto;
+      color: #4A4A4A; }
+
+.dot {
+  font-family: 'Harriet Display';
+  color: #00CCCC;
+  font-weight: 700;
+  font-size: 55px; }
+
+.strong {
+  font-weight: bold; }
+
+.contact {
+  margin-top: 70px; }
+  .contact__leftSection {
+    font-size: 14px;
+    line-height: 22px; }
+    @media (max-width: 960px) {
+      .contact__leftSection {
+        text-align: center; } }
+    .contact__leftSection__top__title {
+      font-family: 'Harriet Display';
+      font-weight: 500;
+      font-size: 30px;
+      margin-bottom: 30px; }
+    .contact__leftSection__top__titleSpan {
+      font-family: 'Harriet Display';
+      font-weight: 600;
+      font-size: 45px;
+      color: #00CCCC; }
+    .contact__leftSection__divider {
+      width: 60px;
+      height: 2px;
+      background-color: #00CCCC;
+      margin: 15px 0; }
+      @media (max-width: 960px) {
+        .contact__leftSection__divider {
+          margin: 15px auto; } }
+    .contact__leftSection__bottom__item {
+      margin-bottom: 15px; }
+      .contact__leftSection__bottom__item__name {
+        font-weight: 500; }
+    .contact__leftSection__social {
+      display: flex;
+      justify-content: space-between;
+      width: 30%; }
+      @media (max-width: 960px) {
+        .contact__leftSection__social {
+          width: 40%;
+          margin: 0 auto; } }
+      .contact__leftSection__social__itemContainer {
+        width: 30px;
+        height: 30px; }
+      .contact__leftSection__social__itemImg {
+        width: 100%;
+        border-radius: 2px; }
+  @media (max-width: 960px) {
+    .contact__formSection {
+      margin: 2em auto; } }
+  .contact__formSection__form__select {
+    width: 98%;
+    font-family: 'Montserrat';
+    font-size: 16px;
+    font-weight: 300;
+    background-color: #FFF;
+    margin-bottom: 15px;
+    padding: 10px;
+    height: 30px; }
+    .contact__formSection__form__select:focus {
+      outline: none; }
+  .contact__formSection__form__input {
+    display: block;
+    margin-bottom: 20px;
+    padding-left: 8px;
+    padding-bottom: 8px;
+    border: none;
+    border-bottom: solid 1px #000;
+    width: 96%;
+    font-family: 'Montserrat';
+    font-size: 16px;
+    font-weight: 300;
+    transition: ease 0.26s all; }
+    .contact__formSection__form__input:focus {
+      outline: none;
+      border-bottom: solid 1px #00CCCC; }
+  .contact__formSection__form__textArea {
+    display: block;
+    width: 95%;
+    height: 150px;
+    padding: 10px;
+    font-family: 'Montserrat';
+    font-size: 16px;
+    font-weight: 300;
+    resize: none;
+    border: solid 1px #000;
+    transition: ease 0.26s all; }
+    .contact__formSection__form__textArea:focus {
+      outline: none;
+      border: solid 1px #00CCCC; }
+  .contact__formSection__form__submit {
+    display: block;
+    font-family: 'Montserrat';
+    font-size: 16px;
+    font-weight: 500;
+    padding: 8px 20px;
+    margin-top: 25px;
+    color: #FFF;
+    text-transform: uppercase;
+    background-color: #00CCCC;
+    opacity: 0.7;
+    border: none;
+    transition: ease 0.26s all;
+    cursor: pointer; }
+    .contact__formSection__form__submit:focus {
+      outline: none; }
+    .contact__formSection__form__submit:hover {
+      opacity: 1; }
+
+.confirmation {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  text-align: center;
+  display: none;
+  z-index: 10; }
+  .confirmation__card {
+    background: #FFF;
+    border-radius: 6px;
+    padding: 50px;
+    padding-bottom: 40px;
+    margin: auto;
+    display: block;
+    width: 600px; }
+    .confirmation__card__message {
+      font-size: 20px;
+      text-align: center;
+      margin-bottom: 30px;
+      line-height: 1.5; }
+    .confirmation__card__button {
+      padding: 15px 20px;
+      background: #00CCCC;
+      border-radius: 3px;
+      text-align: center;
+      font-size: 18px;
+      display: inline-block;
+      text-transform: uppercase;
+      color: #FFF;
+      text-decoration: none; }
+
+.footer {
+  margin-top: 200px;
+  background-color: #343a40;
+  padding: 30px; }
+  .footer__title {
+    text-align: center;
+    color: #FFF;
+    text-transform: uppercase;
+    font-weight: 700; }
+  .footer__partners {
+    display: flex;
+    justify-content: space-between;
+    width: 50%;
+    margin: 0 auto;
+    align-items: center; }
+    .footer__partners__imgContainer {
+      width: 20%; }
+    .footer__partners__img {
+      width: 100%; }
+  .footer__divider {
+    height: 1px;
+    width: 100%;
+    margin: 50px auto;
+    background-color: #FFF; }
+  .footer__list {
+    margin: 0 auto;
+    width: 80%;
+    display: flex;
+    justify-content: space-between; }
+    .footer__list__item__link {
+      color: #FFF;
+      font-size: 12px;
+      text-decoration: none;
+      text-transform: uppercase; }
+  .footer__copyright {
+    color: #FFF;
+    text-align: center;
+    font-size: 12px;
+    margin-top: 15; }
+
 body {
   font-family: 'Montserrat', sans-serif;
   font-size: 16px; }
 
 .mainContainer {
   max-width: 1300px;
-  padding: 0 5em;
+  padding: 0 3em;
   margin: 0 auto; }
+  @media (max-width: 1024px) {
+    .mainContainer {
+      padding: 0 2em;
+      margin: 0 auto; } }
+  @media (max-width: 960px) {
+    .mainContainer {
+      padding: 0 1em; } }
+  @media (max-width: 600px) {
+    .mainContainer {
+      padding: 0 1em; } }
 
 /*# sourceMappingURL=style.css.map */
