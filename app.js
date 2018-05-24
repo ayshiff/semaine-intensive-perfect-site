@@ -67,7 +67,7 @@ sequelize
   .catch(err => {
     console.error('Unable to connect to the database:', err);
   });
-///////////////////////////////////////////////////////////////////////////
+
 
 //Storage Multer
 ///////////////////////////////////////////////////////////////////////////
@@ -86,10 +86,10 @@ let upload = multer({
   storage: storage
 }).single('image');
 
-///////////////////////////////////////////////////////////////////////////
+
 
 // Routing
-///////////////////////////////////////////////////////////////////////////
+
 // app.use('/index', index);
 
 // Routes backoffice
@@ -102,7 +102,7 @@ app.get('/auth', (req, res) => {
   res.render('auth');
 });
 
-////////////////////////////////////////////////////////////////////////////
+
 
 // Routes front
 
@@ -110,6 +110,14 @@ app.get('/auth', (req, res) => {
 app.get('/top100', (req, res) => {
     res.render('front/top100');
 });
+
+app.get('/auth', (req,res) => {
+  res.render('auth');
+})
+
+app.post('/auth', (req,res) => {
+  res.redirect('/admin/index');
+})
 
 app.get('/index', (req, res) => {
   db.ImagesBox.findAll().then(article => {
@@ -159,7 +167,7 @@ app.get('/actualites', (req, res) => {
   });
 });
 
-app.get('/top100', (req, res) => {
+app.get('/top100/*', (req, res) => {
   res.render('front/top100', {
     current: 'categories'
   });
