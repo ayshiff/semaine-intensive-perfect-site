@@ -3,22 +3,20 @@
   <head>
     <title>Admin Login</title>
     <!-- Bootstrap -->
-    <link rel="stylesheet" href="../src/style/style.css">
+    <link rel="stylesheet" href="../../src/style/style.css">
+    <link rel="stylesheet" href="../../src/style/flexboxgrid.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700,800,900" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   </head>
   <body id="login">
 
-    <div class="container">
+    <div class="container" style="margin-top: 30vh;">
 
-        <form class="form-signin" style="margin: 0 auto;text-align: center;"method="post" action="/auth">
-          <h2 class="form-signin-heading">Please sign in</h2>
-          <label for="inputEmail" class="sr-only">Email address</label>
-          <input type="text" id="inputUsername" class="form-control mr-sm-2" placeholder="Username" required autofocus>
-          <label for="inputPassword" class="sr-only">Password</label>
-          <input type="password" id="inputPassword" style="margin-top: 10px;" class="form-control mr-sm-2" placeholder="Password" required>
-          <div class="checkbox">
-          </div>
-          <button style="width: 200px;" class="btn btn-lg btn-secondary" type="submit">Sign in</button>
+        <form class="form-signin" style="margin: 0 auto;"method="post" action="/auth">
+          <h2 class="contact__leftSection__top__title">Admin</h2>
+          <input class="contact__formSection__form__input" type="text" id="company" name="company" value="" placeholder="Votre nom" required maxlength="50">
+          <input class="contact__formSection__form__input" type="password" id="password" name="name" value="" placeholder="Votre mot de passe" required maxlength="50">
+          <input  class="contact__formSection__form__submit" type="submit" value="Se connecter">
         </form>
   
       </div> <!-- /container -->
