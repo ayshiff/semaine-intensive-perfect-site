@@ -1,0 +1,82 @@
+{% extends "./header.html"%}
+{% block content %}
+
+    <div class="confirmation">
+      <div class="confirmation__card">
+        <p class="confirmation__card__message">Votre message a bien été envoyé, vous recevrez une réponse dans les plus brefs délais.</p>
+        <a href="" class="confirmation__card__button">Fermer</a>
+      </div>
+    </div>
+    <div class="contact row">
+      <div class="contact__leftSection col-lg-6 col-md-12 col-xs-12">
+        <div class="contact__leftSection__top">
+          <h3 class="contact__leftSection__top__title">Nos coordonnées<span class="contact__leftSection__top__titleSpan">.</span></h3>
+          <p class="contact__leftSection__top__infos">32 rue des Peupliers,</p>
+          <p class="contact__leftSection__top__infos">92100 Boulogne</p>
+          <p class="contact__leftSection__top__infos">Ouvert du Lundi au Vendredi de 10h à 18h</p>
+        </div>
+        <div class="contact__leftSection__divider"></div>
+        <div class="contact__leftSection__bottom">
+          <div class="contact__leftSection__bottom__item">
+            <p class="contact__leftSection__bottom__item__name">Rédaction :</p>
+            <p class="contact__leftSection__bottom__item__infos">+33 (0)4 13 10 51 3</p>
+            <p class="contact__leftSection__bottom__item__infos">redaction@uneanneedevoyages.com</p>
+          </div>
+          <div class="contact__leftSection__bottom__item">
+            <p class="contact__leftSection__bottom__item__name">Judith Lossmann (rédactrice en chef)  :</p>
+            <p class="contact__leftSection__bottom__item__infos">+ 33 (0)6 88 31 61 37</p>
+            <p class="contact__leftSection__bottom__item__infos">judith.lossmann@uneanneedevoyages.com</p>
+          </div>
+          <div class="contact__leftSection__bottom__item">
+            <p class="contact__leftSection__bottom__item__name">Caroline M’zali (secrétaire de rédaction) :</p>
+            <p class="contact__leftSection__bottom__item__infos">+33 (0)7 71 12 87 48</p>
+            <p class="contact__leftSection__bottom__item__infos">caroline.mzali@uneanneedevoyages.com</p>
+          </div>
+        </div>
+        <div class="contact__leftSection__social">
+          <div class="contact__leftSection__social__itemContainer">
+            <a href="#">
+              <img src="../../src/assets/img/facebook_icon.png" alt="Facebook icon" class="contact__leftSection__social__itemImg">
+            </a>
+          </div>
+          <div class="contact__leftSection__social__itemContainer">
+            <a href="#">
+              <img src="../../src/assets/img/twitter_icon.png" alt="Twitter icon" class="contact__leftSection__social__itemImg">
+            </a>
+          </div>
+          <div class="contact__leftSection__social__itemContainer">
+            <a href="#">
+              <img src="../../src/assets/img/instagram_icon.png" alt="Instagram icon" class="contact__leftSection__social__itemImg">
+            </a>
+          </div>
+          <div class="contact__leftSection__social__itemContainer">
+            <a href="#">
+              <img src="../../src/assets/img/youtube_icon.png" alt="YouTube icon" class="contact__leftSection__social__itemImg">
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="contact__formSection col-lg-6 col-md-12 col-xs-12">
+        <form class="contact__formSection__form" id="form" method="post">
+          <select class="contact__formSection__form__select" name="role" form="form">
+            <option class="contact__formSection__form__select__item" disabled selected value="Vous êtes :">Vous êtes :</option>
+            <option class="contact__formSection__form__select__item" value="Journaliste">Un journaliste</option>
+            <option class="contact__formSection__form__select__item" value="Annonceur">Un annonceur</option>
+            <option class="contact__formSection__form__select__item" value="Lecteur">Un lecteur</option>
+            <option class="contact__formSection__form__select__item" value="Partenaire">Un partenaire</option>
+            <option class="contact__formSection__form__select__item" value="Office">Un office du tourisme</option>
+          </select>
+          <input class="contact__formSection__form__input" type="text" id="company" name="company" value="" placeholder="Votre société" required maxlength="50">
+          <input class="contact__formSection__form__input" type="text" id="name" name="name" value="" placeholder="Votre nom" required maxlength="50">
+          <input class="contact__formSection__form__input" type="tel" id="phone" name="phone" value="" placeholder="Votre e-mail" required maxlength="12">
+          <input class="contact__formSection__form__input" type="email" id="email" name="email" value="" placeholder="Votre téléphone" required>
+          <textarea class="contact__formSection__form__textArea" type="textarea" id="message" name="message" value="" required placeholder="Votre message"></textarea>
+          <input class="contact__formSection__form__submit" type="submit" name="submit" value="Envoyer" id="btn-sent">
+        </form>
+      </div>
+    </div>
+  </div>
+ <script src="js/form.js"></script>
+</body>
+</html>
+{% endblock %}

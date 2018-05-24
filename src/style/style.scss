@@ -1,0 +1,21 @@
+@import "global/reset";
+@import "global/variables";
+@import "global/fonts";
+@import "forsize/responsive";
+@import "partials/header";
+@import "partials/categories";
+@import "partials/top";
+@import "partials/actualites";
+@import "partials/magazine";
+@import "partials/contact";
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 16px;
+}
+
+.Container {
+  max-width: 1300px;
+  padding: 0 5em;
+  margin: 0 auto;
+}

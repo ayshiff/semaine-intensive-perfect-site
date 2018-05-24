@@ -1,0 +1,18 @@
+@mixin responsive($range) {
+    $break-mobile: $bp-mobile;
+    $break-tablet: $bp-tablet;
+    $break-desktop: $bp-desktop;
+    $break-desktop-large: $bp-desktop-large;
+
+    @if $range == phone-only {
+      @media (max-width: #{$phone-upper-boundary - 1}) { @content; }
+    } @else if $range == mobile {
+      @media (max-width: $break-mobile) { @content; }
+    } @else if $range == tablet {
+      @media (max-width: $break-tablet) { @content; }
+    } @else if $range == desktop {
+      @media (max-width: $break-desktop) { @content; }
+    } @else if $range == desktop-large {
+      @media (max-width: $break-desktop-large) { @content; }
+    }
+}

@@ -1,0 +1,128 @@
+{% extends "./header.html"%}
+{% block content %}
+    <section class="top100">
+      <h1 class="top100__title">Les TOP100<span class="dot">.</span></h1>
+      <div class="top100__btns row">
+        <a class="top100__btns__links col-lg-4" href="./top100.html">
+          <div class="top100__btns__item ">
+            <div class="top100__btns__item__pictureContainer">
+              <img class="top100__btns__item__picture" src="../../src/assets/img/hotel.jpeg" alt="">
+            </div>
+            <p class="top100__btns__item__title">Hôtels</p>
+          </div>
+        </a>
+        <a class="top100__btns__links col-lg-4" href="./top100.html">
+          <div class="top100__btns__item">
+            <div class="top100__btns__item__pictureContainer">
+              <img class="top100__btns__item__picture" src="../../src/assets/img/restaurant.jpg" alt="">
+            </div>
+            <p class="top100__btns__item__title">Restaurants</p>
+          </div>
+        </a>
+        <a class="top100__btns__links col-lg-4" href="./top100.html">
+        <div class="top100__btns__item">
+          <div class="top100__btns__item__pictureContainer">
+            <img class="top100__btns__item__picture" src="../../src/assets/img/spa.jpg" alt="">
+          </div>
+          <p class="top100__btns__item__title">Bien-être</p>
+        </div>
+        </a>
+      </div>
+    </section>
+    <section class="list row">
+      <div class="list__filters col-lg-4">
+        <div class="list__filters__cat">
+          <h3 class="list__filters__cat__title">Type d'établissement</h3>
+          <div class="list__filters__cat__options">
+            <input name="hotels" type="checkbox" class="list__filters__cat__options__checkbox">
+            <label for="hotels">Hôtels</label></br>
+            <input name="restaurants" type="checkbox" class="list__filters__cat__options__checkbox">
+            <label for="restaurants">Restaurants</label></br>
+            <input name="bars" type="checkbox" class="list__filters__cat__options__checkbox">
+            <label for="bars">Bars</label></br>
+            <input name="spa" type="checkbox" class="list__filters__cat__options__checkbox">
+            <label for="spa">Spas</label></br>
+          </div>
+        </div>
+        <div class="list__filters__cat">
+          <h3 class="list__filters__cat__title">Pays</h3>
+          <div class="list__filters__cat__options">
+            <input name="france" type="checkbox" class="list__filters__cat__options__checkbox">
+            <label for="france">France</label></br>
+            <input name="espagne" type="checkbox" class="list__filters__cat__options__checkbox">
+            <label for="espagne">Espagne</label></br>
+            <input name="Allemagne" type="checkbox" class="list__filters__cat__options__checkbox">
+            <label for="Allemagne">Allemagne</label></br>
+            <input name="portugal" type="checkbox" class="list__filters__cat__options__checkbox">
+            <label for="portugal">Portugal</label></br>
+          </div>
+        </div>
+        <div class="list__filters__cat">
+          <h3 class="list__filters__cat__title">Note</h3>
+          <div class="list__filters__cat__options">
+            <input name="5" type="checkbox" class="list__filters__cat__options__checkbox">
+            <label for="5">5</label></br>
+            <input name="4+" type="checkbox" class="list__filters__cat__options__checkbox">
+            <label for="4+">4 et plus</label></br>
+            <input name="3+" type="checkbox" class="list__filters__cat__options__checkbox">
+            <label for="3+">3 et plus</label></br>
+            <input name="2+" type="checkbox" class="list__filters__cat__options__checkbox">
+            <label for="2+">2 et plus</label></br>
+          </div>
+        </div>
+      </div>
+      <div class="list__results col-lg-8">
+        <div class="list__results__item">
+          <div class="list__results__item__imgContainer">
+            <img src="../../src/assets/img/hotel1.jpg" alt="" class="list__results__item__img">
+          </div>
+          <div class="list__results__item__infos">
+            <div class="list__results__item__infos__top">
+              <h3 class="list__results__item__infos__title">Grand Hôtel ****</h3>
+              <h4 class="list__results__item__infos__mark">4,8/5</h4>
+            </div>
+            <p class="list__results__item__infos__price"><span class="list__results__item__infos__price__blue">€€€€</span></p>
+            <p class="list__results__item__infos__address">42 Avenue Lorem, 06230 Villefranche sur Mer</p>
+            <p class="list__results__item__infos__description">Lorem ipsum dolor sit amet,
+              consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+              dolore magna aliqua, ut enim ad minim veniam.</p>
+          </div>
+        </div>
+        <div class="list__results__item">
+          <div class="list__results__item__imgContainer">
+            <img src="../../src/assets/img/hotel1.jpg" alt="" class="list__results__item__img">
+          </div>
+          <div class="list__results__item__infos">
+            <div class="list__results__item__infos__top">
+              <h3 class="list__results__item__infos__title">Grand Hôtel ****</h3>
+              <h4 class="list__results__item__infos__mark">4,8/5</h4>
+            </div>
+            <p class="list__results__item__infos__price"><span class="list__results__item__infos__price__blue">€€€€</span></p>
+            <p class="list__results__item__infos__address">42 Avenue Lorem, 06230 Villefranche sur Mer</p>
+            <p class="list__results__item__infos__description">Lorem ipsum dolor sit amet,
+              consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+              dolore magna aliqua, ut enim ad minim veniam.</p>
+          </div>
+        </div>
+        <div class="list__results__item">
+          <div class="list__results__item__imgContainer">
+            <img src="../../src/assets/img/hotel1.jpg" alt="" class="list__results__item__img">
+          </div>
+          <div class="list__results__item__infos">
+            <div class="list__results__item__infos__top">
+              <h3 class="list__results__item__infos__title">Grand Hôtel ****</h3>
+              <h4 class="list__results__item__infos__mark">4,8/5</h4>
+            </div>
+            <p class="list__results__item__infos__price"><span class="list__results__item__infos__price__blue">€€€€</span></p>
+            <p class="list__results__item__infos__address">42 Avenue Lorem, 06230 Villefranche sur Mer</p>
+            <p class="list__results__item__infos__description">Lorem ipsum dolor sit amet,
+              consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+              dolore magna aliqua, ut enim ad minim veniam.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</body>
+</html>
+{% endblock %}

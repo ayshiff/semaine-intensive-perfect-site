@@ -1,0 +1,162 @@
+.ranking {
+  width: 80%;
+  margin: 80px auto;
+  &__return {
+    display: block;
+    font-size: 14px;
+    font-weight: 800;
+    text-decoration: none;
+    color: #000;
+    text-transform: uppercase;
+    margin-top: 40px;
+    transition: ease 0.15s color;
+    &:hover {
+      color: $blue;
+    }
+  }
+  &__list {
+    &__item {
+      display: flex;
+      position: relative;
+      margin-bottom: 50px;
+      align-items: center;
+      &__rank {
+        font-family: 'Harriet Display';
+        font-size: 170px;
+        font-weight: 700;
+        color: #9B9B9B;
+        opacity: 0.3;
+        position: absolute;
+        z-index: -1;
+        left: -70;
+        top: -80;
+      }
+      &__imgContainer {
+        width: 50%;
+      }
+      &__img {
+        width: 100%;
+        object-fit: contain;
+        border-radius: 2px;
+      }
+      &__infos {
+        margin-left: 20px;
+        &__top {
+          display: flex;
+          justify-content: space-between;
+        }
+        &__title {
+          font-weight: 700;
+          font-size: 18px;
+        }
+        &__mark {
+          font-family: 'Harriet Display';
+          font-weight: 600;
+          font-size: 20px;
+        }
+        &__price {
+          margin-top: 8px;
+          font-weight: 600;
+          font-size: 14px;
+          &__blue {
+            color: $blue;
+          }
+        }
+        &__link {
+          display: inline-block;
+          margin-top: 25px;
+          background-color: $blue;
+          padding: 10px 15px;
+          color: $white;
+          text-decoration: none;
+          font-size: 16px;
+          font-weight: 600;
+          text-transform: uppercase;
+        }
+        &__address {
+          font-size: 14px;
+          font-weight: 300;
+          margin: 10px 0;
+        }
+        &__description {
+          font-size: 14px;
+          font-weight: 400;
+          width: 90%;
+        }
+      }
+    }
+  }
+}
+
+.list {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 60px;
+  &__filters {
+    width: 100%;
+    &__cat {
+      &__title {
+        font-size: 16px;
+        font-weight: 700;
+        margin-bottom: 20px;
+      }
+      &__options {
+        font-weight: 500;
+        font-size: 14px;
+        margin-bottom: 40px;
+        &__checkbox {
+          margin-bottom: 10px;
+        }
+      }
+    }
+  }
+  &__results {
+    width: 100%;
+    &__item {
+      display: flex;
+      align-items: center;
+      margin-bottom: 30px;
+      &__imgContainer {
+        width: 50%;
+      }
+      &__img {
+        width: 100%;
+        object-fit: contain;
+      }
+      &__infos {
+        margin-left: 20px;
+        &__top {
+          display: flex;
+          justify-content: space-between;
+        }
+        &__title {
+          font-weight: 700;
+          font-size: 18px;
+        }
+        &__mark {
+          font-family: 'Harriet Display';
+          font-weight: 600;
+          font-size: 20px;
+        }
+        &__price {
+          margin-top: 8px;
+          font-weight: 600;
+          font-size: 14px;
+          &__blue {
+            color: $blue;
+          }
+        }
+        &__address {
+          font-size: 14px;
+          font-weight: 300;
+          margin: 10px 0;
+        }
+        &__description {
+          font-size: 14px;
+          font-weight: 400;
+          width: 90%;
+        }
+      }
+    }
+  }
+}
