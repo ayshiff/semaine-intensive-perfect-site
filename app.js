@@ -8,6 +8,8 @@ let multer = require('multer');
 
 let port = process.env.PORT || 8000;
 
+let sassMiddleware = require('node-sass-middleware');
+
 let index = require('./routes/index');
 const db = require(`${__dirname}/models/index.js`);
 
@@ -18,6 +20,17 @@ let AirlineCompanyRoute = require('./routes/AirlineCompanyRoute');
 let FactSheetRoute = require('./routes/FactSheetRoute');
 
 let app = express();
+/*
+app.use(sassMiddleware({
+
+  src: __dirname+"/src/style",
+  dest: __dirname + "/public",
+  debug: true,
+  indentedSyntax : false,
+  outputStyle: 'expanded',
+  prefix:  '/style'  // Where prefix is at <link rel="stylesheets" href="prefix/style.css"/>
+}));*/
+app.use('/src', express.static(path.join(__dirname, 'src')));
 
 let nunjucks = require('nunjucks');
 
@@ -47,6 +60,7 @@ nunjucks.configure('views', {
   express: app
 });
 app.use('/uploads', express.static(__dirname + '/uploads'));
+
 ////////////////////////////////////////////////////////////////////////
 // MySQL
 let sequelize = require('./config/database');
@@ -82,7 +96,9 @@ let upload = multer({
 
 // Routing
 ///////////////////////////////////////////////////////////////////////////
-app.use('/', index);
+// app.use('/index', index);
+
+// Routes backoffice
 app.use('/admin/partners', PartnerRoute);
 app.use('/admin/imagesbox', ImageBoxRoute);
 app.use('/admin/airlinescompanies', AirlineCompanyRoute);
@@ -95,6 +111,54 @@ app.get('/auth', (req,res) => {
 
 ////////////////////////////////////////////////////////////////////////////
 
+// Routes front
+
+app.get('/index', (req,res) => {
+  res.render('front/index', {
+    current: "index"
+  });
+});
+
+app.get('/contact', (req,res) => {
+    res.render('front/contact', {
+      current: "contact"
+    });
+});
+
+app.get('/magazine', (req,res) => {
+    res.render('front/magazine', {
+      current: "magazine"
+    });
+});
+
+app.get('/categories', (req,res) => {
+    db.Factsheet.findAll().then(article => {
+      let strNote = ""
+        for(let i = 1;i<article.note;i++) {
+        strNote + "€"
+        }
+        res.render('front/categories', {
+            article,
+            strNote,
+            current: "categories"
+        })
+    });
+});
+
+app.get('/actualites', (req,res) => {
+    db.Article.findAll().then(article => {
+        res.render('front/actualites', {
+            article,
+            current: "actualites"
+        })
+    });
+});
+
+app.get('/top100', (req,res) => {
+    res.render('front/top100', {
+      current: "categories"
+    });
+});
 
 app.get('/admin/index', (req, res) => {
   db.Article.findAll().then(article => {

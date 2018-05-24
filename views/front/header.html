@@ -1,0 +1,39 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../../src/style/style.css">
+    <link rel="stylesheet" href="../../src/style/flexboxgrid.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700,800,900" rel="stylesheet">
+    <title>Une Année de Voyages.</title>
+</head>
+<body>
+<div class="Container">
+    <header class="header">
+        <div class="col-lg-12">
+            <h1 class="header__title">UNE ANNÉE DE VOYAGES.</h1>
+        </div>
+        <div class="header__nav">
+            <ul class="header__nav__list">
+                <li class="header__nav__list__item">
+                    <a href="/index" class="header__nav__list__item__link{% if(current === 'index') %} --active {% endif %}">Accueil</a>
+                </li>
+                <li class="header__nav__list__item">
+                    <a href="/categories" class="header__nav__list__item__link{% if(current === 'categories') %} --active {% endif %}">Catégories</a>
+                </li>
+                <li class="header__nav__list__item">
+                    <a href="/actualites" class="header__nav__list__item__link{% if(current === 'actualites') %} --active {% endif %}">Actualités</a>
+                </li>
+                <li class="header__nav__list__item">
+                    <a href="/magazine" class="header__nav__list__item__link{% if(current === 'magazine') %} --active {% endif %}">Le Magazine</a>
+                </li>
+                <li class="header__nav__list__item">
+                    <a href="/contact" class="header__nav__list__item__link{% if(current === 'contact') %} --active {% endif %}">Contact</a>
+                </li>
+            </ul>
+        </div>
+    </header>
+
+    {% block content %}
+    {% endblock %}
