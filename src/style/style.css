@@ -617,7 +617,8 @@ table {
 
 .ranking {
   width: 80%;
-  margin: 80px auto; }
+  margin: 80px auto;
+  margin-left: 200px; }
   .ranking__return {
     display: block;
     font-size: 14px;
