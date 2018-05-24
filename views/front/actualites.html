@@ -1,7 +1,7 @@
 {% extends "./header.html"%}
 {% block content %}
-    <div class="articles">
-      <div class="articles__row">
+    <div class="articles row">
+
         {% for p in article %}
         <div class="articles__row__card">
 		      <a class="articles__row__card__link" href="#">
@@ -20,7 +20,7 @@
 	      	</a>
 	      </div>
         {% endfor %}
-      </div>
+
       <div class="liveFeed col-lg-4 col-md-12">
         <div class="LiveFeed__item">
           <a class="twitter-timeline" data-height="1000" href="https://twitter.com/AirFranceFR?ref_src=twsrc%5Etfw">Tweets by AirFranceFR</a>

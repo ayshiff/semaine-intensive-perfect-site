@@ -34,6 +34,8 @@ Each model has the following endpoints :
 
 # Cahier des charges
 
+![Screenshot](./references/Screenshot.png)
+
 ## Front
 
 - Actu twitter des compagnies aériennes partenaires
