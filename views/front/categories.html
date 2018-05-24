@@ -72,54 +72,22 @@
         </div>
       </div>
       <div class="list__results col-lg-8">
+        {% for p in article %}
         <div class="list__results__item">
           <div class="list__results__item__imgContainer">
-            <img src="../../src/assets/img/hotel1.jpg" alt="" class="list__results__item__img">
+            <img src="../../uploads/{{p.image}}.jpg" alt="{{p.image}}" class="list__results__item__img">
           </div>
           <div class="list__results__item__infos">
             <div class="list__results__item__infos__top">
-              <h3 class="list__results__item__infos__title">Grand Hôtel ****</h3>
-              <h4 class="list__results__item__infos__mark">4,8/5</h4>
+              <h3 class="list__results__item__infos__title">{{p.title}}</h3>
+              <h4 class="list__results__item__infos__mark">{{p.note}}/5</h4>
             </div>
-            <p class="list__results__item__infos__price"><span class="list__results__item__infos__price__blue">€€€€</span></p>
-            <p class="list__results__item__infos__address">42 Avenue Lorem, 06230 Villefranche sur Mer</p>
-            <p class="list__results__item__infos__description">Lorem ipsum dolor sit amet,
-              consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-              dolore magna aliqua, ut enim ad minim veniam.</p>
+            <p class="list__results__item__infos__price"><span class="list__results__item__infos__price__blue">{{strNote}}</span></p>
+            <p class="list__results__item__infos__address">{{p.adress}}</p>
+            <p class="list__results__item__infos__description">{{p.description}}</p>
           </div>
         </div>
-        <div class="list__results__item">
-          <div class="list__results__item__imgContainer">
-            <img src="../../src/assets/img/hotel1.jpg" alt="" class="list__results__item__img">
-          </div>
-          <div class="list__results__item__infos">
-            <div class="list__results__item__infos__top">
-              <h3 class="list__results__item__infos__title">Grand Hôtel ****</h3>
-              <h4 class="list__results__item__infos__mark">4,8/5</h4>
-            </div>
-            <p class="list__results__item__infos__price"><span class="list__results__item__infos__price__blue">€€€€</span></p>
-            <p class="list__results__item__infos__address">42 Avenue Lorem, 06230 Villefranche sur Mer</p>
-            <p class="list__results__item__infos__description">Lorem ipsum dolor sit amet,
-              consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-              dolore magna aliqua, ut enim ad minim veniam.</p>
-          </div>
-        </div>
-        <div class="list__results__item">
-          <div class="list__results__item__imgContainer">
-            <img src="../../src/assets/img/hotel1.jpg" alt="" class="list__results__item__img">
-          </div>
-          <div class="list__results__item__infos">
-            <div class="list__results__item__infos__top">
-              <h3 class="list__results__item__infos__title">Grand Hôtel ****</h3>
-              <h4 class="list__results__item__infos__mark">4,8/5</h4>
-            </div>
-            <p class="list__results__item__infos__price"><span class="list__results__item__infos__price__blue">€€€€</span></p>
-            <p class="list__results__item__infos__address">42 Avenue Lorem, 06230 Villefranche sur Mer</p>
-            <p class="list__results__item__infos__description">Lorem ipsum dolor sit amet,
-              consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-              dolore magna aliqua, ut enim ad minim veniam.</p>
-          </div>
-        </div>
+        {% endfor %}
       </div>
     </section>
   </div>

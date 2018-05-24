@@ -2,36 +2,23 @@
 {% block content %}
     <div class="articles row">
       <div class="articles__row col-lg-8 col-md-12 col-xs-12">
+        {% for p in article %}
         <div class="articles__row__card">
 		      <a class="articles__row__card__link" href="#">
-  			    <span class="articles__row__card__header" style="background-image: url('./assets/img/9.jpg');"></span>
+  			    <span class="articles__row__card__header" style="background-image: url('../../uploads/{{p.image}}.jpg');"></span>
             <div class="articles__row__card__content">
-        			<h3 class="articles__row__card__content__title">Les destinations incontourables de 2018.</h3>
-              <p class="articles__row__card__content__infos">Publié par <span class="articles__row__card__content__infos__span">Une Année de Voyages</span></p>
+        			<h3 class="articles__row__card__content__title">{{p.title}}</h3>
+              <p class="articles__row__card__content__infos">Publié par <span class="articles__row__card__content__infos__span">{{p.subtitle}}</span></p>
               <div class="articles__row__card__content__social">
                 <img src="../../src/assets/img/facebook_share.png" alt="" class="articles__row__card__content__social__item">
                 <img src="../../src/assets/img/twitter_share.png" alt="" class="articles__row__card__content__social__item">
               </div>
               <div class="articles__row__card__content__divider"></div>
-              <p class="articles__row__card__content__excerpt">Cette année encore, certaines desctinations sont très prisées des voyageur pour de bonnes raisons (…)</p>
+              <p class="articles__row__card__content__excerpt">{{p.text}}</p>
             </div>
 	      	</a>
 	      </div>
-        <div class="articles__row__card">
-		      <a class="articles__row__card__link" href="#">
-  			    <span class="articles__row__card__header" style="background-image: url('./assets/img/6.jpg');"></span>
-            <div class="articles__row__card__content">
-        			<h3 class="articles__row__card__content__title">Le tourisme gastronomique : une tendance qui dure.</h3>
-              <p class="articles__row__card__content__infos">Publié par <span class="articles__row__card__content__infos__span">Une Année de Voyages</span></p>
-              <div class="articles__row__card__content__social">
-                <img src="../../src/assets/img/facebook_share.png" alt="" class="articles__row__card__content__social__item">
-                <img src="../../src/assets/img/twitter_share.png" alt="" class="articles__row__card__content__social__item">
-              </div>
-              <div class="articles__row__card__content__divider"></div>
-              <p class="articles__row__card__content__excerpt">Cette année encore, certaines desctinations sont très prisées des voyageur pour de bonnes raisons (…)</p>
-            </div>
-	      	</a>
-        </div>
+        {% endfor %}
       </div>
       <div class="liveFeed col-lg-4 col-md-12">
         <div class="LiveFeed__item">

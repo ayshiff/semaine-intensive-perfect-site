@@ -132,14 +132,25 @@ app.get('/magazine', (req,res) => {
 });
 
 app.get('/categories', (req,res) => {
-    res.render('front/categories', {
-      current: "categories"
+    db.Factsheet.findAll().then(article => {
+      let strNote = ""
+        for(let i = 1;i<article.note;i++) {
+        strNote + "€"
+        }
+        res.render('front/categories', {
+            article,
+            strNote,
+            current: "categories"
+        })
     });
 });
 
 app.get('/actualites', (req,res) => {
-    res.render('front/actualites', {
-      current: "actualites"
+    db.Article.findAll().then(article => {
+        res.render('front/actualites', {
+            article,
+            current: "actualites"
+        })
     });
 });
 
