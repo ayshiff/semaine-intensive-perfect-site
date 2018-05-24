@@ -6,11 +6,6 @@
       <div class="home__carousel__imgContainer">
         <img class="home__carousel__img" src="../../src/assets/img/9.jpg">
       </div>
-      <div class="home__carousel__progressBar">
-        <div class="home__carousel__progressBar__fill">
-          <div class="home__carousel__progressBar__fill__filled"></div>
-        </div>
-      </div>
       <div class="home__carousel__text">
         <h2 class="home__carousel__text__title">Les destinations incontournables de 2018.</h2>
         <a href="#" class="home__carousel__text__link">Notre classement</a>
@@ -24,12 +19,12 @@
   <div class="mainContainer">
     <h2 class="une__title">À la une<span class="dot">.</span></h2>
   </div>
-  <div class="une__firstArticle row">
+  <div class="une__firstArticle row center-md">
     <div class="une__firstArticle__imgContainer col-lg-6">
       <img src="../../src/assets/img/6.jpg" alt="" class="une__firstArticle__img">
     </div>
     <div class="une__firstArticle__txtContainer col-lg-6">
-      <h3 class="une__firstArticle__title">Le tourisme gastronomique :<br/>une tendance qui dure.</h3>
+      <h3 class="une__firstArticle__title ">Le tourisme gastronomique :<br/>une tendance qui dure.</h3>
       <p class="une__firstArticle__date">Publié le 12.05.2018</p>
       <p class="une__firstArticle__excerpt">Lorem ipsum dolor sit amet, consectetur
         adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
@@ -80,6 +75,7 @@
       </div>
     </div>
   </div>
+
 </section>
 <div class="mainContainer">
   <section class="gallery">
@@ -99,29 +95,27 @@
     </div>
     <div class="gallery__firstRow row">
       <div class="gallery__firstRow__imgContainer col-lg-5">
-        <img src="../../uploads/{{article[0].dataValues.image}}.jpg" alt="" class="gallery__firstRow__img">
+        <img src="../../uploads/{{article[0].dataValues.image}}" alt="" class="gallery__firstRow__img">
       </div>
       <div class="gallery__firstRow__imgContainer col-lg-3">
-        <img src="../../uploads/{{article[1].dataValues.image}}.jpg" alt="" class="gallery__firstRow__img">
+        <img src="../../uploads/{{article[1].dataValues.image}}" alt="" class="gallery__firstRow__img">
       </div>
       <div class="gallery__firstRow__imgContainer col-lg-4">
-        <img src="../../uploads/{{article[2].dataValues.image}}.jpg" alt="" class="gallery__firstRow__img">
+        <img src="../../uploads/{{article[2].dataValues.image}}" alt="" class="gallery__firstRow__img">
       </div>
     </div>
     <div class="gallery__secondRow row">
       <div class="gallery__secondRow__imgContainer col-lg-2">
-        <img src="../../uploads/{{article[3].dataValues.image}}.jpg" alt="" class="gallery__secondRow__img">
+        <img src="../../uploads/{{article[3].dataValues.image}}" alt="" class="gallery__secondRow__img">
       </div>
       <div class="gallery__secondRow__imgContainer col-lg-7">
-        <img src="../../uploads/{{article[4].dataValues.image}}.jpg" alt="" class="gallery__secondRow__img">
+        <img src="../../uploads/{{article[4].dataValues.image}}" alt="" class="gallery__secondRow__img">
       </div>
       <div class="gallery__secondRow__imgContainer col-lg-3">
-        <img src="../../uploads/{{article[5].dataValues.image}}.jpg" alt="" class="gallery__secondRow__img">
+        <img src="../../uploads/{{article[5].dataValues.image}}" alt="" class="gallery__secondRow__img">
       </div>
     </div>
   </section>
 </div>
-<script src="../../src/js/carousel.js"></script>
-</body>
-</html>
+
 {% endblock %}

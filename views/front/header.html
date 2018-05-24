@@ -1,39 +1,120 @@
-<html>
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="../../src/style/style.css">
-    <link rel="stylesheet" href="../../src/style/flexboxgrid.min.css">
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700,800,900" rel="stylesheet">
-    <title>Une Année de Voyages.</title>
-</head>
-<body>
-<div class="mainContainer">
-    <header class="header">
-        <div class="col-lg-12">
-            <h1 class="header__title">UNE ANNÉE DE VOYAGES.</h1>
-        </div>
-        <div class="header__nav">
-            <ul class="header__nav__list">
-                <li class="header__nav__list__item">
-                    <a href="/index" class="header__nav__list__item__link {% if(current === 'index') %}active{% endif %}">Accueil</a>
-                </li>
-                <li class="header__nav__list__item">
-                    <a href="/categories" class="header__nav__list__item__link {% if(current === 'categories') %}active{% endif %}">Catégories</a>
-                </li>
-                <li class="header__nav__list__item">
-                    <a href="/actualites" class="header__nav__list__item__link {% if(current === 'actualites') %}active{% endif %}">Actualités</a>
-                </li>
-                <li class="header__nav__list__item">
-                    <a href="/magazine" class="header__nav__list__item__link {% if(current === 'magazine') %}active{% endif %}">Le Magazine</a>
-                </li>
-                <li class="header__nav__list__item">
-                    <a href="/contact" class="header__nav__list__item__link {% if(current === 'contact') %}active{% endif %}">Contact</a>
-                </li>
-            </ul>
-        </div>
-    </header>
+ <html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link rel="stylesheet" href="../../src/style/style.css">
+        <link rel="stylesheet" href="../../src/style/flexboxgrid.min.css">
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700,800,900" rel="stylesheet">
+        <title>Une Année de Voyages.</title>
+    </head>
+    <body>
+    <div class="mainContainer">
+        <header class="header">
+            <div class="row center-xs --desktop">
+                <div class="col-xs-12">
+                    <h1 class="header__title">UNE ANNÉE DE VOYAGES.</h1>
+                </div>
+                <div class="header__nav">
+                    <ul class="header__nav__list">
+                        <li class="header__nav__list__item">
+                            <a href="/index" class="header__nav__list__item__link {% if(current === 'index') %}active{% endif %}">Accueil</a>
+                        </li>
+                        <li class="header__nav__list__item">
+                            <a href="/categories" class="header__nav__list__item__link {% if(current === 'categories') %}active{% endif %}">Catégories</a>
+                        </li>
+                        <li class="header__nav__list__item">
+                            <a href="/actualites" class="header__nav__list__item__link {% if(current === 'actualites') %}active{% endif %}">Actualités</a>
+                        </li>
+                        <li class="header__nav__list__item">
+                            <a href="/magazine" class="header__nav__list__item__link {% if(current === 'magazine') %}active{% endif %}">Le Magazine</a>
+                        </li>
+                        <li class="header__nav__list__item">
+                            <a href="/contact" class="header__nav__list__item__link {% if(current === 'contact') %}active{% endif %}">Contact</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="mobile">
+                <div class="col-xs-12">
+                    <div class="header__mobile">
+                        <h1 class="header__mobile__logo">Une année</br>de voyages.</h1>
+                        <div class="header__mobile__menu">
+                            <div class="header__mobile__menu__line" data-line="top"></div>
+                            <div class="header__mobile__menu__line" data-line="middle"></div>
+                            <div class="header__mobile__menu__line" data-line="bottom"></div>
+                        </div>
+                    </div>
+
+                    <div class="col-xs-12">
+                        <div class="header__mobile__modal" data-modal="open">
+                            <div class="header__mobile__modal__content">
+
+                                <div class="row center-xs around-xs">
+                                    <div class="col-xs-12">
+                                        <ul class="header__mobile__modal__list">
+                                            <a href="/index">
+                                                <li class="header__mobile__modal__list__item">Accueil</li>
+                                            </a>
+                                            <a href="/categories">
+                                                <li class="header__mobile__modal__list__item">Catégories</li>
+                                            </a>
+                                            <a href="/actualites">
+                                                <li class="header__mobile__modal__list__item">Actualités</li>
+                                            </a>
+                                            <a href="/magazine">
+                                                <li class="header__mobile__modal__list__item">Le Magazine</li>
+                                            </a>
+                                            <a href="/contact">
+                                                <li class="header__mobile__modal__list__item">Contact</li>
+                                            </a>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
 
     {% block content %}
     {% endblock %}
+
+        <footer class="footer">
+            <div class="mainContainer">
+                <h6 class="footer__title">Nos partenaires</h6>
+                <div class="footer__partners">
+                    <div class="footer__partners__imgContainer">
+                        <img src="../../src/assets/img/nikon.jpg" alt="" class="footer__partners__img">
+                    </div>
+                    <div class="footer__partners__imgContainer">
+                        <img src="../../src/assets/img/adp.png" alt="" class="footer__partners__img">
+                    </div>
+                    <div class="footer__partners__imgContainer">
+                        <img src="../../src/assets/img/fujifilm.png" alt="" class="footer__partners__img">
+                    </div>
+                </div>
+                <div class="footer__divider"></div>
+                <div class="footer__container">
+                    <ul class="footer__list">
+                        <li class="footer__list__item">
+                            <a href="./magazine.html" class="footer__list__item__link">Le magazine</a>
+                        </li>
+                        <li class="footer__list__item">
+                            <a href="./contact.html" class="footer__list__item__link">Contactez-nous</a>
+                        </li>
+                        <li class="footer__list__item">
+                            <a href="https://lojve.blogspot.fr/" class="footer__list__item__link">Blog</a>
+                        </li>
+                    </ul>
+                    <p class="footer__copyright">Tous droits réservés Une Année De Voyages ©2018-2022</p>
+                </div>
+            </div>
+        </footer>
+        <script src="../../src/js/form.js"></script>
+        <script src="../../src/js/carousel.js"></script>
+        <script src="../../src/js/main.js"></script>
+    </body>
+ </html>

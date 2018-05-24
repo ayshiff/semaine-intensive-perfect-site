@@ -2,56 +2,21 @@
   width: 100%;
   margin: 40px auto;
   align-items: center;
-  @include responsive(mobile) {
-    margin-top: 70px;
-  }
   &__container {
     display: flex;
-    @include responsive(mobile) {
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-    }
   }
   &__img {
     width: 80%;
     height: 80%;
     box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.15);
-    @include responsive(tablet) {
-      //width: 270px;
-      //height: 400px;
-    }
-    @include responsive(mobile) {
-      //width: 200px;
-      //height: 300px;
-    }
   }
   &__text {
-    @include responsive(desktop) {
-      margin: 120px 0 0 50px;
-    }
-    @include responsive(tablet) {
-      margin: 80px 0 0 70px;
-    }
-    @include responsive(mobile) {
-      margin: 30px 0 0 0;
-    }
     &__title {
       font-size: 40px;
       line-height: 50px;
       font-family: 'Harriet Display';
       font-weight: 700;
       text-align: left;
-      @include responsive(desktop-large) {
-        font-size: 30px;
-      }
-      @include responsive(tablet) {
-        font-size: 24px;
-      }
-      @include responsive(mobile) {
-        font-size: 18px;
-        line-height: 50px;
-      }
     }
     &__CTA {
       display: inline-block;
@@ -63,10 +28,6 @@
       font-family: 'Montserrat', sans-serif;
       text-transform: uppercase;
       margin-top: 50px;
-      @include responsive(mobile) {
-        font-size: 12px;
-        margin-top: 30px;
-      }
     }
   }
 }
@@ -74,9 +35,6 @@
 .mook {
   margin-top: 200px;
   text-align: center;
-  @include responsive(mobile) {
-    margin-top: 150px;
-  }
   &__title {
     font-family: 'Harriet Display';
     font-weight: 600;
@@ -84,12 +42,6 @@
     line-height: 45px;
     width: 50%;
     margin: 0 auto;
-    @include responsive(desktop-large) {
-      font-size: 30px;
-    }
-    @include responsive(mobile) {
-      font-size: 18px;
-    }
   }
   &__subTitle {
     font-family: 'Harriet Display';
@@ -100,9 +52,6 @@
     width: 60%;
     text-align: center;
     line-height: 22px;
-    @include responsive(mobile) {
-      font-size: 10px;
-    }
   }
   &__textContainer {
     display: grid;
@@ -110,21 +59,12 @@
     justify-items: center;
     grid-gap: 70px;
     margin: 60px;
-    @include responsive(tablet) {
-      grid-template-columns: repeat(2,1fr);
-    }
-    @include responsive(mobile) {
-      grid-template-columns: repeat(1,1fr);
-    }
   }
   &__textItem {
     font-size: 16px;
     margin-top: 10px;
     line-height: 22px;
     text-align: left;
-    @include responsive(mobile) {
-      font-size: 12px;
-    }
   }
   &__overLine {
     width: 80px;
@@ -138,22 +78,12 @@
   margin-top: 100px;
   line-height: 22px;
   font-size: 16px;
-  @include responsive(mobile){
-    margin-top: 70px;
-    font-size: 12px;
-  }
   &__title {
     font-family: 'Harriet Display';
     font-weight: 600;
     font-size: 45px;
     line-height: 45px;
     margin-bottom: 40px;
-    @include responsive(tablet) {
-      font-size: 30px;
-    }
-    @include responsive(mobile) {
-      font-size: 18px;
-    }
   }
   &__text {
     margin: 20px auto;
@@ -163,20 +93,11 @@
 
 .app {
   margin: 200px auto;
-  @include responsive(mobile){
-    margin-top: 100px;
-  }
   &__title {
     font-family: 'Harriet Display';
     font-weight: 600;
     font-size: 45px;
     line-height: 45px;
-    @include responsive(desktop-large) {
-      //font-size: 30px;
-    }
-    @include responsive(mobile) {
-      font-size: 18px;
-    }
   }
   &__container {
     align-items: center;
@@ -212,21 +133,12 @@
   color: #fff;
   &__container {
     padding: 100px 0;
-    @include responsive(mobile){
-      display: grid;
-      grid-template-columns: repeat(2,1fr);
-      grid-gap: 40px;
-      padding: 40px 0;
-    }
   }
   &__content {
     text-align: center;
     &__stats {
       font-weight: 900;
       font-size: 30px;
-      @include responsive(mobile) {
-        font-size: 15px;
-      }
     }
     &__text {
       text-transform: uppercase;
@@ -234,62 +146,29 @@
       font-size: 20px;
       line-height: 26px;
       margin-top: 30px;
-      @include responsive(desktop) {
-        font-size: 15px;
-      }
-      @include responsive(tablet) {
-        font-size: 12px;
-      }
-      @include responsive(mobile) {
-        font-size: 10px;
-        margin-top: 10px;
-      }
     }
   }
 }
 
 .team {
   margin: 200px 0;
-  @include responsive(mobile) {
-    margin: 100px 0;
-  }
   &__title {
     font-family: 'Harriet Display';
     font-weight: 600;
     font-size: 45px;
     line-height: 45px;
     text-align: center;
-    @include responsive(desktop-large) {
-      font-size: 30px;
-    }
-    @include responsive(mobile) {
-      font-size: 18px;
-    }
   }
   &__container {
     display: flex;
     justify-content: space-around;
     margin-top: 100px;
-    @include responsive(tablet) {
-      margin: 100px 20px;
-    }
-    @include responsive(mobile) {
-      margin-top: 70px;
-      display: grid;
-      grid-template-columns: repeat(2,1fr);
-      justify-items: center;
-      grid-gap: 40px;
-    }
   }
   &__cards {
     border: 1px solid #979797;
     width: 260px;
     height: 360px;
     border-radius: 2px;
-    @include responsive(mobile) {
-      width: 150px;
-      height: 220px;
-    }
     &__pictureContainer {
       width: 100%;
       height: 70%;
@@ -305,9 +184,6 @@
       font-weight: 600;
       font-size: 20px;
       margin-top: 20px;
-      @include responsive(mobile){
-        font-size: 12px;
-      }
     }
     &__role {
       font-size: 14px;
@@ -315,9 +191,6 @@
       width: 60%;
       margin: 10px auto;
       color: #4A4A4A;
-      @include responsive(mobile){
-        font-size: 10px;
-      }
     }
   }
 }
