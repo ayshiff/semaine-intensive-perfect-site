@@ -3,7 +3,7 @@
 
     <form style="margin: 40px;display: flex;flex-direction: column;" action="{{update}}{{id}}" method="post" enctype="multipart/form-data">
 
-        {% for i in range(0, 3) -%}
+        {% for i in range(0, lenght) -%}
         {% if (tabKey[i] !== "image") and (tabKey[i] !== "logo") %}
         <label for="{{tabKey[i]}}">{{tabKey[i]}} :</label>
         <input type="text" name="{{tabKey[i]}}" id="{{tabKey[i]}}" value="{{tab[i]}}">

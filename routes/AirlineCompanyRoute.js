@@ -25,8 +25,8 @@ let storage = multer.diskStorage({
         article,
         href:'/admin/airlinescompanies/add',
         obj: "airline company",
-        edit: "",
-        delete: "/admin/delete/"
+        edit: "/admin/airlinescompanies/edit/",
+        delete: "/admin/airlinescompanies/delete/"
       })
     })
   })
@@ -40,7 +40,7 @@ let storage = multer.diskStorage({
       console.log(value)
       res.render('admin/add', {
         value,
-        href: "/admin/airlinescompaniesadd"
+        href: "/admin/airlinescompanies/add"
       })
     })
   });
@@ -58,6 +58,13 @@ let storage = multer.diskStorage({
       })
   });
 
+  router.get('/delete/:id', (req, res) => {
+    res.render('admin/delete', {
+      id: req.params.id,
+      delete: "/admin/airlinescompanies/delete/"
+    })
+  });
+
   router.post('/delete/:id', (req, res) => {
     db.AirlineCompany.destroy({
       where: {
@@ -66,6 +73,37 @@ let storage = multer.diskStorage({
     });
     res.redirect('/admin/airlinescompanies');
   });
+
+  router.get('/edit/:id', (req, res) => {
+
+    db.AirlineCompany.findOne({
+      where: {
+        id: req.params.id
+      }
+    })
+    .then(article => {
+      res.render('admin/edit', {
+        tab :[article.name],
+          tabKey: ["name"],
+          lenght: 1,
+          update: "/admin/airlinescompanies/edit/",
+          id: article.id
+      });
+    })
+    
+    });
+  
+  // Route update admin -> POST
+  router.post('/edit/:id', upload, (req, res) => {
+   
+    db.AirlineCompany.update(
+      { name: req.body.name },
+      { where: { id: req.params.id } }
+    );
+    res.redirect('/admin/airlinescompanies');
+  });
+
+  
 
 
   module.exports = router
