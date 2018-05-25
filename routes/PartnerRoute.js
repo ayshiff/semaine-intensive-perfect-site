@@ -83,7 +83,7 @@ router.get('/edit/:id', (req, res) => {
     }
   }).then(article => {
     res.render('admin/edit', {
-      tab: [article.title, article.image, article.signature, article.id],
+      tab: [article.title, article.image, article.signature],
       tabKey: ['title', 'image', 'signature'],
       update: '/admin/partners/edit/',
       id: article.id

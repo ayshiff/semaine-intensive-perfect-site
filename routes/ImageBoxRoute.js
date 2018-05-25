@@ -97,7 +97,7 @@ router.post('/edit/:id', upload, (req, res) => {
     {
       name: req.body.name,
       title: req.body.title,
-      // image: req.file.filename
+      image: req.file.filename
     },
     { where: { id: req.params.id } }
   );

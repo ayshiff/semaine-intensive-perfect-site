@@ -91,9 +91,10 @@ router.get('/edit/:id', (req, res) => {
         article.adress,
         article.note,
         article.price,
-        article.description
+        article.description,
+        article.image
       ],
-      tabKey: ['title', 'adress', 'note', 'price', 'description'],
+      tabKey: ['title', 'adress', 'note', 'price', 'description','image'],
       lenght: 6,
       update: '/admin/factsheets/edit/',
       id: article.id
@@ -110,7 +111,7 @@ router.post('/edit/:id', upload, (req, res) => {
       note: req.body.note,
       price: req.body.price,
       description: req.body.description,
-      // image: req.file.filename
+      image: req.file.filename
     },
     { where: { id: req.params.id } }
   );

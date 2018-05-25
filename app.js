@@ -145,7 +145,7 @@ app.get('/categories', (req, res) => {
   db.Factsheet.findAll().then(article => {
     let strNote = ['', '', '', '', '', '', ''];
     for (let a = 0; a < article.length; a++) {
-      for (let i = 1; i < article[a].dataValues.note + 1; i++) {
+      for (let i = 1; i < article[a].dataValues.price + 1; i++) {
         strNote[a] += '€';
       }
     }
@@ -190,7 +190,7 @@ app.get('/admin/add', (req, res) => {
   console.log(sequelize.Project);
   db.Article.findAll().then(element => {
     let valueNotSlice = Object.keys(element[0].dataValues);
-    let value = valueNotSlice.slice(1, -2);
+    let value = valueNotSlice.slice(1, -3);
     if (!value) value = ['title', 'subtitle', 'image', 'text', 'signature'];
     console.log(value);
     res.render('admin/add', {
@@ -245,7 +245,7 @@ app.get('/admin/edit/:id', (req, res) => {
         article.id
       ],
       tabKey: ['title', 'subtitle', 'image', 'text', 'signature'],
-      lenght: 6,
+      lenght: 5,
       update: '/admin/edit/',
       id: article.id
     });
@@ -259,7 +259,7 @@ app.post('/admin/edit/:id', upload, (req, res) => {
       title: req.body.title,
       subtitle: req.body.subtitle,
       //logo: req.file.fieldname,
-      // image: req.file.filename,
+      image: req.file.filename,
       text: req.body.text,
       signature: req.body.signature
     },
