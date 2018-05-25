@@ -130,14 +130,24 @@ router.get('/edit/:id', (req, res) => {
 });
 
 router.post('/edit/:id', upload, (req, res) => {
-  db.Partner.update(
-    {
-      signature: req.body.signature,
-      title: req.body.title,
-      image: req.file.filename
-    },
-    { where: { id: req.params.id } }
-  );
+  if(req.file) {
+    db.Partner.update(
+      {
+        signature: req.body.signature,
+        title: req.body.title,
+        image: req.file.filename
+      },
+      { where: { id: req.params.id } }
+    );
+  } else {
+    db.Partner.update(
+      {
+        signature: req.body.signature,
+        title: req.body.title
+      },
+      { where: { id: req.params.id } }
+    );
+  }
   res.redirect('/admin/partners');
 });
 

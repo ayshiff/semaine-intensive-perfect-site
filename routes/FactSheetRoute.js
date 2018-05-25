@@ -104,7 +104,8 @@ router.get('/edit/:id', (req, res) => {
 
 // Route update admin -> POST
 router.post('/edit/:id', upload, (req, res) => {
-  db.Factsheet.update(
+  if(req.file) {
+    db.Factsheet.update(
     {
       title: req.body.title,
       adress: req.body.adress,
@@ -115,6 +116,19 @@ router.post('/edit/:id', upload, (req, res) => {
     },
     { where: { id: req.params.id } }
   );
+  } else {
+    db.Factsheet.update(
+      {
+        title: req.body.title,
+        adress: req.body.adress,
+        note: req.body.note,
+        price: req.body.price,
+        description: req.body.description
+      },
+      { where: { id: req.params.id } }
+    );
+  }
+  
   res.redirect('/admin/factsheets');
 });
 

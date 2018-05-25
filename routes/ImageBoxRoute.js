@@ -93,6 +93,7 @@ router.get('/edit/:id', (req, res) => {
 });
 
 router.post('/edit/:id', upload, (req, res) => {
+if(req.file) {
   db.ImagesBox.update(
     {
       name: req.body.name,
@@ -101,6 +102,15 @@ router.post('/edit/:id', upload, (req, res) => {
     },
     { where: { id: req.params.id } }
   );
+} else {
+  db.ImagesBox.update(
+    {
+      name: req.body.name,
+      title: req.body.title
+    },
+    { where: { id: req.params.id } }
+  );
+}
   res.redirect('/admin/imagesbox');
 });
 

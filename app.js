@@ -254,17 +254,28 @@ app.get('/admin/edit/:id', (req, res) => {
 
 // Route update admin -> POST
 app.post('/admin/edit/:id', upload, (req, res) => {
-  db.Article.update(
-    {
-      title: req.body.title,
-      subtitle: req.body.subtitle,
-      //logo: req.file.fieldname,
-      image: req.file.filename,
-      text: req.body.text,
-      signature: req.body.signature
-    },
-    { where: { id: req.params.id } }
-  );
+  if(req.file) {
+    db.Article.update(
+      {
+        title: req.body.title,
+        subtitle: req.body.subtitle,
+        image: req.file.filename,
+        text: req.body.text,
+        signature: req.body.signature
+      },
+      { where: { id: req.params.id } }
+    );
+  } else {
+    db.Article.update(
+      {
+        title: req.body.title,
+        subtitle: req.body.subtitle,
+        text: req.body.text,
+        signature: req.body.signature
+      },
+      { where: { id: req.params.id } }
+    );
+  }
   res.redirect('/admin/index');
 });
 
